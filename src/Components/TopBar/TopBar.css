@@ -172,8 +172,7 @@
     }
 
     .topbar-location {
-        font-size: 12px;
-        gap: 6px;
+        display: none;
     }
 
     .topbar-support {
@@ -195,7 +194,6 @@
     }
 
     .social-link {
-        width: 32px;
-        height: 32px;
+        display: none;
     }
 }

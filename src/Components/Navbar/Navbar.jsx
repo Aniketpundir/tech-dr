@@ -63,7 +63,9 @@ const Navbar = () => {
                     <span />
                     <span />
                 </button>
+
             </nav>
+            <div className='orage-line'></div>
 
             {/* Overlay */}
             <div

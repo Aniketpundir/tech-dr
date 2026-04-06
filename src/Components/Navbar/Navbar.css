@@ -223,6 +223,11 @@
     padding-left: 6px;
 }
 
+.orage-line {
+    padding: 10px;
+    background-color: #e8520a;
+}
+
 /* ── Tablet (max-width: 1024px) ── */
 @media (max-width: 1024px) {
     .navbar {

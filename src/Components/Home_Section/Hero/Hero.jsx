@@ -7,12 +7,10 @@ const slides = [
     {
         image: slideimage1,
         heading: 'The Award Winning IT Support, PC and Laptop Repair Specialists',
-        subHeading: 'We come to your home or office to solve your computer & technology repair needs!',
     },
     {
         image: sliderimage2,
         heading: 'A team of professionals ready to help with any IT problem.',
-        subHeading: 'We come to your home or office to solve your computer & technology repair needs!',
     },
 ];
 
@@ -50,7 +48,6 @@ const Hero = () => {
                 <div className={`hero-text${animating ? ' fade-out' : ''}`}>
                     <h1>{slides[current].heading}</h1>
                     <p>{slides[current].subHeading}</p>
-                    <button className="btn-hero">GET A FREE QUOTE</button>
                 </div>
             </div>
 
