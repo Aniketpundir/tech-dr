@@ -14,7 +14,7 @@ const TechDrButtons = () => {
                     onMouseLeave={() => setQuoteHover(false)}
                 >
                     <span className="btn-icon"></span>
-                    GET A FREE QUOTE
+                    Make a Booking
                 </button>
             </a>
 
