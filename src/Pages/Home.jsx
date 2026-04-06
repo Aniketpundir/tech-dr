@@ -10,11 +10,13 @@ import ContactForm from "../Components/Home_Section/ContactForm/ContactForm"
 import FAQ from "../Components/Home_Section/FAQ/FAQ"
 import Products from "../Components/Home_Section/Products/Products"
 import Blog from "../Components/Home_Section/Blog/Blog"
+import TechDrButtons from '../Components/Home_Section/TechDrButtons/TechDrButtons'
 
 const Home = () => {
     return (
         <>
             <Hero />
+            <TechDrButtons />
             <Services />
             <CTABanner />
             <AboutUs />

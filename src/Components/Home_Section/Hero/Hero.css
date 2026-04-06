@@ -14,7 +14,7 @@
 
 .hero-content {
     flex: 1;
-    padding: 60px 50px 60px 70px;
+    padding: 60px 0px 100px 70px;
     position: relative;
     z-index: 2;
     display: flex;
@@ -46,6 +46,7 @@
 
 /* Text fade transition */
 .hero-text {
+    text-align: center;
     transition: opacity 0.4s ease, transform 0.4s ease;
     opacity: 1;
     transform: translateX(0);
@@ -61,13 +62,12 @@
     font-weight: 900;
     line-height: 1.2;
     color: #e8520a;
-    margin: 0 0 10px 0;
     max-width: 480px;
 }
 
 .hero-image {
     flex: 1;
-    height: 420px;
+    height: 50%;
     overflow: hidden;
     position: relative;
 }

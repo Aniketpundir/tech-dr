@@ -1,0 +1,78 @@
+.btn-wrapper {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.btn-link {
+    text-decoration: none;
+    width: 220px;
+}
+
+.btn {
+    width: 100%;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+/* GET A FREE QUOTE button */
+.btn-quote {
+    background: #e85c25;
+    color: #ffffff;
+    text-transform: uppercase;
+    box-shadow: 0 4px 14px rgba(232, 92, 37, 0.35);
+}
+
+.btn-quote--hover,
+.btn-quote:hover {
+    background: #cf4f1e;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(232, 92, 37, 0.45);
+}
+
+.btn-quote:active {
+    transform: translateY(0px);
+    box-shadow: 0 2px 8px rgba(232, 92, 37, 0.3);
+}
+
+/* Call us now button */
+.btn-call {
+    background: #e85c25;
+    color: #4a2800;
+    text-transform: none;
+    box-shadow: 0 4px 14px rgba(245, 166, 35, 0.35);
+}
+
+.btn-call--hover,
+.btn-call:hover {
+    background: #e0941a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(245, 166, 35, 0.45);
+}
+
+.btn-call:active {
+    transform: translateY(0px);
+    box-shadow: 0 2px 8px rgba(245, 166, 35, 0.3);
+}
+
+.btn-icon {
+    font-size: 16px;
+    line-height: 1;
+}
+
+@media (max-width:650px) {
+    .btn-wrapper {
+        flex-direction: column;
+    }
+}
