@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Nunito', 'Segoe UI', sans-serif;
+    color: #333;
+    background: #fff;
+    overflow-x: hidden;
+}
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    background: #e8520a;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    box-shadow: 0 4px 12px rgba(232, 82, 10, 0.3);
+    transition: transform 0.2s;
+}
+
+.scroll-to-top:hover {
+    transform: translateY(-2px);
+}

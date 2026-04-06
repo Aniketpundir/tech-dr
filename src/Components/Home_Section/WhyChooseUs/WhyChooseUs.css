@@ -1,0 +1,259 @@
+.why {
+    padding: 80px 40px;
+    background: #fff;
+}
+
+.why h2 {
+    font-size: 38px;
+    font-weight: 900;
+    color: #1a1a2e;
+    margin: 8px 0 40px 0;
+    max-width: 500px;
+    line-height: 1.2;
+}
+
+.why-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.why-points {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.why-point {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.check-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #fde8d8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.why-point h4 {
+    font-size: 16px;
+    font-weight: 800;
+    color: #1a1a2e;
+    margin: 0 0 6px 0;
+}
+
+.why-point p {
+    font-size: 13px;
+    color: #999;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.why-image {
+    border-radius: 16px;
+    overflow: hidden;
+    height: 300px;
+    background: #1a2a3a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.why-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.stat-bubble {
+    background: #f0f4ff;
+    border-radius: 50%;
+    width: 160px;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.stat-bubble.orange-bg {
+    background: #fff3ee;
+}
+
+.stat-bubble .stat-num {
+    font-size: 36px;
+    font-weight: 900;
+    color: #e8520a;
+    line-height: 1;
+}
+
+.stat-bubble .stat-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a1a2e;
+    text-align: center;
+    line-height: 1.3;
+    padding: 0 16px;
+}
+
+/* ── Tablet (max-width: 1024px) ── */
+@media (max-width: 1024px) {
+    .why {
+        padding: 60px 30px;
+    }
+
+    .why h2 {
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+
+    .why-inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+
+    /* Points take full width, image and stats side by side below */
+    .why-points {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px 30px;
+    }
+
+    .why-image {
+        height: 260px;
+    }
+
+    .why-stats {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+    }
+
+    .stat-bubble {
+        width: 140px;
+        height: 140px;
+    }
+
+    .stat-bubble .stat-num {
+        font-size: 30px;
+    }
+}
+
+/* ── Mobile (max-width: 768px) ── */
+@media (max-width: 768px) {
+    .why {
+        padding: 40px 20px;
+    }
+
+    .why h2 {
+        font-size: 26px;
+        max-width: 100%;
+        margin-bottom: 24px;
+    }
+
+    /* Full single column stack */
+    .why-inner {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .why-points {
+        grid-column: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .why-point h4 {
+        font-size: 15px;
+    }
+
+    .why-point p {
+        font-size: 13px;
+    }
+
+    .why-image {
+        height: 220px;
+        border-radius: 12px;
+    }
+
+    /* Stats in a row */
+    .why-stats {
+        flex-direction: row;
+        justify-content: center;
+        gap: 14px;
+    }
+
+    .stat-bubble {
+        width: 130px;
+        height: 130px;
+    }
+
+    .stat-bubble .stat-num {
+        font-size: 28px;
+    }
+
+    .stat-bubble .stat-label {
+        font-size: 12px;
+        padding: 0 10px;
+    }
+}
+
+/* ── Mobile Small (max-width: 480px) ── */
+@media (max-width: 480px) {
+    .why {
+        padding: 30px 14px;
+    }
+
+    .why h2 {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .why-inner {
+        gap: 24px;
+    }
+
+    .why-points {
+        gap: 16px;
+    }
+
+    .check-icon {
+        width: 30px;
+        height: 30px;
+        flex-shrink: 0;
+    }
+
+    .why-image {
+        height: 180px;
+    }
+
+    /* Stats wrap nicely on small screens */
+    .why-stats {
+        gap: 10px;
+    }
+
+    .stat-bubble {
+        width: 110px;
+        height: 110px;
+    }
+
+    .stat-bubble .stat-num {
+        font-size: 24px;
+    }
+
+    .stat-bubble .stat-label {
+        font-size: 11px;
+        padding: 0 8px;
+    }
+}

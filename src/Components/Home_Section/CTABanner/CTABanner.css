@@ -1,0 +1,169 @@
+.cta-banner {
+    background: #1a1a3e;
+    background-image: radial-gradient(ellipse at 20% 50%, rgba(80, 40, 120, 0.5) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 50%, rgba(40, 20, 80, 0.5) 0%, transparent 60%);
+    padding: 60px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin: 0 0 0 0;
+}
+
+.cta-banner h2 {
+    color: #fff;
+    font-size: 36px;
+    font-weight: 800;
+    margin: 0 0 30px 0;
+    line-height: 1.3;
+}
+
+.cta-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.cta-phone {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cta-phone .phone-icon {
+    background: #e8520a;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cta-phone span {
+    color: #e8520a;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.cta-or {
+    color: #aaa;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.btn-consultation {
+    background: linear-gradient(135deg, #e8520a, #f0a030);
+    color: #fff;
+    padding: 14px 30px;
+    border-radius: 50px;
+    border: none;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: transform 0.2s;
+}
+
+.btn-consultation:hover {
+    transform: translateY(-2px);
+}
+
+.cta-star-left {
+    position: absolute;
+    left: 80px;
+    bottom: 40px;
+    opacity: 0.6;
+}
+
+.cta-star-right {
+    position: absolute;
+    right: 80px;
+    top: 30px;
+    opacity: 0.5;
+}
+
+/* ── Tablet (max-width: 1024px) ── */
+@media (max-width: 1024px) {
+    .cta-banner {
+        padding: 50px 50px;
+    }
+
+    .cta-banner h2 {
+        font-size: 30px;
+    }
+
+    .cta-star-left {
+        left: 40px;
+    }
+
+    .cta-star-right {
+        right: 40px;
+    }
+}
+
+/* ── Mobile (max-width: 768px) ── */
+@media (max-width: 768px) {
+    .cta-banner {
+        padding: 40px 30px;
+    }
+
+    .cta-banner h2 {
+        font-size: 24px;
+        margin-bottom: 24px;
+    }
+
+    /* Stack actions vertically */
+    .cta-actions {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .cta-phone span {
+        font-size: 20px;
+    }
+
+    .cta-phone .phone-icon {
+        width: 34px;
+        height: 34px;
+    }
+
+    .btn-consultation {
+        padding: 12px 28px;
+        font-size: 13px;
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .cta-star-left {
+        left: 16px;
+        bottom: 20px;
+    }
+
+    .cta-star-right {
+        right: 16px;
+        top: 16px;
+    }
+}
+
+/* ── Mobile Small (max-width: 480px) ── */
+@media (max-width: 480px) {
+    .cta-banner {
+        padding: 32px 20px;
+    }
+
+    .cta-banner h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .cta-phone span {
+        font-size: 18px;
+    }
+
+    .cta-star-left,
+    .cta-star-right {
+        display: none;
+    }
+}
