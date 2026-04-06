@@ -12,13 +12,41 @@ const faqs = [
         q: 'Do I need an appointment to bring in my computer for repair?',
         a: "Nope! You can just bring in your computer to our shop, no appointment necessary. We operate on a first come first serve basis, but we do offer Rush Service if you need your computer back right away. We only need appointments for house calls.",
     },
-    { q: 'What do I need to bring with me when dropping off my computer?', a: '' },
-    { q: 'How much do you charge to look at my computer and tell me whats wrong with it?', a: '' },
-    { q: 'Do you service Macs?', a: '' },
-    { q: 'Do you service laptops?', a: '' },
-    { q: 'How long will it take to get my computer back?', a: '' },
-    { q: 'If I need my job completed right away, is that possible?', a: '' },
-    { q: "If I can't be without a computer while mine is being fixed, can you offer me a rental?", a: '' },
+
+    {
+        q: 'What do I need to bring with me when dropping off my computer?',
+        a: `Nope! You can just bring in your computer to our shop, no appointment necessary. We operate on a first come first serve basis, but we do offer Rush Service if you need your computer back right away. We only need appointments for house calls.`
+    },
+
+    {
+        q: 'How much do you charge to look at my computer and tell me whats wrong with it?',
+        a: `Nope! You can just bring in your computer to our shop, no appointment necessary. We operate on a first come first serve basis, but we do offer Rush Service if you need your computer back right away. We only need appointments for house calls.
+` },
+
+    {
+        q: 'Do you service Macs?',
+        a: 'Nope! You can just bring in your computer to our shop, no appointment necessary. We operate on a first come first serve basis, but we do offer Rush Service if you need your computer back right away. We only need appointments for house calls.'
+    },
+
+    {
+        q: 'Do you service laptops?',
+        a: `Nope! You can just bring in your computer to our shop, no appointment necessary. We operate on a first come first serve basis, but we do offer Rush Service if you need your computer back right away. We only need appointments for house calls.`
+    },
+
+    {
+        q: 'How long will it take to get my computer back?',
+        a: `Nope! You can just bring in your computer to our shop, no appointment necessary. We operate on a first come first serve basis, but we do offer Rush Service if you need your computer back right away. We only need appointments for house calls.`
+    },
+
+    {
+        q: 'If I need my job completed right away, is that possible?',
+        a: `Nope! You can just bring in your computer to our shop, no appointment necessary. We operate on a first come first serve basis, but we do offer Rush Service if you need your computer back right away. We only need appointments for house calls.`
+    },
+
+    {
+        q: "If I can't be without a computer while mine is being fixed, can you offer me a rental?",
+        a: `Nope! You can just bring in your computer to our shop, no appointment necessary. We operate on a first come first serve basis, but we do offer Rush Service if you need your computer back right away. We only need appointments for house calls.`
+    },
 ];
 
 const FAQ = () => {

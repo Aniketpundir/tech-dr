@@ -1,5 +1,6 @@
 import React from 'react';
 import './AboutUs.css';
+import About from "../../../assets/about.webp"
 
 const Star = () => (
     <svg width="14" height="14" viewBox="0 0 14 14">
@@ -10,13 +11,9 @@ const Star = () => (
 const AboutUs = () => (
     <section className="about">
         <div className="about-image">
+            <div className="blob-bg"></div>
             <div className="about-image-inner">
-                <svg width="200" height="200" fill="none" stroke="#4488cc" strokeWidth="1.5" viewBox="0 0 200 200" opacity="0.7">
-                    <rect x="30" y="50" width="140" height="100" rx="6" />
-                    <path d="M60 80 L80 80 M60 100 L120 100 M60 120 L100 120" />
-                    <circle cx="150" cy="70" r="15" fill="#e8520a" fillOpacity="0.3" stroke="#e8520a" />
-                    <path d="M143 70 L148 75 L158 63" stroke="#e8520a" strokeWidth="2" />
-                </svg>
+                <img src={About} alt="About The Tech Dr" />
             </div>
         </div>
 

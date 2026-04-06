@@ -1,22 +1,12 @@
 import React from 'react';
 import './Footer.css';
+import logo from '../../assets/footer-logo.webp';
 
 const Footer = () => (
     <footer className="footer">
         <div className="footer-top">
             <div className="footer-logo">
-                <svg width="120" height="55" viewBox="0 0 200 70" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="35" cy="30" r="22" fill="#fff" fillOpacity="0.1" stroke="#fff" strokeWidth="1" />
-                    <circle cx="29" cy="27" r="5" fill="white" />
-                    <circle cx="41" cy="27" r="5" fill="white" />
-                    <circle cx="29" cy="27" r="2" fill="#0e0e2e" />
-                    <circle cx="41" cy="27" r="2" fill="#0e0e2e" />
-                    <rect x="22" y="22" width="26" height="3" rx="1.5" fill="#aaa" />
-                    <path d="M28 34 Q35 39 42 34" stroke="white" strokeWidth="1.5" fill="none" strokeLinecap="round" />
-                    <text x="62" y="28" fontFamily="Georgia, serif" fontSize="16" fontWeight="700" fill="#fff">The</text>
-                    <text x="62" y="46" fontFamily="Georgia, serif" fontSize="22" fontWeight="700" fill="#fff">Tech</text>
-                    <text x="115" y="50" fontFamily="Georgia, serif" fontSize="28" fontWeight="700" fill="#e8520a">Dr</text>
-                </svg>
+                <img src={logo} alt="The Tech Dr" className="footer-logo-img" />
                 <a href="mailto:info@thetechdr.com.au" className="email">Email - info@thetechdr.com.au</a>
             </div>
 

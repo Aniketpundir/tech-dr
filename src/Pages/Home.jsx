@@ -19,12 +19,14 @@ const Home = () => {
             <CTABanner />
             <AboutUs />
             <WhyChooseUs />
-            <HowWeHelp />
-            <Testimonials />
+            <Services />
             <ContactForm />
+            <Testimonials />
+            <Blog />
+            <HowWeHelp />
             <FAQ />
             <Products />
-            <Blog />
+
         </>
     )
 }

@@ -1,5 +1,7 @@
 import React from 'react';
 import './WhyChooseUs.css';
+import WhyImg from '../../../assets/why-choose.webp';
+// import CheckImg from '../../../assets/check-icon.png'; // apna check icon image path
 
 const Star = () => (
     <svg width="14" height="14" viewBox="0 0 14 14">
@@ -26,7 +28,7 @@ const WhyChooseUs = () => (
                 {points.map((p, i) => (
                     <div className="why-point" key={i}>
                         <div className="check-icon">
-                            <svg width="16" height="16" fill="none" stroke="#e8520a" strokeWidth="2.5" viewBox="0 0 24 24">
+                            <svg width="16" height="16" fill="none" stroke="#fff" strokeWidth="2.5" viewBox="0 0 24 24">
                                 <polyline points="20 6 9 17 4 12" />
                             </svg>
                         </div>
@@ -39,11 +41,7 @@ const WhyChooseUs = () => (
             </div>
 
             <div className="why-image">
-                <svg width="150" height="150" fill="none" stroke="#4488cc" strokeWidth="1.5" viewBox="0 0 150 150" opacity="0.6">
-                    <rect x="20" y="40" width="110" height="70" rx="6" />
-                    <path d="M40 70 L60 70 M40 90 L90 90 M70 70 L110 70" />
-                    <circle cx="110" cy="55" r="12" fill="#e8520a" fillOpacity="0.4" stroke="#e8520a" />
-                </svg>
+                <img src={WhyImg} alt="Why Choose Us" />
             </div>
 
             <div className="why-stats">

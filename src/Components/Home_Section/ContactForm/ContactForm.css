@@ -29,6 +29,12 @@
     border: 5px solid #e8520a;
 }
 
+.contact-img-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .contact-deco {
     position: absolute;
     width: 60px;

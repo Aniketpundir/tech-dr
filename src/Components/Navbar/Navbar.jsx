@@ -7,9 +7,9 @@ const navItems = [
     { label: 'Home', path: '/' },
     { label: 'About Us', path: '/about' },
     { label: 'Services', path: '/services' },
-    { label: 'Reviews', path: '/reviews' },
-    { label: 'Service Areas', path: '/service-areas' },
-    { label: 'Contact', path: '/contact' },
+    // { label: 'Reviews', path: '/reviews' },
+    // { label: 'Service Areas', path: '/service-areas' },
+    { label: 'Contact Us', path: '/contact' },
 ];
 
 const Navbar = () => {
@@ -42,14 +42,14 @@ const Navbar = () => {
 
                 {/* Desktop Right */}
                 <div className="navbar-right">
-                    <div className="navbar-search">
+                    {/* <div className="navbar-search">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <circle cx="11" cy="11" r="8" />
                             <line x1="21" y1="21" x2="16.65" y2="16.65" />
                         </svg>
                         <input type="text" placeholder="Search..." />
-                    </div>
+                    </div> */}
                     <button className="btn-quote">GET A FREE QUOTE</button>
                 </div>
 

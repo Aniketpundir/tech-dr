@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Testimonials.css';
 
 const Star = () => (
@@ -8,10 +8,55 @@ const Star = () => (
 );
 
 const reviews = [
-    { name: 'Jason', role: 'Customer', text: 'I am very lucky to have the computer repair support of The Tech Dr. Thanks', stars: 4 },
-    { name: 'Rob', role: 'Customer', text: 'The Tech Dr is not only a computer repair service but it is better to say that they are one of the best', stars: 5 },
-    { name: 'Sarah', role: 'Customer', text: 'Amazing service! They fixed my laptop the same day. Highly recommend The Tech Dr to everyone.', stars: 5 },
-    { name: 'Mike', role: 'Customer', text: 'Professional and fast service. They explained everything clearly and solved all my issues.', stars: 4 },
+    {
+        name: 'Jason',
+        role: 'Customer',
+        text: 'I am very lucky to have the computer repair support of The Tech Dr. Thanks',
+        stars: 4
+    },
+
+    {
+        name: 'Rob',
+        role: 'Customer',
+        text: 'The Tech Dr is not only a computer repair service but it is better to say that they are one of the best',
+        stars: 5
+    },
+    {
+        name: 'Peter',
+        role: 'Customer',
+        text: 'My experience with The Tech Dr is fantastic and I would like to recommend them for their perfection and dedication.',
+        stars: 5
+    },
+    {
+        name: 'Corol',
+        role: 'Customer',
+        text: 'My experience with The Tech Dr is fantastic and I would like to recommend them for their perfection and dedication.',
+        stars: 4
+    },
+    {
+        name: 'Mrs Smith',
+        role: 'Customer',
+        text: 'My experience with The Tech Dr is fantastic and I would like to recommend them for their perfection and dedication.',
+        stars: 4
+    },
+    {
+        name: 'Ritu',
+        role: 'Customer',
+        text: 'The Tech Dr is not only a computer repair service but it is better to say that they are one of the best',
+        stars: 4
+    },
+    {
+        name: 'Sunil',
+        role: 'Customer',
+        text: 'It was an excellent SAME DAY service at no extra cost. I would recommend it all',
+        stars: 4
+    },
+    {
+        name: 'Johnson',
+        role: 'Customer',
+        text: 'It was an excellent SAME DAY service at no extra cost. I would recommend it all',
+        stars: 4
+    },
 ];
 
 const CARDS_PER_PAGE = 2;
@@ -23,6 +68,14 @@ const Testimonials = () => {
 
     const prev = () => setPage(p => Math.max(0, p - 1));
     const next = () => setPage(p => Math.min(maxPage, p + 1));
+
+    // ✅ Auto-slide
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setPage(prev => (prev >= maxPage ? 0 : prev + 1));
+        }, 1000);
+        return () => clearInterval(timer);
+    }, [maxPage]);
 
     return (
         <section className="testimonials">

@@ -1,5 +1,6 @@
 import React from 'react';
 import './ContactForm.css';
+import ContactImg from "../../../assets/schedule.webp"
 
 const Star = () => (
     <svg width="14" height="14" viewBox="0 0 14 14">
@@ -12,12 +13,7 @@ const ContactForm = () => (
         <div className="contact-left">
             <div className="contact-image-wrap">
                 <div className="contact-img-main">
-                    <svg width="160" height="160" fill="none" stroke="#4488cc" strokeWidth="1.5" viewBox="0 0 160 160" opacity="0.7">
-                        <rect x="20" y="30" width="120" height="80" rx="6" />
-                        <path d="M40 60 L60 60 M40 80 L100 80 M70 60 L120 60" />
-                        <circle cx="130" cy="45" r="14" fill="#e8520a" fillOpacity="0.3" stroke="#e8520a" />
-                        <path d="M123 45 L128 50 L138 38" stroke="#e8520a" strokeWidth="2" />
-                    </svg>
+                    <img src={ContactImg} alt="Contact The Tech Dr" />
                 </div>
                 <div className="contact-deco top-right"></div>
                 <div className="contact-deco bottom-left"></div>

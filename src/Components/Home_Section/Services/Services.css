@@ -209,6 +209,22 @@
     }
 }
 
+.dot-btn {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1.5px solid #ccc;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.2s;
+}
+
+.dot-btn.active {
+    background: #e8520a;
+    border-color: #e8520a;
+}
+
 /* ── Mobile Small (max-width: 480px) ── */
 @media (max-width: 480px) {
     .services {

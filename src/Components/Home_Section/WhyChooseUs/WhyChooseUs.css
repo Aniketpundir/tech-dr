@@ -35,7 +35,7 @@
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background: #fde8d8;
+    background: #e8520a;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -64,6 +64,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.why-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .why-stats {
@@ -229,8 +235,14 @@
     }
 
     .check-icon {
-        width: 30px;
-        height: 30px;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: #e8520a;
+        color: #e8520a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         flex-shrink: 0;
     }
 
