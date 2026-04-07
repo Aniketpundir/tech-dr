@@ -1,29 +1,29 @@
 .footer {
-    background: #0e0e2e;
+    background: linear-gradient(135deg, #e8520a 0%, #f0a030 100%);
+    text-align: center;
 }
 
 .footer-top {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 50px 40px 30px 40px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    flex-wrap: wrap;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Brightened border */
     gap: 30px;
 }
 
 .footer-logo {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 10px;
 }
 
-/* ── Logo image ── */
 .footer-logo-img {
     width: 140px;
     height: auto;
     object-fit: contain;
-    /* white background se alag dikhane ke liye slight brightness */
     filter: brightness(1);
 }
 
@@ -31,10 +31,12 @@
     color: #fff;
     font-size: 14px;
     text-decoration: none;
+    font-weight: 500;
 }
 
 .footer-location {
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 14px;
 }
@@ -43,7 +45,7 @@
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: rgba(232, 82, 10, 0.2);
+    background: rgba(255, 255, 255, 0.2); /* Changed background to white-transparent for contrast */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -51,7 +53,7 @@
 }
 
 .footer-location p {
-    color: #aaa;
+    color: rgba(255, 255, 255, 0.9); /* Brighter */
     font-size: 14px;
     margin: 0;
 }
@@ -66,17 +68,19 @@
 .footer-social {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
     gap: 10px;
 }
 
 .footer-social span {
-    color: #aaa;
+    color: #fff;
     font-size: 14px;
+    font-weight: 500;
 }
 
 .social-icons {
     display: flex;
+    justify-content: center;
     gap: 10px;
 }
 
@@ -84,24 +88,33 @@
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.2); /* Brighter icon background */
     display: flex;
     align-items: center;
     justify-content: center;
     color: #fff;
     text-decoration: none;
-    transition: background 0.2s;
+    transition: background 0.2s, transform 0.2s;
 }
 
 .social-icon:hover {
-    background: #e8520a;
+    background: #fff;
+    color: #e8520a; /* Icon turns orange on hover */
+    transform: translateY(-2px);
 }
 
 .footer-main {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr 1.2fr 1.5fr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 40px;
     padding: 40px 40px;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .footer-col h4 {
@@ -117,29 +130,32 @@
     padding: 0;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 10px;
 }
 
 .footer-col ul li a {
-    color: #aaa;
+    color: rgba(255, 255, 255, 0.85); /* Replaced dark gray #aaa */
     text-decoration: none;
     font-size: 14px;
     transition: color 0.2s;
 }
 
 .footer-col ul li a:hover {
-    color: #e8520a;
+    color: #fff; /* Replaced orange hover with white */
+    text-decoration: underline;
 }
 
 .footer-phone {
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 12px;
     margin-bottom: 20px;
 }
 
 .footer-phone .phone-icon {
-    background: #e8520a;
+    background: #fff; /* Changed from orange to white */
     width: 38px;
     height: 38px;
     border-radius: 50%;
@@ -149,22 +165,24 @@
     animation: pulse 2s infinite;
 }
 
-@keyframes pulse {
+.footer-phone .phone-icon svg {
+    stroke: #e8520a; /* Phone icon inside circle is now orange */
+}
 
+@keyframes pulse {
     0%,
     100% {
-        box-shadow: 0 0 0 0 rgba(232, 82, 10, 0.4);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
     }
-
     50% {
-        box-shadow: 0 0 0 8px rgba(232, 82, 10, 0);
+        box-shadow: 0 0 0 8px rgba(255, 255, 255, 0);
     }
 }
 
 .footer-phone .urgent-label {
     font-size: 13px;
     font-weight: 700;
-    color: #e8520a;
+    color: #fff;
     display: block;
 }
 
@@ -176,92 +194,106 @@
 
 .footer-google {
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 10px;
     margin-top: 10px;
 }
 
 .footer-google .g-stars {
-    color: #ccc;
+    color: rgba(255, 255, 255, 0.9); /* Replaced #ccc */
     font-size: 14px;
 }
 
 .footer-google .g-info {
     font-size: 12px;
-    color: #888;
+    color: rgba(255, 255, 255, 0.85); /* Replaced #888 */
     line-height: 1.4;
 }
 
 .newsletter-row {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 8px;
+    width: 100%;
+    max-width: 300px;
 }
 
 .newsletter-row input {
-    flex: 1;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    width: 100%;
+    background: rgba(255, 255, 255, 0.15); /* Slightly more visible background */
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 8px;
     padding: 10px 14px;
     color: #fff;
     font-size: 13px;
     outline: none;
+    text-align: center;
 }
 
 .newsletter-row input::placeholder {
-    color: #888;
+    color: rgba(255, 255, 255, 0.7); /* Replaced invisible #888 */
 }
 
 .btn-subscribe {
-    background: linear-gradient(135deg, #e8520a, #f0a030);
-    color: #fff;
+    background: #fff; /* Changed from orange gradient to white */
+    color: #e8520a; /* Changed from white to orange */
     border: none;
     padding: 10px 20px;
     border-radius: 8px;
     font-size: 13px;
-    font-weight: 700;
+    font-weight: 800;
     cursor: pointer;
     text-transform: uppercase;
     white-space: nowrap;
-    transition: transform 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: 100%;
 }
 
 .btn-subscribe:hover {
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 16px 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 24px 40px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    gap: 15px;
 }
 
 .footer-bottom p {
-    color: #888;
+    color: rgba(255, 255, 255, 0.85); /* Replaced #888 */
     font-size: 13px;
     margin: 0;
+    text-align: center;
 }
 
 .footer-bottom-links {
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 20px;
 }
 
 .footer-bottom-links a {
-    color: #aaa;
+    color: rgba(255, 255, 255, 0.85); /* Replaced #aaa */
     text-decoration: none;
     font-size: 13px;
     transition: color 0.2s;
 }
 
 .footer-bottom-links a:hover {
-    color: #e8520a;
+    color: #fff;
+    text-decoration: underline;
 }
 
 .footer-divider {
-    color: #555;
+    color: rgba(255, 255, 255, 0.4); /* Replaced #555 */
 }
 
 /* ── Tablet: 768px – 1024px ─────────────────────────── */
@@ -270,29 +302,18 @@
         padding: 40px 24px 24px 24px;
     }
 
-    .footer-social {
-        align-items: flex-start;
-    }
-
     .footer-main {
-        grid-template-columns: 1fr 1fr;
-        gap: 32px;
         padding: 32px 24px;
     }
 
     .footer-bottom {
-        padding: 16px 24px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
+        padding: 20px 24px;
     }
 }
 
 /* ── Mobile: max 767px ───────────────────────────────── */
 @media (max-width: 767px) {
     .footer-top {
-        flex-direction: column;
-        align-items: flex-start;
         padding: 32px 16px 20px 16px;
         gap: 24px;
     }
@@ -301,31 +322,13 @@
         width: 120px;
     }
 
-    .footer-social {
-        align-items: flex-start;
-        width: 100%;
-    }
-
     .footer-main {
-        grid-template-columns: 1fr;
         gap: 28px;
         padding: 28px 16px;
     }
 
-    .newsletter-row {
-        flex-direction: column;
-    }
-
-    .btn-subscribe {
-        width: 100%;
-        text-align: center;
-    }
-
     .footer-bottom {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-        padding: 16px 16px;
+        padding: 20px 16px;
     }
 
     .footer-bottom p {
