@@ -1,17 +1,40 @@
+/* WhyChooseUs.css */
+
 .why {
     padding: 80px 40px;
     background: #fff;
 }
 
-.why h2 {
+/* ── Badge ── */
+.why-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.why-badge__text {
+    color: #e8520a;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-family: 'Mulish', sans-serif;
+}
+
+/* ── Heading ── */
+.why-title {
     font-size: 38px;
     font-weight: 900;
     color: #1a1a2e;
     margin: 8px 0 40px 0;
     max-width: 500px;
     line-height: 1.2;
+    font-family: 'Nunito', sans-serif;
 }
 
+/* ── 3-column layout ── */
 .why-inner {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -19,43 +42,62 @@
     align-items: start;
 }
 
-.why-points {
+/* ── Column 1: Card Grid (2x2) ── */
+.why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.why-card {
+    border-radius: 16px;
+    padding: 28px 16px 24px;
     display: flex;
     flex-direction: column;
-    gap: 28px;
+    align-items: center;
+    gap: 14px;
+    cursor: default;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.why-point {
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
+.why-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
 }
 
-.check-icon {
-    width: 36px;
-    height: 36px;
+.why-card--light { background: #fff3ee; }
+.why-card--dark  { background: #e8520a; }
+
+.why-card__icon-wrap {
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    background: #e8520a;
+    border: 2px solid rgba(255, 255, 255, 0.7);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
 }
 
-.why-point h4 {
-    font-size: 16px;
-    font-weight: 800;
-    color: #1a1a2e;
-    margin: 0 0 6px 0;
-}
+.why-card--light .why-card__icon-wrap { border-color: rgba(232, 82, 10, 0.3); }
 
-.why-point p {
+.why-card__icon-wrap svg { width: 24px; height: 24px; }
+.why-card--light .why-card__icon-wrap svg { stroke: #e8520a; }
+.why-card--dark  .why-card__icon-wrap svg { stroke: #ffffff; }
+
+.why-card__title {
+    font-family: 'Nunito', sans-serif;
     font-size: 13px;
-    color: #999;
-    line-height: 1.6;
+    font-weight: 800;
+    line-height: 1.3;
+    text-align: center;
     margin: 0;
 }
 
+.why-card--light .why-card__title { color: #1a1a2e; }
+.why-card--dark  .why-card__title { color: #ffffff; }
+
+/* ── Column 2: Image ── */
 .why-image {
     border-radius: 16px;
     overflow: hidden;
@@ -66,12 +108,9 @@
     justify-content: center;
 }
 
-.why-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+.why-image img { width: 100%; height: 100%; object-fit: cover; }
 
+/* ── Column 3: Stats ── */
 .why-stats {
     display: flex;
     flex-direction: column;
@@ -90,15 +129,14 @@
     margin: 0 auto;
 }
 
-.stat-bubble.orange-bg {
-    background: #fff3ee;
-}
+.stat-bubble.orange-bg { background: #fff3ee; }
 
 .stat-bubble .stat-num {
     font-size: 36px;
     font-weight: 900;
     color: #e8520a;
     line-height: 1;
+    font-family: 'Nunito', sans-serif;
 }
 
 .stat-bubble .stat-label {
@@ -108,35 +146,36 @@
     text-align: center;
     line-height: 1.3;
     padding: 0 16px;
+    margin-top: 4px;
+    font-family: 'Mulish', sans-serif;
 }
+
+/* ══════════════════════════════
+   RESPONSIVE
+══════════════════════════════ */
 
 /* ── Tablet (max-width: 1024px) ── */
 @media (max-width: 1024px) {
-    .why {
-        padding: 60px 30px;
-    }
-
-    .why h2 {
-        font-size: 32px;
-        margin-bottom: 30px;
-    }
+    .why { padding: 60px 30px; }
+    .why-title { font-size: 32px; margin-bottom: 30px; }
 
     .why-inner {
         grid-template-columns: 1fr 1fr;
         gap: 30px;
     }
 
-    /* Points take full width, image and stats side by side below */
-    .why-points {
+    /* Cards span full width as a 4-in-a-row strip */
+    .why-grid {
         grid-column: 1 / -1;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px 30px;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
     }
 
-    .why-image {
-        height: 260px;
-    }
+    .why-card { padding: 22px 12px 18px; gap: 12px; }
+    .why-card__icon-wrap { width: 52px; height: 52px; }
+    .why-card__title { font-size: 12px; }
+
+    .why-image { height: 260px; }
 
     .why-stats {
         flex-direction: row;
@@ -145,127 +184,55 @@
         gap: 16px;
     }
 
-    .stat-bubble {
-        width: 140px;
-        height: 140px;
-    }
-
-    .stat-bubble .stat-num {
-        font-size: 30px;
-    }
+    .stat-bubble { width: 140px; height: 140px; }
+    .stat-bubble .stat-num { font-size: 30px; }
 }
 
 /* ── Mobile (max-width: 768px) ── */
 @media (max-width: 768px) {
-    .why {
-        padding: 40px 20px;
-    }
+    .why { padding: 40px 20px; }
+    .why-title { font-size: 26px; max-width: 100%; margin-bottom: 24px; }
 
-    .why h2 {
-        font-size: 26px;
-        max-width: 100%;
-        margin-bottom: 24px;
-    }
-
-    /* Full single column stack */
     .why-inner {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 28px;
     }
 
-    .why-points {
+    /* Back to 2x2 on mobile */
+    .why-grid {
         grid-column: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
     }
 
-    .why-point h4 {
-        font-size: 15px;
-    }
+    .why-card { padding: 24px 14px 20px; border-radius: 14px; }
+    .why-card__icon-wrap { width: 52px; height: 52px; }
+    .why-card__icon-wrap svg { width: 22px; height: 22px; }
+    .why-card__title { font-size: 13px; }
 
-    .why-point p {
-        font-size: 13px;
-    }
+    .why-image { height: 220px; border-radius: 12px; }
 
-    .why-image {
-        height: 220px;
-        border-radius: 12px;
-    }
-
-    /* Stats in a row */
-    .why-stats {
-        flex-direction: row;
-        justify-content: center;
-        gap: 14px;
-    }
-
-    .stat-bubble {
-        width: 130px;
-        height: 130px;
-    }
-
-    .stat-bubble .stat-num {
-        font-size: 28px;
-    }
-
-    .stat-bubble .stat-label {
-        font-size: 12px;
-        padding: 0 10px;
-    }
+    .why-stats { flex-direction: row; justify-content: center; gap: 14px; }
+    .stat-bubble { width: 130px; height: 130px; }
+    .stat-bubble .stat-num { font-size: 28px; }
+    .stat-bubble .stat-label { font-size: 12px; padding: 0 10px; }
 }
 
 /* ── Mobile Small (max-width: 480px) ── */
 @media (max-width: 480px) {
-    .why {
-        padding: 30px 14px;
-    }
+    .why { padding: 30px 14px; }
+    .why-title { font-size: 22px; margin-bottom: 20px; }
 
-    .why h2 {
-        font-size: 22px;
-        margin-bottom: 20px;
-    }
+    .why-grid { gap: 8px; }
+    .why-card { padding: 20px 10px 16px; border-radius: 12px; gap: 10px; }
+    .why-card__icon-wrap { width: 46px; height: 46px; }
+    .why-card__icon-wrap svg { width: 20px; height: 20px; }
+    .why-card__title { font-size: 12px; }
 
-    .why-inner {
-        gap: 24px;
-    }
+    .why-image { height: 180px; }
 
-    .why-points {
-        gap: 16px;
-    }
-
-    .check-icon {
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        background: #e8520a;
-        color: #e8520a;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-    }
-
-    .why-image {
-        height: 180px;
-    }
-
-    /* Stats wrap nicely on small screens */
-    .why-stats {
-        gap: 10px;
-    }
-
-    .stat-bubble {
-        width: 110px;
-        height: 110px;
-    }
-
-    .stat-bubble .stat-num {
-        font-size: 24px;
-    }
-
-    .stat-bubble .stat-label {
-        font-size: 11px;
-        padding: 0 8px;
-    }
+    .why-stats { gap: 10px; }
+    .stat-bubble { width: 110px; height: 110px; }
+    .stat-bubble .stat-num { font-size: 24px; }
+    .stat-bubble .stat-label { font-size: 11px; padding: 0 8px; }
 }
