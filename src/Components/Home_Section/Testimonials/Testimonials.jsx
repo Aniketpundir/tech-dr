@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Testimonials.css';
 
-const Star = () => (
-    <svg width="20" height="20" viewBox="0 0 14 14">
+const StarIcon = () => (
+    <svg width="18" height="18" viewBox="0 0 14 14">
         <path d="M7 0 L7.5 6.5 L14 7 L7.5 7.5 L7 14 L6.5 7.5 L0 7 L6.5 6.5 Z" fill="#e8520a" />
     </svg>
 );
@@ -11,136 +11,170 @@ const reviews = [
     {
         name: 'Jason',
         role: 'Customer',
-        text: 'I am very lucky to have the computer repair support of The Tech Dr. Thanks',
+        text: 'I am very lucky to have the computer repair support of The Tech Dr. Excellent service every time!',
         stars: 4
     },
-
     {
         name: 'Rob',
         role: 'Customer',
-        text: 'The Tech Dr is not only a computer repair service but it is better to say that they are one of the best',
+        text: 'The Tech Dr is not just a repair service — they are simply one of the best in the business.',
         stars: 5
     },
     {
         name: 'Peter',
         role: 'Customer',
-        text: 'My experience with The Tech Dr is fantastic and I would like to recommend them for their perfection and dedication.',
+        text: 'My experience with The Tech Dr was fantastic. I highly recommend them for their perfection and dedication.',
         stars: 5
     },
     {
-        name: 'Corol',
+        name: 'Carol',
         role: 'Customer',
-        text: 'My experience with The Tech Dr is fantastic and I would like to recommend them for their perfection and dedication.',
+        text: 'Brilliant service from start to finish. They were professional, fast and very reasonably priced.',
         stars: 4
     },
     {
         name: 'Mrs Smith',
         role: 'Customer',
-        text: 'My experience with The Tech Dr is fantastic and I would like to recommend them for their perfection and dedication.',
+        text: 'Very professional and friendly team. They explained everything clearly and the price was very fair.',
         stars: 4
     },
     {
         name: 'Ritu',
         role: 'Customer',
-        text: 'The Tech Dr is not only a computer repair service but it is better to say that they are one of the best',
+        text: 'The Tech Dr truly stands out. Their expertise and care for customers is second to none.',
         stars: 4
     },
     {
         name: 'Sunil',
         role: 'Customer',
-        text: 'It was an excellent SAME DAY service at no extra cost. I would recommend it all',
+        text: 'Excellent SAME DAY service at no extra cost. Would 100% recommend to everyone I know.',
         stars: 4
     },
     {
         name: 'Johnson',
         role: 'Customer',
-        text: 'It was an excellent SAME DAY service at no extra cost. I would recommend it all',
+        text: 'Fast, reliable and professional. My PC was fixed within hours and runs perfectly now. Thank you!',
         stars: 4
     },
 ];
 
 const CARDS_PER_PAGE = 2;
 
+function initials(name) {
+    return name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+}
+
 const Testimonials = () => {
     const [page, setPage] = useState(0);
+    const [animating, setAnimating] = useState(false);
+    const [direction, setDirection] = useState('next');
+    const autoRef = useRef(null);
+
     const maxPage = Math.ceil(reviews.length / CARDS_PER_PAGE) - 1;
     const shown = reviews.slice(page * CARDS_PER_PAGE, page * CARDS_PER_PAGE + CARDS_PER_PAGE);
 
-    const prev = () => setPage(p => Math.max(0, p - 1));
-    const next = () => setPage(p => Math.min(maxPage, p + 1));
+    const goTo = (newPage, dir = 'next') => {
+        if (animating) return;
+        setDirection(dir);
+        setAnimating(true);
+        setTimeout(() => {
+            setPage(newPage);
+            setAnimating(false);
+        }, 350);
+    };
 
-    // ✅ Auto-slide
+    const prev = () => {
+        if (page > 0) goTo(page - 1, 'prev');
+        resetAuto();
+    };
+
+    const next = () => {
+        if (page < maxPage) goTo(page + 1, 'next');
+        resetAuto();
+    };
+
+    const resetAuto = () => {
+        clearInterval(autoRef.current);
+        autoRef.current = setInterval(() => {
+            setPage(p => {
+                const np = p >= maxPage ? 0 : p + 1;
+                return np;
+            });
+        }, 3500);
+    };
+
     useEffect(() => {
-        const timer = setInterval(() => {
-            setPage(prev => (prev >= maxPage ? 0 : prev + 1));
-        }, 1000);
-        return () => clearInterval(timer);
+        resetAuto();
+        return () => clearInterval(autoRef.current);
     }, [maxPage]);
 
     return (
         <section className="testimonials">
-            <div className="testimonials-header">
-                <div className="test-label">
-                    <Star />
-                    <span>TESTIMONIALS</span>
-                    <Star />
-                </div>
-                <h2>What our Customers Say...</h2>
-                <div className="test-nav">
-                    <button className="test-nav-btn" onClick={prev} disabled={page === 0}>←</button>
-                    <button className="test-nav-btn" onClick={next} disabled={page === maxPage}>→</button>
-                </div>
-                {/* Dot indicators */}
-                <div className="test-dots">
-                    {Array.from({ length: maxPage + 1 }).map((_, i) => (
-                        <button
-                            key={i}
-                            className={`test-dot${i === page ? ' active' : ''}`}
-                            onClick={() => setPage(i)}
-                        />
-                    ))}
-                </div>
-            </div>
 
-            <div className="testimonials-cards">
-                {shown.map((r, i) => (
-                    <div className={`test-card${i === 0 ? ' active' : ''}`} key={page * CARDS_PER_PAGE + i}>
-                        <div className="test-icon">
-                            <svg width="36" height="36" fill="none" stroke="#e8520a" strokeWidth="1.5" viewBox="0 0 24 24">
-                                <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
-                                <circle cx="12" cy="10" r="2" fill="#e8520a" fillOpacity="0.3" />
-                            </svg>
-                        </div>
-                        <div className="test-stars">
-                            {Array.from({ length: r.stars }).map((_, j) => (
-                                <span key={j}>★</span>
-                            ))}
-                            {Array.from({ length: 5 - r.stars }).map((_, j) => (
-                                <span key={j} style={{ opacity: 0.3 }}>★</span>
-                            ))}
-                        </div>
-                        <p>{r.text}</p>
-                        <div className="test-author">
-                            <div className="test-avatar">
-                                <svg width="24" height="24" fill="#6a6a8e" viewBox="0 0 24 24">
-                                    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
-                                    <circle cx="12" cy="7" r="4" />
-                                </svg>
-                            </div>
-                            <div className="test-author-info">
-                                <h4>{r.name}</h4>
-                                <span>{r.role}</span>
-                            </div>
-                        </div>
-                        {i === 0 && (
-                            <div className="test-sparkle">
-                                <svg width="30" height="30" viewBox="0 0 30 30">
-                                    <path d="M15 0 L16 14 L30 15 L16 16 L15 30 L14 16 L0 15 L14 14 Z" fill="#cc88ff" opacity="0.6" />
-                                </svg>
-                            </div>
-                        )}
+            {/* ── Main body ── */}
+            <div className="testimonials-body">
+
+                {/* Left header */}
+                <div className="testimonials-header">
+                    <div className="test-label">
+                        <StarIcon />
+                        <span>TESTIMONIALS</span>
+                        <StarIcon />
                     </div>
-                ))}
+                    <div className="test-marquee-outer">
+                        <div className="test-marquee-track">
+                            {[...Array(4)].map((_, ri) => (
+                                <span key={ri} className="test-marquee-item">
+                                    <StarIcon />
+                                    <span>What our Customers Say</span>
+                                    <StarIcon />
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                    <h2>Trusted by hundreds of happy customers</h2>
+                    <div className="test-nav">
+                        <button className="test-nav-btn" onClick={prev} disabled={page === 0}>←</button>
+                        <button className="test-nav-btn" onClick={next} disabled={page === maxPage}>→</button>
+                    </div>
+                    <div className="test-dots">
+                        {Array.from({ length: maxPage + 1 }).map((_, i) => (
+                            <button
+                                key={i}
+                                className={`test-dot${i === page ? ' active' : ''}`}
+                                onClick={() => { goTo(i, i > page ? 'next' : 'prev'); resetAuto(); }}
+                            />
+                        ))}
+                    </div>
+                    <p className="test-subtext">Real experiences from real people who trust The Tech Dr.</p>
+                </div>
+
+                {/* Cards */}
+                <div className="testimonials-cards">
+                    <div className={`test-cards-inner ${animating ? `slide-out-${direction}` : `slide-in-${direction}`}`}>
+                        {shown.map((r, i) => (
+                            <div className="test-card" key={page * CARDS_PER_PAGE + i}>
+                                <div className="test-quote-icon">"</div>
+                                <div className="test-stars">
+                                    {Array.from({ length: r.stars }).map((_, j) => (
+                                        <span key={j} className="star-filled">★</span>
+                                    ))}
+                                    {Array.from({ length: 5 - r.stars }).map((_, j) => (
+                                        <span key={j} className="star-empty">★</span>
+                                    ))}
+                                </div>
+                                <p>{r.text}</p>
+                                <div className="test-author">
+                                    <div className="test-avatar">{initials(r.name)}</div>
+                                    <div className="test-author-info">
+                                        <h4>{r.name}</h4>
+                                        <span>{r.role}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
         </section>
     );

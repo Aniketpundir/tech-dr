@@ -1,14 +1,58 @@
 .testimonials {
-    background: #1a1a3e;
-    background-image: radial-gradient(ellipse at 30% 50%, rgba(80, 40, 180, 0.4) 0%, transparent 60%),
-        radial-gradient(ellipse at 70% 50%, rgba(100, 30, 120, 0.3) 0%, transparent 60%);
-    padding: 80px 40px;
+    background: #fff5ee;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+}
+
+/* ── Marquee heading ── */
+.test-marquee-outer {
+    /* background: #e8520a; */
+    overflow: hidden;
+    padding: 14px 0;
+    white-space: nowrap;
+}
+
+.test-marquee-track {
+    display: inline-flex;
+    animation: marquee-rtl 18s linear infinite;
+}
+
+.test-marquee-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 40px;
+    color: #e8520a;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+}
+
+.test-marquee-item svg path {
+    fill: #fff;
+}
+
+@keyframes marquee-rtl {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* ── Body layout ── */
+.testimonials-body {
     display: flex;
     gap: 60px;
     align-items: flex-start;
+    padding: 70px 48px;
 }
 
-/* ── Header ── */
+/* ── Left header ── */
 .testimonials-header {
     flex-shrink: 0;
     width: 240px;
@@ -17,30 +61,39 @@
 .test-label {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .test-label span {
     color: #e8520a;
-    font-size: 13px;
+    font-size: 28px;
     font-weight: 700;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     text-transform: uppercase;
 }
 
 .testimonials-header h2 {
-    font-size: 36px;
-    font-weight: 900;
-    color: #fff;
-    margin: 10px 0 30px 0;
-    line-height: 1.2;
+    text-align: center;
+    font-size: 33px;
+    font-weight: 800;
+    color: #1c1c1c;
+    margin: 0 0 28px;
+    line-height: 1.25;
+}
+
+.test-subtext {
+    font-size: 13px;
+    color: #9a7060;
+    line-height: 1.6;
+    margin-top: 20px;
 }
 
 /* ── Nav arrows ── */
 .test-nav {
     display: flex;
-    gap: 12px;
+    gap: 10px;
     margin-bottom: 16px;
 }
 
@@ -48,9 +101,9 @@
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    border: 1.5px solid #d4bfb5;
     background: transparent;
-    color: #fff;
+    color: #444;
     font-size: 18px;
     cursor: pointer;
     display: flex;
@@ -62,6 +115,7 @@
 .test-nav-btn:hover:not(:disabled) {
     border-color: #e8520a;
     background: #e8520a;
+    color: #fff;
 }
 
 .test-nav-btn:disabled {
@@ -72,7 +126,7 @@
 /* ── Dots ── */
 .test-dots {
     display: flex;
-    gap: 8px;
+    gap: 7px;
     margin-top: 4px;
 }
 
@@ -80,7 +134,7 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.4);
+    border: 2px solid #d0b9ae;
     background: transparent;
     cursor: pointer;
     padding: 0;
@@ -92,18 +146,88 @@
     border-color: #e8520a;
 }
 
-/* ── Cards ── */
+/* ── Cards container ── */
 .testimonials-cards {
-    display: flex;
-    gap: 20px;
     flex: 1;
+    overflow: hidden;
 }
 
+.test-cards-inner {
+    display: flex;
+    gap: 20px;
+}
+
+/* Slide animations */
+@keyframes slideInNext {
+    from {
+        transform: translateX(60px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutNext {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(-60px);
+        opacity: 0;
+    }
+}
+
+@keyframes slideInPrev {
+    from {
+        transform: translateX(-60px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutPrev {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(60px);
+        opacity: 0;
+    }
+}
+
+.slide-in-next {
+    animation: slideInNext 0.35s ease both;
+}
+
+.slide-out-next {
+    animation: slideOutNext 0.35s ease both;
+}
+
+.slide-in-prev {
+    animation: slideInPrev 0.35s ease both;
+}
+
+.slide-out-prev {
+    animation: slideOutPrev 0.35s ease both;
+}
+
+/* ── Individual card ── */
 .test-card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #fff;
+    border: 1.5px solid #f0d8cc;
     border-radius: 20px;
-    padding: 30px;
+    padding: 28px 26px;
     flex: 1;
     position: relative;
     transition: transform 0.2s, box-shadow 0.2s;
@@ -111,36 +235,42 @@
 
 .test-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 12px 32px rgba(232, 82, 10, 0.12);
 }
 
-.test-card.active {
-    border-color: rgba(255, 255, 255, 0.2);
-}
-
-.test-icon {
-    color: #e8520a;
-    margin-bottom: 12px;
+.test-quote-icon {
+    font-size: 60px;
+    line-height: 1;
+    color: #f5ceba;
+    font-family: Georgia, serif;
+    margin-bottom: -8px;
 }
 
 .test-stars {
     display: flex;
-    gap: 4px;
-    margin-bottom: 16px;
+    gap: 3px;
+    margin-bottom: 14px;
 }
 
-.test-stars span {
-    color: #ffc107;
-    font-size: 20px;
+.star-filled {
+    color: #e8520a;
+    font-size: 18px;
+}
+
+.star-empty {
+    color: #e8520a;
+    font-size: 18px;
+    opacity: 0.2;
 }
 
 .test-card p {
-    color: #fff;
-    font-size: 15px;
-    line-height: 1.6;
-    margin: 0 0 24px 0;
+    color: #3a2a22;
+    font-size: 14.5px;
+    line-height: 1.65;
+    margin: 0 0 22px;
 }
 
+/* ── Author ── */
 .test-author {
     display: flex;
     align-items: center;
@@ -151,35 +281,36 @@
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: #3a3a5e;
+    background: #fde8dc;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: #e8520a;
+    flex-shrink: 0;
 }
 
 .test-author-info h4 {
-    color: #fff;
-    font-size: 15px;
+    color: #1c1c1c;
+    font-size: 14px;
     font-weight: 700;
-    margin: 0 0 2px 0;
+    margin: 0 0 2px;
 }
 
 .test-author-info span {
-    color: #aaa;
-    font-size: 13px;
+    color: #a08070;
+    font-size: 12px;
 }
 
-.test-sparkle {
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-}
+/* ══════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════ */
 
-/* ── Tablet (max-width: 1024px) ── */
+/* Tablet */
 @media (max-width: 1024px) {
-    .testimonials {
-        padding: 60px 30px;
+    .testimonials-body {
+        padding: 50px 30px;
         gap: 40px;
     }
 
@@ -188,64 +319,48 @@
     }
 
     .testimonials-header h2 {
-        font-size: 28px;
-        margin-bottom: 24px;
+        font-size: 24px;
     }
 
     .test-card {
-        padding: 24px;
-    }
-
-    .test-card p {
-        font-size: 14px;
+        padding: 22px 20px;
     }
 }
 
-/* ── Mobile (max-width: 768px) ── */
+/* Mobile */
 @media (max-width: 768px) {
-    .testimonials {
+    .testimonials-body {
         flex-direction: column;
-        padding: 40px 20px;
-        gap: 30px;
+        padding: 36px 20px;
+        gap: 28px;
     }
 
     .testimonials-header {
         width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .testimonials-header h2 {
-        font-size: 26px;
-        margin-bottom: 16px;
-    }
-
-    /* Cards stack vertically */
-    .testimonials-cards {
-        flex-direction: column;
-        gap: 16px;
-        width: 100%;
-    }
-
-    .test-card {
-        padding: 24px;
-    }
-
-    .test-nav {
-        margin-bottom: 12px;
-    }
-}
-
-/* ── Mobile Small (max-width: 480px) ── */
-@media (max-width: 480px) {
-    .testimonials {
-        padding: 30px 14px;
-        gap: 24px;
     }
 
     .testimonials-header h2 {
         font-size: 22px;
+    }
+
+    .test-cards-inner {
+        flex-direction: column;
+    }
+
+    .test-marquee-item {
+        font-size: 14px;
+        padding: 0 28px;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    .testimonials-body {
+        padding: 28px 14px;
+    }
+
+    .testimonials-header h2 {
+        font-size: 20px;
     }
 
     .test-nav-btn {
@@ -263,16 +378,8 @@
         font-size: 13px;
     }
 
-    .test-stars span {
-        font-size: 17px;
-    }
-
     .test-avatar {
         width: 38px;
         height: 38px;
-    }
-
-    .test-author-info h4 {
-        font-size: 14px;
     }
 }
