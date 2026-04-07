@@ -17,8 +17,8 @@ const Home = () => {
         <>
             <Hero />
             <TechDrButtons />
-            <Services />
-            <CTABanner />
+            {/* <Services /> */}
+            {/* <CTABanner /> */}
             <AboutUs />
             <WhyChooseUs />
             <Services />

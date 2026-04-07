@@ -18,8 +18,8 @@ const points = [
 
 const WhyChooseUs = () => (
     <section className="why">
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-            <Star /> <span style={{ color: '#e8520a', fontSize: '13px', fontWeight: '700', letterSpacing: '1.5px', textTransform: 'uppercase' }}>WHY CHOOSE US</span> <Star />
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: "center", gap: '8px', marginBottom: '8px' }}>
+            <Star /> <span style={{ color: '#e8520a', fontSize: '28px', fontWeight: '700', letterSpacing: '1.5px', textTransform: 'uppercase' }}>WHY CHOOSE US</span> <Star />
         </div>
         <h2>Experience Seamless Repairs: Your Devices Deserve the Best</h2>
 

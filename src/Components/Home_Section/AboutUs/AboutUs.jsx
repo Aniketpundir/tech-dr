@@ -10,16 +10,16 @@ const Star = () => (
 
 const AboutUs = () => (
     <section className="about">
-        <div className="about-image">
+        {/* <div className="about-image">
             <div className="blob-bg"></div>
             <div className="about-image-inner">
                 <img src={About} alt="About The Tech Dr" />
             </div>
-        </div>
+        </div> */}
 
         <div className="about-content">
-            <div className="section-label" style={{ justifyContent: 'flex-start', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Star /> <span style={{ color: '#e8520a', fontSize: '13px', fontWeight: '700', letterSpacing: '1.5px', textTransform: 'uppercase' }}>ABOUT US</span> <Star />
+            <div className="section-label">
+                <Star /> <span style={{ color: '#e8520a', fontSize: '30px', fontWeight: '700', letterSpacing: '1.5px', textTransform: 'uppercase' }}>ABOUT US</span> <Star />
             </div>
             <h2>Welcome To The Tech Dr.</h2>
             <p>We are the premium company providing services in the area of Sydney and surrounding suburbs.</p>
@@ -71,7 +71,7 @@ const AboutUs = () => (
                 With our specialized and experienced team of customer support, we ensure a fast service at the convenience of your own home or office. Our super fast desktop support allows you to get your problems rectified in a matter of hours. If you are having any computer repair issues, feel free to contact us on 1300 072 073 for a Cost-Effective, Professional Computer Repair Service.
             </p>
 
-            <button className="btn-about">ABOUT US</button>
+            {/* <button className="btn-about">ABOUT US</button> */}
         </div>
     </section>
 );
