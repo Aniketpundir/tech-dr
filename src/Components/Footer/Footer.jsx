@@ -12,7 +12,7 @@ const Footer = () => (
 
             <div className="footer-location">
                 <div className="pin-icon">
-                    <svg width="20" height="20" fill="none" stroke="#e8520a" strokeWidth="2" viewBox="0 0 24 24">
+                    <svg width="20" height="20" fill="none" stroke="#fff" strokeWidth="2" viewBox="0 0 24 24">
                         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
                         <circle cx="12" cy="9" r="2.5" />
                     </svg>
@@ -49,7 +49,7 @@ const Footer = () => (
                         </svg>
                     </div>
                     <div>
-                        <span className="urgent-label">Urgent Support?</span>
+                        <span className="urgent-label" style={{ color: '#fff' }}>Urgent Support?</span>
                         <span className="phone-num">1300 072 073</span>
                     </div>
                 </div>
@@ -58,35 +58,16 @@ const Footer = () => (
                         <path fill="#4285F4" d="M44.5 20H24v8.5h11.7C34.1 33.4 29.6 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.8 1.1 7.9 3l6-6C34.5 6.3 29.5 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20c11 0 20-8 20-20 0-1.3-.2-2.7-.5-4z" />
                     </svg>
                     <div>
-                        <div className="g-stars">☆☆☆☆☆ <span style={{ color: '#e8520a' }}>0</span></div>
-                        <div className="g-info">Based on 0 reviews<br />powered by <strong style={{ color: '#ccc' }}>Google</strong></div>
+                        <div className="g-stars">
+                            {/* Layered star technique for exact 4.8 rating */}
+                            <span className="star-rating" title="4.8 out of 5">
+                                <span className="star-rating-bg">★★★★★</span>
+                                <span className="star-rating-fill" style={{ width: '96%' }}>★★★★★</span>
+                            </span>
+                            <span style={{ color: '#fff', fontWeight: 'bold', marginLeft: '6px' }}>4.8</span>
+                        </div>
+                        <div className="g-info">Based on 124 reviews<br />powered by <strong style={{ color: '#fff' }}>Google</strong></div>
                     </div>
-                </div>
-            </div>
-
-            <div className="footer-col">
-                <h4>Quick Links</h4>
-                <ul>
-                    {['Home', 'About', 'Home Support', 'Business Support', 'Contact'].map((l, i) => (
-                        <li key={i}><a href="#">{l}</a></li>
-                    ))}
-                </ul>
-            </div>
-
-            <div className="footer-col">
-                <h4>Our Services</h4>
-                <ul>
-                    {['Computer Repair Services', 'Laptop Repair Services', 'Mac Repair Services', 'Security', 'Advanced Data Recovery', 'Network & Wireless Set Up', 'Servers Setup', 'CCTV Setup & Servicing'].map((l, i) => (
-                        <li key={i}><a href="#">{l}</a></li>
-                    ))}
-                </ul>
-            </div>
-
-            <div className="footer-col">
-                <h4>Subscribe to Our Newsletter</h4>
-                <div className="newsletter-row">
-                    <input type="email" placeholder="Your email address" />
-                    <button className="btn-subscribe">SUBSCRIBE</button>
                 </div>
             </div>
         </div>
