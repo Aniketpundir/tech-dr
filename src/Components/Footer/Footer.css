@@ -9,14 +9,20 @@
     align-items: center;
     justify-content: center;
     padding: 50px 40px 30px 40px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Brightened border */
+    border-bottom: none; /* Removed the horizontal line */
     gap: 30px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
+/* Logo on left, email on right */
 .footer-logo {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
+    width: 100%; 
+    max-width: 1000px; 
     gap: 10px;
 }
 
@@ -45,7 +51,7 @@
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2); /* Changed background to white-transparent for contrast */
+    background: rgba(255, 255, 255, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -53,7 +59,7 @@
 }
 
 .footer-location p {
-    color: rgba(255, 255, 255, 0.9); /* Brighter */
+    color: rgba(255, 255, 255, 0.9);
     font-size: 14px;
     margin: 0;
 }
@@ -88,7 +94,7 @@
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2); /* Brighter icon background */
+    background: rgba(255, 255, 255, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -99,51 +105,8 @@
 
 .social-icon:hover {
     background: #fff;
-    color: #e8520a; /* Icon turns orange on hover */
+    color: #e8520a;
     transform: translateY(-2px);
-}
-
-.footer-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
-    padding: 40px 40px;
-}
-
-.footer-col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.footer-col h4 {
-    font-size: 15px;
-    font-weight: 700;
-    color: #fff;
-    margin: 0 0 20px 0;
-}
-
-.footer-col ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
-
-.footer-col ul li a {
-    color: rgba(255, 255, 255, 0.85); /* Replaced dark gray #aaa */
-    text-decoration: none;
-    font-size: 14px;
-    transition: color 0.2s;
-}
-
-.footer-col ul li a:hover {
-    color: #fff; /* Replaced orange hover with white */
-    text-decoration: underline;
 }
 
 .footer-phone {
@@ -151,11 +114,10 @@
     flex-direction: column;
     align-items: center;
     gap: 12px;
-    margin-bottom: 20px;
 }
 
 .footer-phone .phone-icon {
-    background: #fff; /* Changed from orange to white */
+    background: #fff;
     width: 38px;
     height: 38px;
     border-radius: 50%;
@@ -166,7 +128,7 @@
 }
 
 .footer-phone .phone-icon svg {
-    stroke: #e8520a; /* Phone icon inside circle is now orange */
+    stroke: #e8520a;
 }
 
 @keyframes pulse {
@@ -192,70 +154,6 @@
     color: #fff;
 }
 
-.footer-google {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.footer-google .g-stars {
-    color: rgba(255, 255, 255, 0.9); /* Replaced #ccc */
-    font-size: 14px;
-}
-
-.footer-google .g-info {
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.85); /* Replaced #888 */
-    line-height: 1.4;
-}
-
-.newsletter-row {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
-    max-width: 300px;
-}
-
-.newsletter-row input {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.15); /* Slightly more visible background */
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
-    padding: 10px 14px;
-    color: #fff;
-    font-size: 13px;
-    outline: none;
-    text-align: center;
-}
-
-.newsletter-row input::placeholder {
-    color: rgba(255, 255, 255, 0.7); /* Replaced invisible #888 */
-}
-
-.btn-subscribe {
-    background: #fff; /* Changed from orange gradient to white */
-    color: #e8520a; /* Changed from white to orange */
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: 800;
-    cursor: pointer;
-    text-transform: uppercase;
-    white-space: nowrap;
-    transition: transform 0.2s, box-shadow 0.2s;
-    width: 100%;
-}
-
-.btn-subscribe:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
 .footer-bottom {
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     padding: 24px 40px;
@@ -267,7 +165,7 @@
 }
 
 .footer-bottom p {
-    color: rgba(255, 255, 255, 0.85); /* Replaced #888 */
+    color: rgba(255, 255, 255, 0.85);
     font-size: 13px;
     margin: 0;
     text-align: center;
@@ -281,7 +179,7 @@
 }
 
 .footer-bottom-links a {
-    color: rgba(255, 255, 255, 0.85); /* Replaced #aaa */
+    color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
     font-size: 13px;
     transition: color 0.2s;
@@ -293,44 +191,13 @@
 }
 
 .footer-divider {
-    color: rgba(255, 255, 255, 0.4); /* Replaced #555 */
-}
-
-.g-stars {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    margin-bottom: 2px;
-}
-
-.star-rating {
-    position: relative;
-    display: inline-block;
-    letter-spacing: 2px;
-}
-
-.star-rating-bg {
-    color: rgba(255, 255, 255, 0.3); /* The faded empty stars in the background */
-}
-
-.star-rating-fill {
-    color: #fff; /* The solid white filled stars */
-    position: absolute;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    white-space: nowrap;
+    color: rgba(255, 255, 255, 0.4);
 }
 
 /* ── Tablet: 768px – 1024px ─────────────────────────── */
 @media (max-width: 1024px) {
     .footer-top {
         padding: 40px 24px 24px 24px;
-    }
-
-    .footer-main {
-        padding: 32px 24px;
     }
 
     .footer-bottom {
@@ -345,13 +212,19 @@
         gap: 24px;
     }
 
-    .footer-logo-img {
-        width: 120px;
+    /* Force logo and email side-by-side on mobile */
+    .footer-logo {
+        flex-direction: row; 
+        justify-content: space-between;
+        align-items: center;
     }
 
-    .footer-main {
-        gap: 28px;
-        padding: 28px 16px;
+    .footer-logo-img {
+        width: 100px; /* Shrunk slightly to fit next to email on small screens */
+    }
+
+    .footer-logo .email {
+        font-size: 12px; /* Shrunk slightly to prevent text wrap on small phones */
     }
 
     .footer-bottom {
@@ -371,12 +244,11 @@
     }
 
     .footer-logo-img {
-        width: 100px;
+        width: 90px;
     }
-
-    .footer-main {
-        padding: 24px 12px;
-        gap: 24px;
+    
+    .footer-logo .email {
+        font-size: 11px;
     }
 
     .footer-bottom {
