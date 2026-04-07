@@ -21,10 +21,10 @@ const Home = () => {
             {/* <CTABanner /> */}
             <AboutUs />
             <WhyChooseUs />
-            <Services />
+            {/* <Services /> */}
             <ContactForm />
             <Testimonials />
-            <Blog />
+            {/* <Blog /> */}
             <HowWeHelp />
             <FAQ />
             <Products />
