@@ -9,16 +9,6 @@ const Star = () => (
 
 const features = [
     {
-        title: 'Free Home Visit',
-        icon: (
-            <svg width="28" height="28" fill="none" stroke="#e8520a" strokeWidth="2" viewBox="0 0 24 24">
-                <rect x="2" y="3" width="20" height="14" rx="2" />
-                <path d="M8 21h8M12 17v4" />
-            </svg>
-        ),
-        desc: "We come straight to your door — no need to travel. Our technician visits your home or office at a time that suits you.",
-    },
-    {
         title: '100% Fix Guarantee',
         icon: (
             <svg width="28" height="28" fill="none" stroke="#e8520a" strokeWidth="2" viewBox="0 0 24 24">

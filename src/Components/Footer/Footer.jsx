@@ -1,28 +1,22 @@
 import React from 'react';
 import './Footer.css';
-import logo from '../../assets/footer-logo.webp';
+import logo from '../../assets/logo.webp';
 
 const Footer = () => (
     <footer className="footer">
-        <div className="footer-top">
-            {/* Logo left, Email right container */}
+        {/* ── White top bar: Logo left, Email right ── */}
+        <div className="footer-top-white">
             <div className="footer-logo">
                 <img src={logo} alt="The Tech Dr" className="footer-logo-img" />
                 <a href="mailto:info@thetechdr.com.au" className="email">Email - info@thetechdr.com.au</a>
             </div>
+        </div>
 
-            <div className="footer-location">
-                <div className="pin-icon">
-                    <svg width="20" height="20" fill="none" stroke="#fff" strokeWidth="2" viewBox="0 0 24 24">
-                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-                        <circle cx="12" cy="9" r="2.5" />
-                    </svg>
-                </div>
-                <div>
-                    <strong>Location:</strong>
-                    <p>3/13 Bridge St, Epping NSW 2121, Australia</p>
-                </div>
-            </div>
+        {/* ── Orange divider ── */}
+        <div className="footer-orange-divider" />
+
+        {/* ── Light orange body ── */}
+        <div className="footer-top">
 
             <div className="footer-social">
                 <span>Follow us on:</span>
@@ -39,21 +33,30 @@ const Footer = () => (
                     ))}
                 </div>
             </div>
-            
-            {/* Moved phone up here right below social icons */}
-            <div className="footer-phone">
+
+            {/* Urgent Support as a button */}
+            <a href="tel:1300072073" className="footer-phone urgent-btn">
                 <div className="phone-icon">
-                    <svg width="18" height="18" fill="none" stroke="#fff" strokeWidth="2" viewBox="0 0 24 24">
+                    <svg width="18" height="18" fill="none" stroke="#e8520a" strokeWidth="2" viewBox="0 0 24 24">
                         <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7a2 2 0 011.72 2.02z" />
                     </svg>
                 </div>
                 <div>
-                    <span className="urgent-label" style={{ color: '#fff' }}>Urgent Support?</span>
+                    <span className="urgent-label">Urgent Support?</span>
                     <span className="phone-num">1300 072 073</span>
                 </div>
-            </div>
+            </a>
+
         </div>
 
+        <div className="footer-bottom">
+            <p>© {new Date().getFullYear()} The Tech Dr. All rights reserved.</p>
+            <div className="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <span className="footer-divider">|</span>
+                <a href="#">Terms & Conditions</a>
+            </div>
+        </div>
     </footer>
 );
 
