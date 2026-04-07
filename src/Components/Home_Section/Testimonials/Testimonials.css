@@ -152,9 +152,30 @@
     overflow: hidden;
 }
 
-.test-cards-inner {
+.cards-marquee-track {
     display: flex;
     gap: 20px;
+    width: max-content;
+    animation: cards-marquee 28s linear infinite;
+}
+
+.cards-marquee-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes cards-marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.test-card {
+    width: 300px;
+    flex-shrink: 0;
 }
 
 /* Slide animations */
