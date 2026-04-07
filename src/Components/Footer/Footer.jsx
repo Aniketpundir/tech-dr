@@ -62,7 +62,7 @@ const Footer = () => (
                     <div>
                         {/* Changed inline orange color to pure white */}
                         <div className="g-stars">☆☆☆☆☆ <span style={{ color: '#fff' }}>0</span></div>
-                        <div className="g-info">Based on 0 reviews<br />powered by <strong style={{ color: '#fff' }}>Google</strong></div>
+                        <div className="g-info">Based on 4.8 reviews<br />powered by <strong style={{ color: '#fff' }}>Google</strong></div>
                     </div>
                 </div>
             </div>
