@@ -168,7 +168,7 @@
 @media (max-width: 480px) {
     .topbar {
         padding: 10px 14px;
-        gap: 8px;
+        gap: 2px;
     }
 
     .topbar-location {
