@@ -8,6 +8,39 @@ const Star = () => (
     </svg>
 );
 
+const StarRating = ({ rating = 4.8 }) => {
+    const fullStars = Math.floor(rating);
+    const partial = rating - fullStars;
+
+    return (
+        <svg width="90" height="16" viewBox="0 0 90 16">
+            {[0, 1, 2, 3, 4].map((i) => {
+                const x = i * 18;
+                const id = `partial-${i}`;
+                const fill = i < fullStars ? '#e8520a' : i === fullStars && partial > 0 ? `url(#${id})` : '#d1d5db';
+
+                return (
+                    <g key={i}>
+                        {i === fullStars && partial > 0 && (
+                            <defs>
+                                <linearGradient id={id} x1="0" x2="1" y1="0" y2="0">
+                                    <stop offset={`${partial * 100}%`} stopColor="#e8520a" />
+                                    <stop offset={`${partial * 100}%`} stopColor="#d1d5db" />
+                                </linearGradient>
+                            </defs>
+                        )}
+                        <path
+                            d="M8 1l1.8 3.6 4 .6-2.9 2.8.7 4L8 10l-3.6 1.9.7-4L2.2 5.2l4-.6z"
+                            transform={`translate(${x}, 0)`}
+                            fill={fill}
+                        />
+                    </g>
+                );
+            })}
+        </svg>
+    );
+};
+
 const ContactForm = () => {
     const [formData, setFormData] = useState({
         name: '',
@@ -16,7 +49,7 @@ const ContactForm = () => {
         subject: '',
         message: ''
     });
-    const [status, setStatus] = useState('idle'); // idle | loading | success | error
+    const [status, setStatus] = useState('idle');
     const [errorMsg, setErrorMsg] = useState('');
 
     const handleChange = (e) => {
@@ -29,22 +62,7 @@ const ContactForm = () => {
         setErrorMsg('');
 
         try {
-            // ─────────────────────────────────────────────────────────────
-            // API CONNECTION
-            // Replace the URL below with your actual backend endpoint.
-            //
-            // Option 1 – Your own backend:
-            //   const ENDPOINT = 'https://yourapi.com/api/contact';
-            //
-            // Option 2 – Formspree (free, no backend needed):
-            //   1. Go to https://formspree.io and create a form
-            //   2. Replace YOUR_FORM_ID below
-            //   const ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
-            //
-            // Option 3 – EmailJS:
-            //   Use their SDK — see https://emailjs.com
-            // ─────────────────────────────────────────────────────────────
-            const ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID'; // 🔁 Replace this
+            const ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
 
             const response = await fetch(ENDPOINT, {
                 method: 'POST',
@@ -74,7 +92,7 @@ const ContactForm = () => {
     return (
         <section className="contact">
 
-            {/* ── LEFT — completely unchanged ── */}
+            {/* ── LEFT ── */}
             <div className="contact-left">
                 <div className="contact-image-wrap">
                     <div className="contact-img-main">
@@ -106,18 +124,18 @@ const ContactForm = () => {
                             <path fill="#4285F4" d="M44.5 20H24v8.5h11.7C34.1 33.4 29.6 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.8 1.1 7.9 3l6-6C34.5 6.3 29.5 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20c11 0 20-8 20-20 0-1.3-.2-2.7-.5-4z" />
                         </svg>
                         <div>
-                            <div style={{ display: 'flex', gap: '2px' }}>
-                                <span className="g-score">0</span>
-                                <span className="g-stars">☆☆☆☆☆</span>
+                            <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+                                <span className="g-score">4.8</span>
+                                <StarRating rating={4.8} />
                             </div>
-                            <div className="g-based">Based on 0 reviews</div>
+                            <div className="g-based">Based on 124 reviews</div>
                             <div className="g-based">powered by <strong>Google</strong></div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* ── RIGHT — orange bg + form tag + API ── */}
+            {/* ── RIGHT ── */}
             <div className="contact-right">
                 <div className="contact-right-label">
                     <Star />

@@ -28,7 +28,6 @@ const Home = () => {
             <HowWeHelp />
             <FAQ />
             <Products />
-
         </>
     )
 }
