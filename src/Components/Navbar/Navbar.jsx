@@ -42,7 +42,7 @@ const Navbar = () => {
 
                 {/* Desktop Right */}
                 <div className="navbar-right">
-                    <button className="btn-quote">GET A FREE QUOTE</button>
+                    <button className="btn-quote">Make a Booking</button>
                 </div>
 
                 {/* Hamburger — mobile only */}

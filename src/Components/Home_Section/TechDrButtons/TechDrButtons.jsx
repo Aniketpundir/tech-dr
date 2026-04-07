@@ -25,7 +25,7 @@ const TechDrButtons = () => {
                     onMouseLeave={() => setCallHover(false)}
                 >
                     <span className="btn-icon"></span>
-                    Call us now
+                    CALL US NOW
                 </button>
             </a>
         </div>
