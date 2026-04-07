@@ -16,7 +16,7 @@
 
 .why-badge__text {
     color: #e8520a;
-    font-size: 13px;
+    font-size: 28px;
     font-weight: 800;
     letter-spacing: 2.5px;
     text-transform: uppercase;
@@ -25,6 +25,7 @@
 
 /* ── Heading ── */
 .why-title {
+    text-align: center;
     font-size: 38px;
     font-weight: 900;
     color: #1a1a2e;
@@ -65,8 +66,13 @@
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
 }
 
-.why-card--light { background: #fff3ee; }
-.why-card--dark  { background: #e8520a; }
+.why-card--light {
+    background: #fff3ee;
+}
+
+.why-card--dark {
+    background: #e8520a;
+}
 
 .why-card__icon-wrap {
     width: 60px;
@@ -79,11 +85,22 @@
     flex-shrink: 0;
 }
 
-.why-card--light .why-card__icon-wrap { border-color: rgba(232, 82, 10, 0.3); }
+.why-card--light .why-card__icon-wrap {
+    border-color: rgba(232, 82, 10, 0.3);
+}
 
-.why-card__icon-wrap svg { width: 24px; height: 24px; }
-.why-card--light .why-card__icon-wrap svg { stroke: #e8520a; }
-.why-card--dark  .why-card__icon-wrap svg { stroke: #ffffff; }
+.why-card__icon-wrap svg {
+    width: 24px;
+    height: 24px;
+}
+
+.why-card--light .why-card__icon-wrap svg {
+    stroke: #e8520a;
+}
+
+.why-card--dark .why-card__icon-wrap svg {
+    stroke: #ffffff;
+}
 
 .why-card__title {
     font-family: 'Nunito', sans-serif;
@@ -94,8 +111,13 @@
     margin: 0;
 }
 
-.why-card--light .why-card__title { color: #1a1a2e; }
-.why-card--dark  .why-card__title { color: #ffffff; }
+.why-card--light .why-card__title {
+    color: #1a1a2e;
+}
+
+.why-card--dark .why-card__title {
+    color: #ffffff;
+}
 
 /* ── Column 2: Image ── */
 .why-image {
@@ -108,7 +130,11 @@
     justify-content: center;
 }
 
-.why-image img { width: 100%; height: 100%; object-fit: cover; }
+.why-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 /* ── Column 3: Stats ── */
 .why-stats {
@@ -129,7 +155,9 @@
     margin: 0 auto;
 }
 
-.stat-bubble.orange-bg { background: #fff3ee; }
+.stat-bubble.orange-bg {
+    background: #fff3ee;
+}
 
 .stat-bubble .stat-num {
     font-size: 36px;
@@ -156,8 +184,14 @@
 
 /* ── Tablet (max-width: 1024px) ── */
 @media (max-width: 1024px) {
-    .why { padding: 60px 30px; }
-    .why-title { font-size: 32px; margin-bottom: 30px; }
+    .why {
+        padding: 60px 30px;
+    }
+
+    .why-title {
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
 
     .why-inner {
         grid-template-columns: 1fr 1fr;
@@ -171,11 +205,23 @@
         gap: 12px;
     }
 
-    .why-card { padding: 22px 12px 18px; gap: 12px; }
-    .why-card__icon-wrap { width: 52px; height: 52px; }
-    .why-card__title { font-size: 12px; }
+    .why-card {
+        padding: 22px 12px 18px;
+        gap: 12px;
+    }
 
-    .why-image { height: 260px; }
+    .why-card__icon-wrap {
+        width: 52px;
+        height: 52px;
+    }
+
+    .why-card__title {
+        font-size: 12px;
+    }
+
+    .why-image {
+        height: 260px;
+    }
 
     .why-stats {
         flex-direction: row;
@@ -184,14 +230,27 @@
         gap: 16px;
     }
 
-    .stat-bubble { width: 140px; height: 140px; }
-    .stat-bubble .stat-num { font-size: 30px; }
+    .stat-bubble {
+        width: 140px;
+        height: 140px;
+    }
+
+    .stat-bubble .stat-num {
+        font-size: 30px;
+    }
 }
 
 /* ── Mobile (max-width: 768px) ── */
 @media (max-width: 768px) {
-    .why { padding: 40px 20px; }
-    .why-title { font-size: 26px; max-width: 100%; margin-bottom: 24px; }
+    .why {
+        padding: 40px 20px;
+    }
+
+    .why-title {
+        font-size: 26px;
+        max-width: 100%;
+        margin-bottom: 24px;
+    }
 
     .why-inner {
         grid-template-columns: 1fr;
@@ -205,34 +264,105 @@
         gap: 10px;
     }
 
-    .why-card { padding: 24px 14px 20px; border-radius: 14px; }
-    .why-card__icon-wrap { width: 52px; height: 52px; }
-    .why-card__icon-wrap svg { width: 22px; height: 22px; }
-    .why-card__title { font-size: 13px; }
+    .why-card {
+        padding: 24px 14px 20px;
+        border-radius: 14px;
+    }
 
-    .why-image { height: 220px; border-radius: 12px; }
+    .why-card__icon-wrap {
+        width: 52px;
+        height: 52px;
+    }
 
-    .why-stats { flex-direction: row; justify-content: center; gap: 14px; }
-    .stat-bubble { width: 130px; height: 130px; }
-    .stat-bubble .stat-num { font-size: 28px; }
-    .stat-bubble .stat-label { font-size: 12px; padding: 0 10px; }
+    .why-card__icon-wrap svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .why-card__title {
+        font-size: 13px;
+    }
+
+    .why-image {
+        height: 220px;
+        border-radius: 12px;
+    }
+
+    .why-stats {
+        flex-direction: row;
+        justify-content: center;
+        gap: 14px;
+    }
+
+    .stat-bubble {
+        width: 130px;
+        height: 130px;
+    }
+
+    .stat-bubble .stat-num {
+        font-size: 28px;
+    }
+
+    .stat-bubble .stat-label {
+        font-size: 12px;
+        padding: 0 10px;
+    }
 }
 
 /* ── Mobile Small (max-width: 480px) ── */
 @media (max-width: 480px) {
-    .why { padding: 30px 14px; }
-    .why-title { font-size: 22px; margin-bottom: 20px; }
+    .why {
+        padding: 30px 14px;
+    }
 
-    .why-grid { gap: 8px; }
-    .why-card { padding: 20px 10px 16px; border-radius: 12px; gap: 10px; }
-    .why-card__icon-wrap { width: 46px; height: 46px; }
-    .why-card__icon-wrap svg { width: 20px; height: 20px; }
-    .why-card__title { font-size: 12px; }
+    .why-title {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
 
-    .why-image { height: 180px; }
+    .why-grid {
+        gap: 8px;
+    }
 
-    .why-stats { gap: 10px; }
-    .stat-bubble { width: 110px; height: 110px; }
-    .stat-bubble .stat-num { font-size: 24px; }
-    .stat-bubble .stat-label { font-size: 11px; padding: 0 8px; }
+    .why-card {
+        padding: 20px 10px 16px;
+        border-radius: 12px;
+        gap: 10px;
+    }
+
+    .why-card__icon-wrap {
+        width: 46px;
+        height: 46px;
+    }
+
+    .why-card__icon-wrap svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .why-card__title {
+        font-size: 12px;
+    }
+
+    .why-image {
+        height: 180px;
+    }
+
+    .why-stats {
+        gap: 10px;
+    }
+
+    .stat-bubble {
+        width: 110px;
+        height: 110px;
+    }
+
+    .stat-bubble .stat-num {
+        font-size: 24px;
+    }
+
+    .stat-bubble .stat-label {
+        font-size: 11px;
+        padding: 0 8px;
+    }
 }
