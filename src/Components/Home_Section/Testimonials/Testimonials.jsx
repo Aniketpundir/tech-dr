@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import './Testimonials.css';
 
 const StarIcon = () => (
@@ -7,15 +7,73 @@ const StarIcon = () => (
     </svg>
 );
 
+// Unsplash source URLs — unique image per reviewer, gender-matched, Australia-region style
+// Using source.unsplash.com with unique seeds so every card gets a different photo
 const reviews = [
-    { name: 'Jason', role: 'Customer', text: 'I am very lucky to have the computer repair support of The Tech Dr. Excellent service every time!', stars: 4 },
-    { name: 'Rob', role: 'Customer', text: 'The Tech Dr is not just a repair service — they are simply one of the best in the business.', stars: 5 },
-    { name: 'Peter', role: 'Customer', text: 'My experience with The Tech Dr was fantastic. I highly recommend them for their perfection and dedication.', stars: 5 },
-    { name: 'Carol', role: 'Customer', text: 'Brilliant service from start to finish. They were professional, fast and very reasonably priced.', stars: 4 },
-    { name: 'Mrs Smith', role: 'Customer', text: 'Very professional and friendly team. They explained everything clearly and the price was very fair.', stars: 4 },
-    { name: 'Ritu', role: 'Customer', text: 'The Tech Dr truly stands out. Their expertise and care for customers is second to none.', stars: 4 },
-    { name: 'Sunil', role: 'Customer', text: 'Excellent SAME DAY service at no extra cost. Would 100% recommend to everyone I know.', stars: 4 },
-    { name: 'Johnson', role: 'Customer', text: 'Fast, reliable and professional. My PC was fixed within hours and runs perfectly now. Thank you!', stars: 4 },
+    {
+        name: 'Jason',
+        role: 'Customer',
+        gender: 'male',
+        text: 'I am very lucky to have the computer repair support of The Tech Dr. Excellent service every time!',
+        stars: 4,
+        image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face&auto=format',
+    },
+    {
+        name: 'Rob',
+        role: 'Customer',
+        gender: 'male',
+        text: 'The Tech Dr is not just a repair service — they are simply one of the best in the business.',
+        stars: 5,
+        image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face&auto=format',
+    },
+    {
+        name: 'Peter',
+        role: 'Customer',
+        gender: 'male',
+        text: 'My experience with The Tech Dr was fantastic. I highly recommend them for their perfection and dedication.',
+        stars: 5,
+        image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face&auto=format',
+    },
+    {
+        name: 'Carol',
+        role: 'Customer',
+        gender: 'female',
+        text: 'Brilliant service from start to finish. They were professional, fast and very reasonably priced.',
+        stars: 4,
+        image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face&auto=format',
+    },
+    {
+        name: 'Mrs Smith',
+        role: 'Customer',
+        gender: 'female',
+        text: 'Very professional and friendly team. They explained everything clearly and the price was very fair.',
+        stars: 4,
+        image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&h=80&fit=crop&crop=face&auto=format',
+    },
+    {
+        name: 'Ritu',
+        role: 'Customer',
+        gender: 'female',
+        text: 'The Tech Dr truly stands out. Their expertise and care for customers is second to none.',
+        stars: 4,
+        image: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=80&h=80&fit=crop&crop=face&auto=format',
+    },
+    {
+        name: 'Sunil',
+        role: 'Customer',
+        gender: 'male',
+        text: 'Excellent SAME DAY service at no extra cost. Would 100% recommend to everyone I know.',
+        stars: 4,
+        image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&h=80&fit=crop&crop=face&auto=format',
+    },
+    {
+        name: 'Johnson',
+        role: 'Customer',
+        gender: 'male',
+        text: 'Fast, reliable and professional. My PC was fixed within hours and runs perfectly now. Thank you!',
+        stars: 4,
+        image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=80&h=80&fit=crop&crop=face&auto=format',
+    },
 ];
 
 function initials(name) {
@@ -23,33 +81,7 @@ function initials(name) {
 }
 
 const Testimonials = () => {
-    const [page, setPage] = useState(0);
     const trackRef = useRef(null);
-    const autoResumeRef = useRef(null);
-    const animatingRef = useRef(false);
-    const maxPage = reviews.length - 1;
-
-    const scrollToCard = (index) => {
-        setPage(index);
-        const track = trackRef.current;
-        if (!track) return;
-        const cardWidth = 320;
-        track.style.transition = 'transform 0.4s ease';
-        track.style.animationPlayState = 'paused';
-        track.style.animation = 'none';
-        track.style.transform = `translateX(-${index * cardWidth}px)`;
-
-        clearTimeout(autoResumeRef.current);
-        autoResumeRef.current = setTimeout(() => {
-            track.style.transition = '';
-            track.style.transform = '';
-            track.style.animation = '';
-            track.style.animationPlayState = 'running';
-        }, 4000);
-    };
-
-    const prev = () => { if (page > 0) scrollToCard(page - 1); };
-    const next = () => { if (page < maxPage) scrollToCard(page + 1); };
 
     return (
         <section className="testimonials">
@@ -57,13 +89,11 @@ const Testimonials = () => {
             {/* Marquee heading */}
             <div className="test-marquee-outer">
                 <div className="test-marquee-track">
-                    {[...Array(4)].map((_, ri) => (
-                        <span key={ri} className="test-marquee-item">
-                            <StarIcon />
-                            <span>What our Customers Say</span>
-                            <StarIcon />
-                        </span>
-                    ))}
+                    <span className="test-marquee-item">
+                        <StarIcon />
+                        <span>What our Customers Say</span>
+                        <StarIcon />
+                    </span>
                 </div>
             </div>
 
@@ -86,7 +116,6 @@ const Testimonials = () => {
                     <div className="cards-marquee-track" ref={trackRef}>
                         {[...reviews, ...reviews].map((r, i) => (
                             <div className="test-card" key={i}>
-                                <div className="test-quote-icon">"</div>
                                 <div className="test-stars">
                                     {Array.from({ length: r.stars }).map((_, j) => (
                                         <span key={j} className="star-filled">★</span>
@@ -97,7 +126,18 @@ const Testimonials = () => {
                                 </div>
                                 <p>{r.text}</p>
                                 <div className="test-author">
-                                    <div className="test-avatar">{initials(r.name)}</div>
+                                    <div className="test-avatar">
+                                        <img
+                                            src={r.image}
+                                            alt={r.name}
+                                            onError={(e) => {
+                                                // Fallback to initials if image fails
+                                                e.target.style.display = 'none';
+                                                e.target.parentNode.setAttribute('data-fallback', initials(r.name));
+                                                e.target.parentNode.classList.add('avatar-fallback');
+                                            }}
+                                        />
+                                    </div>
                                     <div className="test-author-info">
                                         <h4>{r.name}</h4>
                                         <span>{r.role}</span>

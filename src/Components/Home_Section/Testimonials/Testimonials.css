@@ -6,7 +6,7 @@
 
 /* ── Marquee heading ── */
 .test-marquee-outer {
-    /* background: #e8520a; */
+    text-align: center;
     overflow: hidden;
     padding: 14px 0;
     white-space: nowrap;
@@ -14,7 +14,6 @@
 
 .test-marquee-track {
     display: inline-flex;
-    animation: marquee-rtl 18s linear infinite;
 }
 
 .test-marquee-item {
@@ -298,9 +297,10 @@
     gap: 12px;
 }
 
+/* ── Avatar with image support ── */
 .test-avatar {
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     background: #fde8dc;
     display: flex;
@@ -310,6 +310,32 @@
     font-weight: 700;
     color: #e8520a;
     flex-shrink: 0;
+    overflow: hidden;
+    border: 2px solid #f0d8cc;
+    position: relative;
+}
+
+.test-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+/* Fallback initials when image fails */
+.test-avatar.avatar-fallback::after {
+    content: attr(data-fallback);
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: #e8520a;
+    background: #fde8dc;
+    border-radius: 50%;
 }
 
 .test-author-info h4 {
@@ -400,7 +426,7 @@
     }
 
     .test-avatar {
-        width: 38px;
-        height: 38px;
+        width: 42px;
+        height: 42px;
     }
 }
