@@ -16,10 +16,10 @@ const features = [
                 <path d="M8 21h8M12 17v4" />
             </svg>
         ),
-        desc: "I can't thank Stada enough for saving my computer! Their team worked tirelessly to recover my files and fix the software.",
+        desc: "We come straight to your door — no need to travel. Our technician visits your home or office at a time that suits you.",
     },
     {
-        title: '100% Fix',
+        title: '100% Fix Guarantee',
         icon: (
             <svg width="28" height="28" fill="none" stroke="#e8520a" strokeWidth="2" viewBox="0 0 24 24">
                 <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" />
@@ -27,7 +27,7 @@ const features = [
                 <line x1="12" y1="22.08" x2="12" y2="12" />
             </svg>
         ),
-        desc: "I can't thank Stada enough for saving my computer! Their team worked tirelessly to recover my files and fix the software.",
+        desc: "We don't leave until the job is done. If we can't fix it, you don't pay — that's our promise to every customer.",
     },
     {
         title: 'Highly Skilled Technicians',
@@ -37,7 +37,7 @@ const features = [
                 <path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14" />
             </svg>
         ),
-        desc: "I can't thank Stada enough for saving my computer! Their team worked tirelessly to recover my files and fix the software.",
+        desc: "Our engineers are certified professionals with years of hands-on experience across all major brands and systems.",
     },
     {
         title: 'Same Day Service Available',
@@ -47,16 +47,16 @@ const features = [
                 <polyline points="12 6 12 12 16 14" />
             </svg>
         ),
-        desc: "I can't thank Stada enough for saving my computer! Their team worked tirelessly to recover my files and fix the software.",
+        desc: "Need it fixed urgently? We offer same-day appointments at no extra charge, so you're never left waiting.",
     },
     {
-        title: 'Explain Problem in Plain English',
+        title: 'Explained in Plain English',
         icon: (
             <svg width="28" height="28" fill="none" stroke="#e8520a" strokeWidth="2" viewBox="0 0 24 24">
                 <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
             </svg>
         ),
-        desc: "I can't thank Stada enough for saving my computer! Their team worked tirelessly to recover my files and fix the software.",
+        desc: "No jargon, no confusion. We explain exactly what went wrong and what we did to fix it in clear, simple language.",
     },
     {
         title: 'We Secure your Personal Data',
@@ -65,7 +65,7 @@ const features = [
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
             </svg>
         ),
-        desc: "I can't thank Stada enough for saving my computer! Their team worked tirelessly to recover my files and fix the software.",
+        desc: "Your privacy matters. We handle your files and personal data with full confidentiality and strict data security practices.",
     },
 ];
 

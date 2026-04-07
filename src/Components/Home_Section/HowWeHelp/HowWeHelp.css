@@ -1,5 +1,9 @@
+/* ═══════════════════════════════════════════
+   HOW WE HELP — Solid Orange + Light Cards
+   ═══════════════════════════════════════════ */
+
 .how-we-help {
-    background: linear-gradient(135deg, #e8520a 0%, #f0a030 100%);
+    background: #e8520a;
     padding: 80px 60px;
 }
 
@@ -14,7 +18,7 @@
 
 .how-label span {
     color: #fff;
-    font-size: 13px;
+    font-size: 27px;
     font-weight: 700;
     letter-spacing: 1.5px;
     text-transform: uppercase;
@@ -22,11 +26,11 @@
 
 /* ── Heading ── */
 .how-we-help h2 {
-    font-size: 38px;
-    font-weight: 900;
+    font-size: 36px;
+    font-weight: 800;
     color: #fff;
     text-align: center;
-    margin: 0 0 60px 0;
+    margin: 0 0 56px;
     line-height: 1.3;
 }
 
@@ -34,104 +38,110 @@
 .how-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px 50px;
+    gap: 28px 32px;
     max-width: 1100px;
     margin: 0 auto;
 }
 
-/* ── Card ── */
+/* ── Card — light orange background ── */
 .how-card {
     display: flex;
     align-items: flex-start;
     gap: 18px;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
-    padding: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    background: #fff5ee;
+    border-radius: 18px;
+    padding: 24px 20px;
+    border: 1.5px solid #fbd8c4;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
     cursor: pointer;
 }
 
 .how-card:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-6px);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
-    border-color: rgba(255, 255, 255, 0.4);
-}
-
-.how-card:hover .how-card-icon {
     background: #fff;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.14);
+    border-color: #f0b090;
 }
 
-/* White icon box */
+/* ── Icon box ── */
 .how-card-icon {
-    width: 70px;
-    height: 70px;
-    min-width: 70px;
-    background: rgba(255, 255, 255, 0.92);
+    width: 66px;
+    height: 66px;
+    min-width: 66px;
+    background: #fff;
     border-radius: 14px;
+    border: 1.5px solid #fbd8c4;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: border-color 0.25s, box-shadow 0.25s;
 }
 
-/* Card text */
+.how-card:hover .how-card-icon {
+    border-color: #e8520a;
+    box-shadow: 0 4px 14px rgba(232, 82, 10, 0.18);
+}
+
+/* ── Card text ── */
 .how-card-body {
     flex: 1;
 }
 
 .how-card-body h4 {
-    font-size: 18px;
-    font-weight: 800;
-    color: #fff;
-    margin: 0 0 10px 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1c1c1c;
+    margin: 0 0 8px;
     line-height: 1.3;
 }
 
 .how-card-body p {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.88);
+    font-size: 13.5px;
+    color: #7a4a36;
     line-height: 1.65;
     margin: 0;
 }
 
-/* ── Tablet (max-width: 1024px) ── */
+/* ══════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════ */
+
+/* Tablet */
 @media (max-width: 1024px) {
     .how-we-help {
         padding: 60px 40px;
     }
 
     .how-we-help h2 {
-        font-size: 30px;
-        margin-bottom: 44px;
+        font-size: 28px;
+        margin-bottom: 40px;
     }
 
     .how-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 32px 40px;
+        gap: 24px 28px;
     }
 
     .how-card-icon {
-        width: 60px;
-        height: 60px;
-        min-width: 60px;
+        width: 58px;
+        height: 58px;
+        min-width: 58px;
     }
 
     .how-card-body h4 {
-        font-size: 16px;
+        font-size: 15px;
     }
 }
 
-/* ── Mobile (max-width: 768px) ── */
+/* Mobile */
 @media (max-width: 768px) {
     .how-we-help {
-        padding: 40px 24px;
+        padding: 40px 20px;
     }
 
     .how-we-help h2 {
-        font-size: 24px;
-        margin-bottom: 32px;
+        font-size: 22px;
+        margin-bottom: 28px;
     }
 
     .how-we-help h2 br {
@@ -140,60 +150,62 @@
 
     .how-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 24px 20px;
+        gap: 18px 16px;
     }
 
     .how-card {
         flex-direction: column;
         gap: 12px;
-    }
-
-    .how-card-icon {
-        width: 54px;
-        height: 54px;
-        min-width: 54px;
-        border-radius: 12px;
-    }
-
-    .how-card-body h4 {
-        font-size: 15px;
-        margin-bottom: 8px;
-    }
-
-    .how-card-body p {
-        font-size: 13px;
-    }
-}
-
-/* ── Mobile Small (max-width: 480px) ── */
-@media (max-width: 480px) {
-    .how-we-help {
-        padding: 30px 16px;
-    }
-
-    .how-we-help h2 {
-        font-size: 20px;
-        margin-bottom: 24px;
-    }
-
-    .how-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-
-    .how-card {
-        flex-direction: row;
-        gap: 16px;
+        padding: 18px 16px;
     }
 
     .how-card-icon {
         width: 52px;
         height: 52px;
         min-width: 52px;
+        border-radius: 12px;
     }
 
     .how-card-body h4 {
-        font-size: 15px;
+        font-size: 14px;
+        margin-bottom: 6px;
+    }
+
+    .how-card-body p {
+        font-size: 12.5px;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    .how-we-help {
+        padding: 28px 14px;
+    }
+
+    .how-we-help h2 {
+        font-size: 19px;
+        margin-bottom: 22px;
+    }
+
+    .how-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .how-card {
+        flex-direction: row;
+        gap: 16px;
+        padding: 18px 16px;
+    }
+
+    .how-card-icon {
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+    }
+
+    .how-card-body h4 {
+        font-size: 14px;
     }
 
     .how-card-body p {

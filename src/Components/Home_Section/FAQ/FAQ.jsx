@@ -55,7 +55,7 @@ const FAQ = () => {
     return (
         <section className="faq">
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', justifyContent: 'center' }}>
-                <Star /> <span style={{ color: '#e8520a', fontSize: '13px', fontWeight: '700', letterSpacing: '1.5px', textTransform: 'uppercase' }}>FREQUENTLY ASKED QUESTIONS</span> <Star />
+                <Star /> <span style={{ color: '#e8520a', fontSize: '30px', textAlign: 'center', fontWeight: '700', letterSpacing: '1.5px', textTransform: 'uppercase' }}>FREQUENTLY ASKED QUESTIONS</span> <Star />
             </div>
             <h2>Our friendly staff are always happy to answer any of your questions, however first, why not a look through here to see if your question has been answered before.</h2>
 
