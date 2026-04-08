@@ -94,110 +94,112 @@ const ContactUsForm = () => {
 
     return (
         <section className="contact">
-            <div className="contact-left">
-                <div className="contact-image-wrap">
-                    <div className="contact-img-main">
-                        <img src={ContactImg} alt="Contact The Tech Dr" />
-                    </div>
-                    <div className="contact-deco top-right"></div>
-                    <div className="contact-deco bottom-left"></div>
-                    <div className="contact-spark">
-                        <svg width="30" height="30" viewBox="0 0 30 30">
-                            <path d="M15 0 L16 14 L30 15 L16 16 L15 30 L14 16 L0 15 L14 14 Z" fill="#e8520a" />
-                        </svg>
+            <div className='contacts'>
+                <div className="contact-left">
+                    <div className="contact-image-wrap">
+                        <div className="contact-img-main">
+                            <img src={ContactImg} alt="Contact The Tech Dr" />
+                        </div>
+                        <div className="contact-deco top-right"></div>
+                        <div className="contact-deco bottom-left"></div>
+                        <div className="contact-spark">
+                            <svg width="30" height="30" viewBox="0 0 30 30">
+                                <path d="M15 0 L16 14 L30 15 L16 16 L15 30 L14 16 L0 15 L14 14 Z" fill="#e8520a" />
+                            </svg>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            {/* ── RIGHT ── */}
-            <div className="contact-right">
-                <div className="contact-right-label">
-                    <Star />
-                    <span>GET IN TOUCH</span>
-                    <Star />
+                {/* ── RIGHT ── */}
+                <div className="contact-right">
+                    <div className="contact-right-label">
+                        <Star />
+                        <span>GET IN TOUCH</span>
+                        <Star />
+                    </div>
+
+                    <h2>We'd Love to Hear From You, Get In Touch With Us!</h2>
+
+                    <form onSubmit={handleSubmit} noValidate>
+                        <div className="contact-form-grid">
+                            <div className="form-group">
+                                <label htmlFor="cf-name">Name</label>
+                                <input
+                                    id="cf-name" name="name" type="text"
+                                    placeholder="Your name"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    required
+                                    disabled={isLoading}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="cf-phone">Phone</label>
+                                <input
+                                    id="cf-phone" name="phone" type="tel"
+                                    placeholder="Your phone"
+                                    value={formData.phone}
+                                    onChange={handleChange}
+                                    disabled={isLoading}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="cf-email">Email</label>
+                                <input
+                                    id="cf-email" name="email" type="email"
+                                    placeholder="Your email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    required
+                                    disabled={isLoading}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="cf-subject">Subject</label>
+                                <input
+                                    id="cf-subject" name="subject" type="text"
+                                    placeholder="Subject"
+                                    value={formData.subject}
+                                    onChange={handleChange}
+                                    disabled={isLoading}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="form-message">
+                            <div className="form-group">
+                                <label htmlFor="cf-message">Message</label>
+                                <textarea
+                                    id="cf-message" name="message"
+                                    placeholder="Write your message here..."
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    required
+                                    disabled={isLoading}
+                                />
+                            </div>
+                        </div>
+
+                        <button className="btn-send" type="submit" disabled={isLoading}>
+                            {isLoading
+                                ? <><span className="btn-spinner" /> Sending...</>
+                                : 'SEND MESSAGE'
+                            }
+                        </button>
+
+                        {status === 'success' && (
+                            <p className="form-status success">
+                                ✅ Message sent! We'll get back to you soon.
+                            </p>
+                        )}
+                        {status === 'error' && (
+                            <p className="form-status error">
+                                ❌ {errorMsg}
+                            </p>
+                        )}
+                    </form>
+
                 </div>
-
-                <h2>We'd Love to Hear From You, Get In Touch With Us!</h2>
-
-                <form onSubmit={handleSubmit} noValidate>
-                    <div className="contact-form-grid">
-                        <div className="form-group">
-                            <label htmlFor="cf-name">Name</label>
-                            <input
-                                id="cf-name" name="name" type="text"
-                                placeholder="Your name"
-                                value={formData.name}
-                                onChange={handleChange}
-                                required
-                                disabled={isLoading}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="cf-phone">Phone</label>
-                            <input
-                                id="cf-phone" name="phone" type="tel"
-                                placeholder="Your phone"
-                                value={formData.phone}
-                                onChange={handleChange}
-                                disabled={isLoading}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="cf-email">Email</label>
-                            <input
-                                id="cf-email" name="email" type="email"
-                                placeholder="Your email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                required
-                                disabled={isLoading}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="cf-subject">Subject</label>
-                            <input
-                                id="cf-subject" name="subject" type="text"
-                                placeholder="Subject"
-                                value={formData.subject}
-                                onChange={handleChange}
-                                disabled={isLoading}
-                            />
-                        </div>
-                    </div>
-
-                    <div className="form-message">
-                        <div className="form-group">
-                            <label htmlFor="cf-message">Message</label>
-                            <textarea
-                                id="cf-message" name="message"
-                                placeholder="Write your message here..."
-                                value={formData.message}
-                                onChange={handleChange}
-                                required
-                                disabled={isLoading}
-                            />
-                        </div>
-                    </div>
-
-                    <button className="btn-send" type="submit" disabled={isLoading}>
-                        {isLoading
-                            ? <><span className="btn-spinner" /> Sending...</>
-                            : 'SEND MESSAGE'
-                        }
-                    </button>
-
-                    {status === 'success' && (
-                        <p className="form-status success">
-                            ✅ Message sent! We'll get back to you soon.
-                        </p>
-                    )}
-                    {status === 'error' && (
-                        <p className="form-status error">
-                            ❌ {errorMsg}
-                        </p>
-                    )}
-                </form>
-
             </div>
             <div className="contact-map-frame">
                 <iframe
