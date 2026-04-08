@@ -1,0 +1,233 @@
+/* ═══════════════════════════════════════════
+   HOW WE HELP — About Page (hwh- prefix)
+   ═══════════════════════════════════════════ */
+
+.hwh-section {
+    background: #e8520a;
+    padding: 80px 60px;
+}
+
+/* ── Label ── */
+.hwh-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.hwh-label span {
+    color: #fff;
+    font-size: 27px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* ── Heading ── */
+.hwh-title {
+    font-size: 36px;
+    font-weight: 800;
+    color: #fff;
+    text-align: center;
+    margin: 0 0 56px;
+    line-height: 1.3;
+}
+
+/* ── Grid ── */
+.hwh-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px 32px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* ── Card — hidden by default for animation ── */
+.hwh-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    background: #fff5ee;
+    border-radius: 18px;
+    padding: 24px 20px;
+    border: 1.5px solid #fbd8c4;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+/* Slide directions */
+.hwh-card--from-left  { transform: translateX(-60px); }
+.hwh-card--from-right { transform: translateX(60px); }
+
+/* Triggered by IntersectionObserver */
+.hwh-card--visible {
+    opacity: 1;
+    transform: translateX(0) !important;
+}
+
+/* Hover — only when visible so it doesn't fight the animation */
+.hwh-card--visible:hover {
+    background: #fff;
+    transform: translateY(-6px) !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.14);
+    border-color: #f0b090;
+}
+
+/* Stagger delays */
+.hwh-card:nth-child(1) { transition-delay: 0s;   }
+.hwh-card:nth-child(2) { transition-delay: 0.1s; }
+.hwh-card:nth-child(3) { transition-delay: 0.2s; }
+.hwh-card:nth-child(4) { transition-delay: 0.3s; }
+.hwh-card:nth-child(5) { transition-delay: 0.4s; }
+
+/* ── Icon box ── */
+.hwh-card-icon {
+    width: 66px;
+    height: 66px;
+    min-width: 66px;
+    background: #fff;
+    border-radius: 14px;
+    border: 1.5px solid #fbd8c4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.hwh-card--visible:hover .hwh-card-icon {
+    border-color: #e8520a;
+    box-shadow: 0 4px 14px rgba(232, 82, 10, 0.18);
+}
+
+/* ── Card text ── */
+.hwh-card-body {
+    flex: 1;
+}
+
+.hwh-card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1c1c1c;
+    margin: 0 0 8px;
+    line-height: 1.3;
+}
+
+.hwh-card-desc {
+    font-size: 13.5px;
+    color: #7a4a36;
+    line-height: 1.65;
+    margin: 0;
+}
+
+/* ══════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .hwh-section {
+        padding: 60px 40px;
+    }
+
+    .hwh-title {
+        font-size: 28px;
+        margin-bottom: 40px;
+    }
+
+    .hwh-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px 28px;
+    }
+
+    .hwh-card-icon {
+        width: 58px;
+        height: 58px;
+        min-width: 58px;
+    }
+
+    .hwh-card-title {
+        font-size: 15px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .hwh-section {
+        padding: 40px 20px;
+    }
+
+    .hwh-title {
+        font-size: 22px;
+        margin-bottom: 28px;
+    }
+
+    .hwh-title br {
+        display: none;
+    }
+
+    .hwh-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px 16px;
+    }
+
+    .hwh-card {
+        flex-direction: column;
+        gap: 12px;
+        padding: 18px 16px;
+    }
+
+    .hwh-card-icon {
+        width: 52px;
+        height: 52px;
+        min-width: 52px;
+        border-radius: 12px;
+    }
+
+    .hwh-card-title {
+        font-size: 14px;
+        margin-bottom: 6px;
+    }
+
+    .hwh-card-desc {
+        font-size: 12.5px;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    .hwh-section {
+        padding: 28px 14px;
+    }
+
+    .hwh-title {
+        font-size: 19px;
+        margin-bottom: 22px;
+    }
+
+    .hwh-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .hwh-card {
+        flex-direction: row;
+        gap: 16px;
+        padding: 18px 16px;
+    }
+
+    .hwh-card-icon {
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+    }
+
+    .hwh-card-title {
+        font-size: 14px;
+    }
+
+    .hwh-card-desc {
+        font-size: 13px;
+    }
+}
