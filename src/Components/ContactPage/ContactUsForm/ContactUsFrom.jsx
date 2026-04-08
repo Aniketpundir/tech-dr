@@ -198,16 +198,15 @@ const ContactUsForm = () => {
                     )}
                 </form>
 
-                <div className="contact-map-frame">
-                    <iframe
-                        title="The Tech Dr location on Google Maps"
-                        src={mapEmbedSrc}
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                    />
-                </div>
             </div>
-
+            <div className="contact-map-frame">
+                <iframe
+                    title="The Tech Dr location on Google Maps"
+                    src={mapEmbedSrc}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                />
+            </div>
         </section>
     );
 };
