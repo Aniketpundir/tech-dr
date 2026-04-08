@@ -5,6 +5,7 @@ import Layout from './Components/Layout';
 import Home from './Pages/Home';
 import About from './Pages/About';
 import Contact from './Pages/Contact';
+import Services from './Components/Home_Section/Services/Services';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -12,6 +13,7 @@ const router = createBrowserRouter(
             <Route index element={<Home />} />
             <Route path='/about-us' element={<About />} />
             <Route path='/contact-us' element={<Contact />} />
+            <Route path='/services' element={<Services />} />
         </Route>
     )
 )
