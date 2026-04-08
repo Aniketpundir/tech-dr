@@ -48,9 +48,6 @@ const socialLinks = [
     }
 ];
 
-const mapQuery = '13 Bridge St, Epping NSW 2121, Australia';
-const mapEmbedSrc = `https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}&z=15&output=embed`;
-
 const ContactPage = () => {
 
     return (
@@ -71,8 +68,7 @@ const ContactPage = () => {
                                 </div>
                             ))}
 
-                            <div className="contact-info-block">
-                                <h2>Share:</h2>
+                            <div className="contact-info-block contact">
                                 <div className="contact-share-row">
                                     {socialLinks.map((item) => (
                                         <a key={item.label} href={item.href} className="contact-social-link" aria-label={item.label}>
@@ -81,16 +77,6 @@ const ContactPage = () => {
                                     ))}
                                 </div>
                             </div>
-                        </div>
-
-                        {/* EMBEDDED MAP */}
-                        <div className="contact-map-frame">
-                            <iframe
-                                title="The Tech Dr location on Google Maps"
-                                src={mapEmbedSrc}
-                                loading="lazy"
-                                referrerPolicy="no-referrer-when-downgrade"
-                            />
                         </div>
                     </div>
 
