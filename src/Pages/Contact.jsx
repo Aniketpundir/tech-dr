@@ -1,11 +1,10 @@
 import React from 'react'
-import TopBar from '../Components/TopBar/TopBar'
-import Navbar from '../Components/Navbar/Navbar'
+import ContactPage from '../Components/ContactPage/ContactPage'
 
 const Contact = () => {
     return (
         <>
-
+            <ContactPage />
         </>
     )
 }
