@@ -63,8 +63,8 @@ const cards = [
 ];
 
 const stats = [
-    { value: 2,  suffix: '+', label: 'Years Of Experience', cls: '' },
-    { value: 20, suffix: '+', label: 'Devices Repaired',    cls: 'wcu-stat-bubble--orange' },
+    { value: 2, suffix: '+', label: 'Years Of Experience', cls: '' },
+    { value: 20, suffix: '+', label: 'Devices Repaired', cls: 'wcu-stat-bubble--orange' },
     { value: 33, suffix: '%', label: 'Satisfied customers', cls: '' },
 ];
 
@@ -110,11 +110,6 @@ const WhyChooseUs = () => (
                     </div>
                 ))}
             </div>
-
-            <div className="wcu-image">
-                <img src={WhyImg} alt="Why Choose Us" />
-            </div>
-
             <div className="wcu-stats">
                 {stats.map((s, i) => (
                     <StatBubble key={i} {...s} />

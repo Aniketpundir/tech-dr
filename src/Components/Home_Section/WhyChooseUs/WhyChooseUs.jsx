@@ -99,8 +99,8 @@ const StatBubble = ({ value, suffix, label, cls }) => {
     );
 };
 
-const WhyChooseUs = () => (
-    <section className="why">
+const WhyChooseUs = () => {
+    return (<section className="why">
         <div className="why-badge">
             <Star />
             <span className="why-badge__text">WHY CHOOSE US</span>
@@ -137,8 +137,10 @@ const WhyChooseUs = () => (
                 ))}
             </div>
 
+
         </div>
     </section>
-);
+    );
+}
 
 export default WhyChooseUs;
