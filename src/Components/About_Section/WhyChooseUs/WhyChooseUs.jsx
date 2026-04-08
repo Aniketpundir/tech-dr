@@ -64,58 +64,58 @@ const cards = [
 
 const stats = [
     { value: 2,  suffix: '+', label: 'Years Of Experience', cls: '' },
-    { value: 20, suffix: '+', label: 'Devices Repaired',    cls: 'orange-bg' },
+    { value: 20, suffix: '+', label: 'Devices Repaired',    cls: 'wcu-stat-bubble--orange' },
     { value: 33, suffix: '%', label: 'Satisfied customers', cls: '' },
 ];
 
 const StatBubble = ({ value, suffix, label, cls }) => {
     const { count, ref } = useCountUp(value);
     return (
-        <div className={`stat-bubble ${cls}`} ref={ref}>
-            <span className="stat-num">{count}{suffix}</span>
-            <span className="stat-label">{label}</span>
+        <div className={`wcu-stat-bubble ${cls}`} ref={ref}>
+            <span className="wcu-stat-num">{count}{suffix}</span>
+            <span className="wcu-stat-label">{label}</span>
         </div>
     );
 };
 
 const WhyChooseUs = () => (
-    <section className="why">
-        <div className="why-badge">
+    <section className="wcu-section">
+        <div className="wcu-badge">
             <Star />
-            <span className="why-badge__text">WHY CHOOSE US</span>
+            <span className="wcu-badge__text">WHY CHOOSE US</span>
             <Star />
         </div>
 
-        <h2 className="why-title">
+        <h2 className="wcu-title">
             Experience Seamless Repairs: Your Devices Deserve the Best
         </h2>
 
-        <div className="why-inner">
+        <div className="wcu-inner">
 
-            <div className="why-grid">
+            <div className="wcu-grid">
                 {cards.map((card, i) => (
                     <div
-                        className={`why-card ${i % 4 === 1 || i % 4 === 2 ? 'why-card--dark' : 'why-card--light'}`}
+                        className={`wcu-card ${i % 4 === 1 || i % 4 === 2 ? 'wcu-card--dark' : 'wcu-card--light'}`}
                         key={card.id}
                     >
-                        <div className="why-card__icon-wrap">
+                        <div className="wcu-card__icon-wrap">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                                 <polyline points="20 6 9 17 4 12" />
                             </svg>
                         </div>
-                        <div className="why-card__body">
-                            <h3 className="why-card__title">{card.title}</h3>
-                            <p className="why-card__desc">{card.desc}</p>
+                        <div className="wcu-card__body">
+                            <h3 className="wcu-card__title">{card.title}</h3>
+                            <p className="wcu-card__desc">{card.desc}</p>
                         </div>
                     </div>
                 ))}
             </div>
 
-            <div className="why-image">
+            <div className="wcu-image">
                 <img src={WhyImg} alt="Why Choose Us" />
             </div>
 
-            <div className="why-stats">
+            <div className="wcu-stats">
                 {stats.map((s, i) => (
                     <StatBubble key={i} {...s} />
                 ))}

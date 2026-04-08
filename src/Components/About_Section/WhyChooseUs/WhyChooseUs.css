@@ -1,12 +1,12 @@
 /* WhyChooseUs.css */
 
-.why {
+.wcu-section {
     padding: 80px 40px;
     background: #fff;
 }
 
 /* ── Badge ── */
-.why-badge {
+.wcu-badge {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,7 +14,7 @@
     margin-bottom: 8px;
 }
 
-.why-badge__text {
+.wcu-badge__text {
     color: #e8520a;
     font-size: 28px;
     font-weight: 800;
@@ -24,7 +24,7 @@
 }
 
 /* ── Heading ── */
-.why-title {
+.wcu-title {
     text-align: center;
     font-size: 38px;
     font-weight: 900;
@@ -36,7 +36,7 @@
 }
 
 /* ── 3-column layout ── */
-.why-inner {
+.wcu-inner {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 40px;
@@ -44,41 +44,41 @@
 }
 
 /* ── Column 1: Card Grid (2x2) ── */
-.why-grid {
+.wcu-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
 }
 
 /* ── Card ── */
-.why-card {
+.wcu-card {
     border-radius: 16px;
     padding: 24px 20px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 14px;
     cursor: default;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     min-height: 200px;
 }
 
-.why-card:hover {
+.wcu-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
-.why-card--light {
+.wcu-card--light {
     background: #fff3ee;
     border: 2px solid #e8520a;
 }
 
-.why-card--dark {
+.wcu-card--dark {
     background: #e8520a;
 }
 
 /* ── Icon circle ── */
-.why-card__icon-wrap {
+.wcu-card__icon-wrap {
     width: 48px;
     height: 48px;
     border-radius: 50%;
@@ -89,72 +89,73 @@
     flex-shrink: 0;
 }
 
-.why-card--light .why-card__icon-wrap {
+.wcu-card--light .wcu-card__icon-wrap {
     background: #fde8dc;
     border-color: transparent;
 }
 
-.why-card--dark .why-card__icon-wrap {
+.wcu-card--dark .wcu-card__icon-wrap {
     background: rgba(255, 255, 255, 0.2);
     border-color: rgba(255, 255, 255, 0.5);
 }
 
-.why-card__icon-wrap svg {
+.wcu-card__icon-wrap svg {
     width: 20px;
     height: 20px;
 }
 
-.why-card--light .why-card__icon-wrap svg {
+.wcu-card--light .wcu-card__icon-wrap svg {
     stroke: #e8520a;
 }
 
-.why-card--dark .why-card__icon-wrap svg {
+.wcu-card--dark .wcu-card__icon-wrap svg {
     stroke: #ffffff;
 }
 
 /* ── Card body ── */
-.why-card__body {
+.wcu-card__body {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    align-items: center;
 }
 
-.why-card__title {
+.wcu-card__title {
     font-family: 'Nunito', sans-serif;
     font-size: 15px;
     font-weight: 900;
     line-height: 1.3;
-    text-align: left;
+    text-align: center;
     margin: 0;
 }
 
-.why-card--light .why-card__title {
+.wcu-card--light .wcu-card__title {
     color: #1a1a2e;
 }
 
-.why-card--dark .why-card__title {
+.wcu-card--dark .wcu-card__title {
     color: #ffffff;
 }
 
-.why-card__desc {
+.wcu-card__desc {
     font-family: 'Mulish', sans-serif;
     font-size: 12px;
     font-weight: 500;
     line-height: 1.6;
     margin: 0;
-
+    text-align: center;
 }
 
-.why-card--light .why-card__desc {
+.wcu-card--light .wcu-card__desc {
     color: #6b7280;
 }
 
-.why-card--dark .why-card__desc {
+.wcu-card--dark .wcu-card__desc {
     color: rgba(255, 255, 255, 0.85);
 }
 
 /* ── Column 2: Image ── */
-.why-image {
+.wcu-image {
     border-radius: 16px;
     overflow: hidden;
     height: 430px;
@@ -164,20 +165,20 @@
     justify-content: center;
 }
 
-.why-image img {
+.wcu-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
 /* ── Column 3: Stats ── */
-.why-stats {
+.wcu-stats {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.stat-bubble {
+.wcu-stat-bubble {
     background: #fff5ee;
     border-radius: 50%;
     width: 160px;
@@ -188,29 +189,29 @@
     justify-content: center;
     margin: 0 auto;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    animation: bubbleFadeIn 0.5s ease forwards;
+    animation: wcuBubbleFadeIn 0.5s ease forwards;
     opacity: 0;
 }
 
-.stat-bubble:hover {
+.wcu-stat-bubble:hover {
     transform: scale(1.06);
     box-shadow: 0 8px 24px rgba(232, 82, 10, 0.18);
 }
 
-.stat-bubble.orange-bg {
+.wcu-stat-bubble--orange {
     background: #fff3ee;
 }
 
-.stat-bubble:nth-child(1) { animation-delay: 0s; }
-.stat-bubble:nth-child(2) { animation-delay: 0.15s; }
-.stat-bubble:nth-child(3) { animation-delay: 0.3s; }
+.wcu-stat-bubble:nth-child(1) { animation-delay: 0s; }
+.wcu-stat-bubble:nth-child(2) { animation-delay: 0.15s; }
+.wcu-stat-bubble:nth-child(3) { animation-delay: 0.3s; }
 
-@keyframes bubbleFadeIn {
+@keyframes wcuBubbleFadeIn {
     from { opacity: 0; transform: scale(0.75); }
     to   { opacity: 1; transform: scale(1); }
 }
 
-.stat-bubble .stat-num {
+.wcu-stat-num {
     font-size: 36px;
     font-weight: 900;
     color: #e8520a;
@@ -218,7 +219,7 @@
     font-family: 'Nunito', sans-serif;
 }
 
-.stat-bubble .stat-label {
+.wcu-stat-label {
     font-size: 13px;
     font-weight: 700;
     color: #1a1a2e;
@@ -235,134 +236,134 @@
 
 /* ── Tablet (max-width: 1024px) ── */
 @media (max-width: 1024px) {
-    .why {
+    .wcu-section {
         padding: 60px 30px;
     }
 
-    .why-title {
+    .wcu-title {
         font-size: 32px;
         margin-bottom: 30px;
     }
 
-    .why-inner {
+    .wcu-inner {
         grid-template-columns: 1fr 1fr;
         gap: 30px;
     }
 
-    .why-grid {
+    .wcu-grid {
         grid-column: 1 / -1;
         grid-template-columns: repeat(4, 1fr);
         gap: 12px;
     }
 
-    .why-card {
+    .wcu-card {
         padding: 20px 14px;
         min-height: 180px;
         gap: 10px;
     }
 
-    .why-card__title {
+    .wcu-card__title {
         font-size: 13px;
     }
 
-    .why-card__desc {
+    .wcu-card__desc {
         font-size: 11px;
     }
 
-    .why-card__icon-wrap {
+    .wcu-card__icon-wrap {
         width: 42px;
         height: 42px;
     }
 
-    .why-image {
+    .wcu-image {
         height: 260px;
     }
 
-    .why-stats {
+    .wcu-stats {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
         gap: 16px;
     }
 
-    .stat-bubble {
+    .wcu-stat-bubble {
         width: 140px;
         height: 140px;
     }
 
-    .stat-bubble .stat-num {
+    .wcu-stat-num {
         font-size: 30px;
     }
 }
 
 /* ── Mobile (max-width: 768px) ── */
 @media (max-width: 768px) {
-    .why {
+    .wcu-section {
         padding: 40px 20px;
     }
 
-    .why-title {
+    .wcu-title {
         font-size: 26px;
         max-width: 100%;
         margin-bottom: 24px;
     }
 
-    .why-inner {
+    .wcu-inner {
         grid-template-columns: 1fr;
         gap: 28px;
     }
 
-    .why-grid {
+    .wcu-grid {
         grid-column: auto;
         grid-template-columns: 1fr 1fr;
         gap: 12px;
     }
 
-    .why-card {
+    .wcu-card {
         padding: 20px 16px;
         border-radius: 14px;
         min-height: 160px;
     }
 
-    .why-card__icon-wrap {
+    .wcu-card__icon-wrap {
         width: 40px;
         height: 40px;
     }
 
-    .why-card__icon-wrap svg {
+    .wcu-card__icon-wrap svg {
         width: 18px;
         height: 18px;
     }
 
-    .why-card__title {
+    .wcu-card__title {
         font-size: 13px;
     }
 
-    .why-card__desc {
+    .wcu-card__desc {
         font-size: 11px;
     }
 
-    .why-image {
+    .wcu-image {
         height: 220px;
         border-radius: 12px;
     }
 
-    .why-stats {
+    .wcu-stats {
         flex-direction: row;
         justify-content: center;
         gap: 14px;
     }
 
-    .stat-bubble {
+    .wcu-stat-bubble {
         width: 130px;
         height: 130px;
     }
 
-    .stat-bubble .stat-num {
+    .wcu-stat-num {
         font-size: 28px;
     }
 
-    .stat-bubble .stat-label {
+    .wcu-stat-label {
         font-size: 12px;
         padding: 0 10px;
     }
@@ -370,63 +371,63 @@
 
 /* ── Mobile Small (max-width: 480px) ── */
 @media (max-width: 480px) {
-    .why {
+    .wcu-section {
         padding: 30px 14px;
     }
 
-    .why-title {
+    .wcu-title {
         font-size: 22px;
         margin-bottom: 20px;
     }
 
-    .why-grid {
+    .wcu-grid {
         gap: 10px;
         grid-template-columns: 1fr 1fr;
     }
 
-    .why-card {
+    .wcu-card {
         padding: 16px 12px;
         border-radius: 12px;
         gap: 10px;
         min-height: 140px;
     }
 
-    .why-card__icon-wrap {
+    .wcu-card__icon-wrap {
         width: 36px;
         height: 36px;
     }
 
-    .why-card__icon-wrap svg {
+    .wcu-card__icon-wrap svg {
         width: 16px;
         height: 16px;
     }
 
-    .why-card__title {
+    .wcu-card__title {
         font-size: 12px;
     }
 
-    .why-card__desc {
+    .wcu-card__desc {
         font-size: 10px;
     }
 
-    .why-image {
+    .wcu-image {
         height: 180px;
     }
 
-    .why-stats {
+    .wcu-stats {
         gap: 10px;
     }
 
-    .stat-bubble {
+    .wcu-stat-bubble {
         width: 150px;
         height: 150px;
     }
 
-    .stat-bubble .stat-num {
+    .wcu-stat-num {
         font-size: 24px;
     }
 
-    .stat-bubble .stat-label {
+    .wcu-stat-label {
         font-size: 11px;
         padding: 0 8px;
     }
