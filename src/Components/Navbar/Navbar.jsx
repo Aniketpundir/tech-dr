@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/logo.webp';
+import { MyContext } from '../../StoreContext';
 import './Navbar.css';
 
 const navItems = [
     { label: 'Home', path: '/' },
     { label: 'About Us', path: '/about-us' },
     { label: 'Services', path: '/services' },
-    // { label: 'Reviews', path: '/reviews' },
-    // { label: 'Service Areas', path: '/service-areas' },
     { label: 'Contact Us', path: '/contact-us' },
 ];
 
@@ -17,6 +16,8 @@ const Navbar = () => {
 
     const openDrawer = () => setDrawerOpen(true);
     const closeDrawer = () => setDrawerOpen(false);
+
+    const { setUser } = useContext(MyContext);
 
     return (
         <>
@@ -33,6 +34,7 @@ const Navbar = () => {
                             <NavLink
                                 to={item.path}
                                 className={({ isActive }) => isActive ? 'active' : ''}
+                                onClick={() => { setUser(item.label) }}
                             >
                                 {item.label}
                             </NavLink>
@@ -80,7 +82,7 @@ const Navbar = () => {
                             <NavLink
                                 to={item.path}
                                 className={({ isActive }) => isActive ? 'active' : ''}
-                                onClick={closeDrawer}
+                                onClick={() => { closeDrawer(), setUser(item.label) }}
                             >
                                 {item.label}
                             </NavLink>

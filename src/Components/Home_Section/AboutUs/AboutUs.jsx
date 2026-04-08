@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './AboutUs.css';
+import { MyContext } from '../../../StoreContext';
 import About from "../../../assets/about.webp"
 
 const Star = () => (
@@ -8,56 +9,68 @@ const Star = () => (
     </svg>
 );
 
-const AboutUs = () => (
+const AboutUs = () => {
+    const { user } = useContext(MyContext);
+    return (
+        <section className="about">
+            <div className="about-content">
+                <div className="section-label">
+                    {user !== "About Us" || user === "Home" ?
+                        <>
+                            <Star /> <span style={{ color: '#e8520a', fontSize: '30px', fontWeight: '700', letterSpacing: '1.5px', textTransform: 'uppercase' }}>
+                                About Us
+                            </span>
+                            <Star />
+                        </>
+                        :
+                        ""
+                    }
 
-    <section className="about">
-        <div className="about-content">
-            <div className="section-label">
-                <Star /> <span style={{ color: '#e8520a', fontSize: '30px', fontWeight: '700', letterSpacing: '1.5px', textTransform: 'uppercase' }}>ABOUT US</span> <Star />
+                </div>
+                <h2>Welcome To The Tech Dr.</h2>
+                <p>We are the premium company providing services in the area of Sydney and surrounding suburbs.</p>
+
+                <div className="about-features">
+                    <div className="about-feature">
+                        <div className="feature-icon orange">
+                            <svg width="24" height="24" fill="none" stroke="#e8520a" strokeWidth="2" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="3" /><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Computer & Technology Repair Service</h4>
+                        </div>
+                    </div>
+                    <div className="about-feature">
+                        <div className="feature-icon blue">
+                            <svg width="24" height="24" fill="none" stroke="#4488cc" strokeWidth="2" viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>100% Fix</h4>
+                        </div>
+                    </div>
+                    <div className="about-feature">
+                        <div className="feature-icon teal">
+                            <svg width="24" height="24" fill="none" stroke="#22aa88" strokeWidth="2" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Excellent Service</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <p className="about-desc">
+                    With our specialized and experienced team of customer support, we ensure a fast service at the convenience of your own home or office. Our super fast desktop support allows you to get your problems rectified in a matter of hours. If you are having any computer repair issues, feel free to contact us on 1300 072 073 for a Cost-Effective, Professional Computer Repair Service.
+                </p>
+
+                {/* <button className="btn-about">ABOUT US</button> */}
             </div>
-            <h2>Welcome To The Tech Dr.</h2>
-            <p>We are the premium company providing services in the area of Sydney and surrounding suburbs.</p>
-
-            <div className="about-features">
-                <div className="about-feature">
-                    <div className="feature-icon orange">
-                        <svg width="24" height="24" fill="none" stroke="#e8520a" strokeWidth="2" viewBox="0 0 24 24">
-                            <circle cx="12" cy="12" r="3" /><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14" />
-                        </svg>
-                    </div>
-                    <div>
-                        <h4>Computer & Technology Repair Service</h4>
-                    </div>
-                </div>
-                <div className="about-feature">
-                    <div className="feature-icon blue">
-                        <svg width="24" height="24" fill="none" stroke="#4488cc" strokeWidth="2" viewBox="0 0 24 24">
-                            <path d="M22 11.08V12a10 10 0 11-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" />
-                        </svg>
-                    </div>
-                    <div>
-                        <h4>100% Fix</h4>
-                    </div>
-                </div>
-                <div className="about-feature">
-                    <div className="feature-icon teal">
-                        <svg width="24" height="24" fill="none" stroke="#22aa88" strokeWidth="2" viewBox="0 0 24 24">
-                            <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
-                        </svg>
-                    </div>
-                    <div>
-                        <h4>Excellent Service</h4>
-                    </div>
-                </div>
-            </div>
-
-            <p className="about-desc">
-                With our specialized and experienced team of customer support, we ensure a fast service at the convenience of your own home or office. Our super fast desktop support allows you to get your problems rectified in a matter of hours. If you are having any computer repair issues, feel free to contact us on 1300 072 073 for a Cost-Effective, Professional Computer Repair Service.
-            </p>
-
-            {/* <button className="btn-about">ABOUT US</button> */}
-        </div>
-    </section>
-);
+        </section>
+    );
+}
 
 export default AboutUs;
