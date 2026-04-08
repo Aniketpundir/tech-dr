@@ -68,7 +68,7 @@ const ContactPage = () => {
                                 </div>
                             ))}
 
-                            <div className="contact-info-block contact">
+                            <div className="contact-info-block">
                                 <div className="contact-share-row">
                                     {socialLinks.map((item) => (
                                         <a key={item.label} href={item.href} className="contact-social-link" aria-label={item.label}>
@@ -86,7 +86,7 @@ const ContactPage = () => {
                     </div>
                 </div>
             </div>
-        </section >
+        </section>
     );
 };
 
