@@ -2,6 +2,11 @@
     font-family: 'Segoe UI', sans-serif;
 }
 
+.orange-line {
+    padding: 2px;
+    background: linear-gradient(90deg, #e8520a 0%, #f0a030 100%);
+}
+
 /* ── White top bar ── */
 .footer-top-white {
     background: #ffffff;

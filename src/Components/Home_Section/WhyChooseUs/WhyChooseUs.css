@@ -68,6 +68,7 @@
 
 .why-card--light {
     background: #fff3ee;
+    border: 2px solid #e8520a;
 }
 
 .why-card--dark {
@@ -144,7 +145,8 @@
 }
 
 .stat-bubble {
-    background: #f0f4ff;
+    background: #fff5ee;
+    ;
     border-radius: 50%;
     width: 160px;
     height: 160px;

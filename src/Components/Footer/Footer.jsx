@@ -4,7 +4,7 @@ import logo from '../../assets/logo.webp';
 
 const Footer = () => (
     <footer className="footer">
-        {/* ── White top bar: Logo left, Email right ── */}
+        <div className='orange-line'></div>
         <div className="footer-top-white">
             <div className="footer-logo">
                 <img src={logo} alt="The Tech Dr" className="footer-logo-img" />
