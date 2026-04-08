@@ -54,6 +54,7 @@
 }
 
 .about-content>p {
+    text-align: center;
     font-size: 15px;
     color: #888;
     line-height: 1.7;
@@ -113,6 +114,7 @@
 }
 
 .about-desc {
+    text-align: center;
     font-size: 14px;
     color: #888;
     line-height: 1.7;
