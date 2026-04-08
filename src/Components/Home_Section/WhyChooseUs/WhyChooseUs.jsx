@@ -84,8 +84,8 @@ const cards = [
 ];
 
 const stats = [
-    { value: 2,  suffix: '+', label: 'Years Of Experience', cls: '' },
-    { value: 20, suffix: '+', label: 'Devices Repaired',    cls: 'orange-bg' },
+    { value: 2, suffix: '+', label: 'Years Of Experience', cls: '' },
+    { value: 20, suffix: '+', label: 'Devices Repaired', cls: 'orange-bg' },
     { value: 33, suffix: '%', label: 'Satisfied customers', cls: '' },
 ];
 

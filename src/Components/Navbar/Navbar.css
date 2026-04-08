@@ -74,6 +74,7 @@
 }
 
 .btn-quote {
+    text-decoration: none;
     background: #e8520a;
     color: #fff;
     padding: 12px 24px;
@@ -268,9 +269,10 @@
 
 /* ── Mobile Small (max-width: 480px) ── */
 @media (max-width: 480px) {
-    .orage-line{
+    .orage-line {
         padding: 2px;
     }
+
     .navbar {
         padding: 10px 14px;
     }

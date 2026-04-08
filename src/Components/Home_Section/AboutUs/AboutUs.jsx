@@ -9,14 +9,8 @@ const Star = () => (
 );
 
 const AboutUs = () => (
-    <section className="about">
-        {/* <div className="about-image">
-            <div className="blob-bg"></div>
-            <div className="about-image-inner">
-                <img src={About} alt="About The Tech Dr" />
-            </div>
-        </div> */}
 
+    <section className="about">
         <div className="about-content">
             <div className="section-label">
                 <Star /> <span style={{ color: '#e8520a', fontSize: '30px', fontWeight: '700', letterSpacing: '1.5px', textTransform: 'uppercase' }}>ABOUT US</span> <Star />

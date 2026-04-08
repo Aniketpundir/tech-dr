@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/logo.webp';
 import './Navbar.css';
 
@@ -42,7 +42,7 @@ const Navbar = () => {
 
                 {/* Desktop Right */}
                 <div className="navbar-right">
-                    <button className="btn-quote">Make a Booking</button>
+                    <Link to="/contact-us" className="btn-quote">Make a Booking</Link>
                 </div>
 
                 {/* Hamburger — mobile only */}

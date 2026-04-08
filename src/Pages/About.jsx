@@ -7,8 +7,8 @@ const About = () => {
     return (
         <>
             <AboutHero />
-            <AboutUs/>
-            <WhyChooseUs/>
+            <AboutUs />
+            <WhyChooseUs />
         </>
     )
 }

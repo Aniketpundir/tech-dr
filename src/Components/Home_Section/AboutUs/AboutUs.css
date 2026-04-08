@@ -43,6 +43,8 @@
 }
 
 .about-content {
+    display: flex;
+    flex-direction: column;
     flex: 1;
 }
 
@@ -146,6 +148,13 @@
     display: flex;
     align-items: center;
     gap: 8px;
+}
+
+.label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* ── Tablet (max-width: 1024px) ── */

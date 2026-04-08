@@ -11,6 +11,7 @@
 .about-hero h1 {
     font-size: 36px;
     color: #e8520a;
+    font-family: 'Nunito', sans-serif;
 }
 
 
@@ -38,12 +39,15 @@
 
 .about-right h2 {
     font-size: 36px;
-    color: #D4A017;
+    color: #e8520a;
+    font-family: 'Nunito', sans-serif;
 }
 
 .about-right h3 {
     font-size: 30px;
+    font-weight: bold;
     color: #e8520a;
+    font-family: 'Nunito', sans-serif;
 }
 
 @media (max-width:768px) {
