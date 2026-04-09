@@ -119,7 +119,7 @@ const ContactForm = () => {
                             <span className="urgent-num">1300 072 073</span>
                         </div>
                     </div>
-                    <div className="google-rating">
+                    {/* <div className="google-rating">
                         <svg width="28" height="28" viewBox="0 0 48 48">
                             <path fill="#4285F4" d="M44.5 20H24v8.5h11.7C34.1 33.4 29.6 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.8 1.1 7.9 3l6-6C34.5 6.3 29.5 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20c11 0 20-8 20-20 0-1.3-.2-2.7-.5-4z" />
                         </svg>
@@ -131,7 +131,7 @@ const ContactForm = () => {
                             <div className="g-based">Based on 124 reviews</div>
                             <div className="g-based">powered by <strong>Google</strong></div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 
