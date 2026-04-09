@@ -25,8 +25,11 @@ const TopBar = () => {
                     </svg>
                 </div>
                 <div className="support-text">
-                    <span className="support-title">Urgent Need Support?</span>
-                    <span className="support-info">1300 072 073 &nbsp;&nbsp; info@thetechdr.com.au</span>
+                    <span className="support-title">Need urgent IT support?</span>
+                    <div className='contact-details'>
+                        <a href="tel:1300072073" className="support-info">1300 072 073 </a>
+                        <a href="mailto:info@thetechdr.com.au" className="support-info">info@thetechdr.com.au</a>
+                    </div>
                 </div>
             </div>
 
@@ -66,7 +69,7 @@ const TopBar = () => {
                 </a>
             </div>
 
-        </div>
+        </div >
     );
 };
 
