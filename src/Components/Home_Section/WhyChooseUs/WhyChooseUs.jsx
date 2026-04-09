@@ -84,9 +84,9 @@ const cards = [
 ];
 
 const stats = [
-    { value: 2, suffix: '+', label: 'Years Of Experience', cls: '' },
-    { value: 20, suffix: '+', label: 'Devices Repaired', cls: 'orange-bg' },
-    { value: 33, suffix: '%', label: 'Satisfied customers', cls: '' },
+    { value: 15, suffix: '+', label: 'Years Of Experience', cls: '' },
+    { value: 55, suffix: '+', label: 'Devices Repaired', cls: 'orange-bg' },
+    { value: 100, suffix: '%', label: 'Satisfied customers', cls: '' },
 ];
 
 const StatBubble = ({ value, suffix, label, cls }) => {

@@ -33,20 +33,20 @@ const contactItems = [
     }
 ];
 
-const socialLinks = [
-    {
-        label: 'Facebook', href: '#',
-        icon: <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3a5 5 0 0 0-5 5v3H6v4h3v4h4v-8h3.2l.8-4H13V9a1 1 0 0 1 1-1Z" fill="currentColor" /></svg>
-    },
-    {
-        label: 'LinkedIn', href: '#',
-        icon: <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 8.5H3.8V20h2.7V8.5Zm.2-3.5a1.7 1.7 0 1 0-3.4 0 1.7 1.7 0 0 0 3.4 0ZM20.2 13.2c0-3.1-1.7-4.8-4.2-4.8-1.9 0-2.8 1.1-3.3 1.9V8.5H10V20h2.7v-6.2c0-1.6.3-3.1 2.3-3.1 2 0 2 1.8 2 3.2V20h2.7v-6.8Z" fill="currentColor" /></svg>
-    },
-    {
-        label: 'Instagram', href: '#',
-        icon: <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5" fill="none" stroke="currentColor" strokeWidth="1.8" /><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" strokeWidth="1.8" /><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" /></svg>
-    }
-];
+// const socialLinks = [
+//     {
+//         label: 'Facebook', href: '#',
+//         icon: <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3a5 5 0 0 0-5 5v3H6v4h3v4h4v-8h3.2l.8-4H13V9a1 1 0 0 1 1-1Z" fill="currentColor" /></svg>
+//     },
+//     {
+//         label: 'LinkedIn', href: '#',
+//         icon: <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 8.5H3.8V20h2.7V8.5Zm.2-3.5a1.7 1.7 0 1 0-3.4 0 1.7 1.7 0 0 0 3.4 0ZM20.2 13.2c0-3.1-1.7-4.8-4.2-4.8-1.9 0-2.8 1.1-3.3 1.9V8.5H10V20h2.7v-6.2c0-1.6.3-3.1 2.3-3.1 2 0 2 1.8 2 3.2V20h2.7v-6.8Z" fill="currentColor" /></svg>
+//     },
+//     {
+//         label: 'Instagram', href: '#',
+//         icon: <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5" fill="none" stroke="currentColor" strokeWidth="1.8" /><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" strokeWidth="1.8" /><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" /></svg>
+//     }
+// ];
 
 const ContactPage = () => {
 
