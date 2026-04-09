@@ -1,15 +1,18 @@
 import React from 'react';
 import './Services.css';
-import cctv from "../../../assets/cctv.jpg";
+import cctv from "../../../assets/cctv-new.jpg.jpeg";
 import data from "../../../assets/data.jpg";
-import hardware from "../../../assets/hardware-repair.jpg";
-import internet from "../../../assets/internet-email-ssues.jpg";
-import mac from "../../../assets/mac-repair.jpg";
+import hardware from "../../../assets/hardware-repair-new.jpeg";
+import internet from "../../../assets/internet-issues.jpeg";
+import mac from "../../../assets/mac-repair-new.jpeg";
 import mobile from "../../../assets/mobile-up-scaled.jpg";
-import networksetup from "../../../assets/networksetup-scaled.jpg";
-import pc from "../../../assets/pc-building.jpg";
-import servers from "../../../assets/servers-setup.jpg";
-import software from "../../../assets/software-device-tutorials.jpg";
+import networksetup from "../../../assets/networksetup-scaled-new.jpg.jpeg";
+import pc from "../../../assets/gaming-pc.jpeg";
+import servers from "../../../assets/servers-setup-new.jpeg";
+import software from "../../../assets/software-device-tutorials-new.jpg.jpeg";
+import protectionHacker from "../../../assets/protection-from-hacker.jpeg";
+import starlink from "../../../assets/starlink.jpeg";
+import bussinessSystem from "../../../assets/bussiness-phone-system.jpeg";
 
 const allServices = [
     {
@@ -62,6 +65,21 @@ const allServices = [
         desc: 'Dominate the leaderboard with a custom-built rig. We assemble premium gaming PCs, optimize cooling systems, and repair specialist hardware to maximize your framerates.',
         img: pc,
     },
+    {
+        title: 'Business Phone System Set Up',
+        desc: 'Upgrade your business communications. We provide comprehensive setup and configuration of modern, scalable VoIP phone systems tailored to keep your team connected.',
+        img: bussinessSystem,
+    },
+    {
+        title: 'Protection From Hackers',
+        desc: 'Safeguard your digital life and business data. We implement robust cybersecurity measures, including advanced firewalls, malware protection, and network audits to keep hackers at bay.',
+        img: protectionHacker,
+    },
+    {
+        title: 'Starlink Set Up',
+        desc: 'Experience high-speed satellite internet anywhere. We offer professional, secure installation and optimization of Starlink dishes and routers for uninterrupted connectivity.',
+        img: starlink,
+    }
 ];
 
 const Star = () => (
@@ -82,12 +100,12 @@ const Services = () => {
                 {allServices.map((s, i) => (
                     <div className="service-card" key={i}>
                         <h3>{s.title}</h3>
-                        {/* Image is now placed BEFORE the description text */}
                         <div className="service-card-img">
                             <img src={s.img} alt={s.title} />
                         </div>
-                        {/* Description text is now perfectly underneath the image */}
                         <p>{s.desc}</p>
+                        {/* Call Us Now Button */}
+                        <a href="tel:1300072073" className="btn-call-now">Call Us Now</a>
                     </div>
                 ))}
             </div>

@@ -96,6 +96,27 @@
     margin: 0; 
 }
 
+/* --- Call Us Now Button --- */
+.btn-call-now {
+    display: inline-block;
+    margin-top: 24px; /* Space between the text and the button */
+    padding: 12px 36px;
+    background: #e8520a;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-call-now:hover {
+    background: #c74205; /* Slightly darker orange on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(232, 82, 10, 0.3);
+}
+
 
 /* =========================================
    RESPONSIVE MEDIA QUERIES
