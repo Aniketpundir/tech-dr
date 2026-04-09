@@ -11,6 +11,13 @@ const navItems = [
     { label: 'Contact Us', path: '/contact-us' },
 ];
 
+const handleClick = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    })
+};
+
 const Navbar = () => {
     const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -34,7 +41,7 @@ const Navbar = () => {
                             <NavLink
                                 to={item.path}
                                 className={({ isActive }) => isActive ? 'active' : ''}
-                                onClick={() => { setUser(item.label) }}
+                                onClick={() => { setUser(item.label), handleClick() }}
                             >
                                 {item.label}
                             </NavLink>
@@ -44,7 +51,7 @@ const Navbar = () => {
 
                 {/* Desktop Right */}
                 <div className="navbar-right">
-                    <Link to="/contact-us" className="btn-quote">Make a Booking</Link>
+                    <Link to="/services" className="btn-quote">Our Services</Link>
                 </div>
 
                 {/* Hamburger — mobile only */}
@@ -82,7 +89,7 @@ const Navbar = () => {
                             <NavLink
                                 to={item.path}
                                 className={({ isActive }) => isActive ? 'active' : ''}
-                                onClick={() => { closeDrawer(), setUser(item.label) }}
+                                onClick={() => { closeDrawer(), setUser(item.label), handleClick() }}
                             >
                                 {item.label}
                             </NavLink>

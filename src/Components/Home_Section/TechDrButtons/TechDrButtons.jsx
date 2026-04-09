@@ -1,5 +1,13 @@
 import React, { useState } from "react";
 import "./TechDrButtons.css";
+import { Link } from "react-router-dom";
+
+const handleClick = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    })
+};
 
 const TechDrButtons = () => {
     const [quoteHover, setQuoteHover] = useState(false);
@@ -7,15 +15,17 @@ const TechDrButtons = () => {
 
     return (
         <div className="btn-wrapper">
-            <a href="tel:1300072073" className="btn-link">
-                <button
+            <a className="btn-link">
+                <Link
+                    to='/services'
                     className={`btn btn-quote ${quoteHover ? "btn-quote--hover" : ""}`}
                     onMouseEnter={() => setQuoteHover(true)}
                     onMouseLeave={() => setQuoteHover(false)}
+                    onClick={() => { handleClick() }}
                 >
                     <span className="btn-icon"></span>
-                    Make a Booking
-                </button>
+                    Our Services
+                </Link>
             </a>
 
             <a href="tel:1300072073" className="btn-link">
