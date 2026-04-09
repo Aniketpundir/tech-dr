@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './ContactUsFrom.css';
 import ContactImg from "../../../assets/contact-us.jpeg"
+import GoogleRating from '../../GoogleReviews';
 
 const Star = () => (
     <svg width="14" height="14" viewBox="0 0 14 14">
@@ -93,6 +94,7 @@ const ContactUsForm = () => {
     const isLoading = status === 'loading';
 
     return (
+        <>
         <section className="contact">
             <div className='contacts'>
                 <div className="contact-left">
@@ -210,6 +212,11 @@ const ContactUsForm = () => {
                 />
             </div>
         </section>
+        <br/>
+        <GoogleRating/>
+        <br/>
+        <br/>
+        </>
     );
 };
 

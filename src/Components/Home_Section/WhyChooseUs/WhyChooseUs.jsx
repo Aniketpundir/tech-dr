@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './WhyChooseUs.css';
-import WhyImg from '../../../assets/why-choose.webp';
+import WhyImg from '../../../assets/home-page-wcu.jpeg';
 
 const Star = () => (
     <svg width="14" height="14" viewBox="0 0 14 14">

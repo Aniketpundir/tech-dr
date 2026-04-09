@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './ContactForm.css';
-import ContactImg from "../../../assets/schedule.webp"
+import ContactImghome from "../../../assets/schedule.webp"
 
 const Star = () => (
     <svg width="14" height="14" viewBox="0 0 14 14">
@@ -96,7 +96,7 @@ const ContactForm = () => {
             <div className="contact-left">
                 <div className="contact-image-wrap">
                     <div className="contact-img-main">
-                        <img src={ContactImg} alt="Contact The Tech Dr" />
+                        <img src={ContactImghome} alt="Contact The Tech Dr" />
                     </div>
                     <div className="contact-deco top-right"></div>
                     <div className="contact-deco bottom-left"></div>

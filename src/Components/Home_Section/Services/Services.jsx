@@ -14,6 +14,7 @@ import protectionHacker from "../../../assets/protection-from-hacker.jpeg";
 import starlink from "../../../assets/starlink.jpeg";
 import bussinessSystem from "../../../assets/bussiness-phone-system.jpeg";
 import Testimonials from "../Testimonials/Testimonials"
+import GoogleRating from '../../GoogleReviews';
 
 const allServices = [
     {
@@ -92,6 +93,8 @@ const Star = () => (
 const Services = () => {
     return (
         <>
+        <br/>
+        <GoogleRating/>
         <section className="services">
             <div className="section-label">
                 <Star /> <span>FAST AND FRIENDLY SERVICES</span> <Star />

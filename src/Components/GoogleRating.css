@@ -1,0 +1,64 @@
+.rating-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rating-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: Arial, sans-serif;
+}
+
+/* Google logo */
+
+.google-logo {
+  width: 42px;
+}
+
+/* rating layout */
+
+.rating-content {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.rating-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* rating number */
+
+.rating-number {
+  font-size: 22px;
+  font-weight: 600;
+  color: #F4B400;
+}
+
+/* stars */
+
+.stars {
+  display: flex;
+  gap: 2px;
+}
+
+.star-svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* text colors */
+
+.review-text {
+  font-size: 13px;
+  color: #5F6368;
+}
+
+.powered-text {
+  font-size: 12px;
+  color: #5F6368;
+}
