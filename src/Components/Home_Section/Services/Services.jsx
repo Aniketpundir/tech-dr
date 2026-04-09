@@ -13,12 +13,13 @@ import software from "../../../assets/software-device-tutorials-new.jpg.jpeg";
 import protectionHacker from "../../../assets/protection-from-hacker.jpeg";
 import starlink from "../../../assets/starlink.jpeg";
 import bussinessSystem from "../../../assets/bussiness-phone-system.jpeg";
+import Testimonials from "../Testimonials/Testimonials"
 
 const allServices = [
     {
-        title: 'Data Recovery',
-        desc: 'Accidentally deleted files or facing a failing hard drive? We offer secure, professional data recovery solutions to retrieve your invaluable documents, photos, and business data quickly.',
-        img: data,
+        title: 'Gaming PC Building & Repair',
+        desc: 'Dominate the leaderboard with a custom-built rig. We assemble premium gaming PCs, optimize cooling systems, and repair specialist hardware to maximize your framerates.',
+        img: pc,
     },
     {
         title: 'Mac & Windows PC Repair',
@@ -61,12 +62,12 @@ const allServices = [
         img: servers,
     },
     {
-        title: 'Gaming PC Building & Repair',
-        desc: 'Dominate the leaderboard with a custom-built rig. We assemble premium gaming PCs, optimize cooling systems, and repair specialist hardware to maximize your framerates.',
-        img: pc,
+        title: 'Data Recovery',
+        desc: 'Accidentally deleted files or facing a failing hard drive? We offer secure, professional data recovery solutions to retrieve your invaluable documents, photos, and business data quickly.',
+        img: data,
     },
     {
-        title: 'Business Phone System Set Up',
+        title: <>Business Phone System <br /> Set Up</>,
         desc: 'Upgrade your business communications. We provide comprehensive setup and configuration of modern, scalable VoIP phone systems tailored to keep your team connected.',
         img: bussinessSystem,
     },
@@ -76,7 +77,7 @@ const allServices = [
         img: protectionHacker,
     },
     {
-        title: 'Starlink Set Up',
+        title: `Starlink Set Up`,
         desc: 'Experience high-speed satellite internet anywhere. We offer professional, secure installation and optimization of Starlink dishes and routers for uninterrupted connectivity.',
         img: starlink,
     }
@@ -90,6 +91,7 @@ const Star = () => (
 
 const Services = () => {
     return (
+        <>
         <section className="services">
             <div className="section-label">
                 <Star /> <span>FAST AND FRIENDLY SERVICES</span> <Star />
@@ -110,6 +112,8 @@ const Services = () => {
                 ))}
             </div>
         </section>
+        <Testimonials/>
+        </>
     );
 };
 
