@@ -4,6 +4,7 @@ import AboutUs from '../Components/Home_Section/AboutUs/AboutUs'
 import WhyChooseUs from '../Components/About_Section/WhyChooseUs/WhyChooseUs'
 import HowWeHelp from '../Components/About_Section/HowWeHelp/AbHowWeHelp'
 import GoogleRating from '../Components/GoogleReviews'
+import TechDrButtons from "../Components/Home_Section/TechDrButtons/TechDrButtons"
 
 const About = () => {
     return (
@@ -11,6 +12,7 @@ const About = () => {
             <div style={{ backgroundColor: '#fff5ee' }}>
                 <AboutHero />
                 <GoogleRating />
+                <TechDrButtons />
                 <AboutUs />
                 <WhyChooseUs />
                 <HowWeHelp />
