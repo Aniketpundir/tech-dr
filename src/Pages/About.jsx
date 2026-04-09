@@ -8,11 +8,13 @@ import GoogleRating from '../Components/GoogleReviews'
 const About = () => {
     return (
         <>
-            <AboutHero />
-            <GoogleRating/>
-            <AboutUs />
-            <WhyChooseUs />
-            <HowWeHelp/>
+            <div style={{ backgroundColor: '#fff5ee' }}>
+                <AboutHero />
+                <GoogleRating />
+                <AboutUs />
+                <WhyChooseUs />
+                <HowWeHelp />
+            </div>
         </>
     )
 }
