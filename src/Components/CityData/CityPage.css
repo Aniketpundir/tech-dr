@@ -1,0 +1,365 @@
+/* CityPage.css — City Detail Page */
+
+.city-page {
+    background-color: #ffffff;
+    font-family: "Arial", "Helvetica Neue", sans-serif;
+    min-height: 100vh;
+    animation: fadeInPage 0.3s ease;
+}
+
+@keyframes fadeInPage {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.city-topbar {
+    height: 8px;
+    background: linear-gradient(90deg, #1a56db 0%, #1e8aff 100%);
+    width: 100%;
+}
+
+.city-content {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 36px 32px 100px;
+}
+
+/* Back button */
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    color: #e8623a;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: "Nunito", sans-serif;
+    cursor: pointer;
+    padding: 6px 0;
+    margin-bottom: 28px;
+    transition: gap 0.2s ease;
+}
+
+.back-btn:hover {
+    gap: 14px;
+}
+
+.back-arrow {
+    width: 20px;
+    height: 20px;
+}
+
+/* Title */
+.city-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #e8623a;
+    margin: 0 0 6px;
+    line-height: 1.3;
+}
+
+.city-area-tag {
+    font-size: 13px;
+    color: #888;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    margin: 0 0 20px;
+}
+
+.city-intro {
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #222;
+    line-height: 1.75;
+    margin-bottom: 14px;
+    text-align: justify;
+}
+
+.city-bold-para {
+    font-size: 15px;
+    font-weight: 700;
+    color: #222;
+    line-height: 1.75;
+    margin-bottom: 26px;
+    text-align: justify;
+}
+
+.city-phone {
+    color: #1a56db;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.city-phone:hover {
+    color: #e8623a;
+}
+
+/* Images */
+.city-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.city-img {
+    width: 100%;
+    height: 215px;
+    object-fit: cover;
+    display: block;
+}
+
+.city-para {
+    font-size: 14.5px;
+    color: #333;
+    line-height: 1.85;
+    margin-bottom: 16px;
+    text-align: justify;
+}
+
+.city-divider {
+    border: none;
+    border-top: 1px solid #eeeeee;
+    margin: 28px 0;
+}
+
+.city-subtitle {
+    font-size: 21px;
+    font-weight: 700;
+    color: #1a1560;
+    margin: 0 0 16px;
+}
+
+/* Services list */
+.city-services-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
+}
+
+.city-services-list li {
+    font-size: 14px;
+    color: #333;
+    background: #fdf6f2;
+    border-left: 4px solid #e8623a;
+    padding: 10px 14px;
+    border-radius: 0 6px 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.city-services-list li:hover {
+    background: #fce8e0;
+    transform: translateX(4px);
+}
+
+.svc-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #e8623a;
+    flex-shrink: 0;
+}
+
+/* Highlight cards */
+.city-highlights {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin: 24px 0;
+}
+
+.highlight-card {
+    background: #f8f9ff;
+    border: 1px solid #e8ecff;
+    border-radius: 10px;
+    padding: 18px 14px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.highlight-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(26, 21, 96, 0.1);
+}
+
+.highlight-icon {
+    font-size: 24px;
+    line-height: 1;
+}
+
+.highlight-card strong {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a1560;
+}
+
+.highlight-card p {
+    font-size: 12px;
+    color: #666;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* FAQ */
+.city-faq {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.faq-item {
+    border: 1px solid #eeeeee;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    background: #fafafa;
+    border: none;
+    padding: 14px 18px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1560;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.faq-question:hover,
+.faq-question.open {
+    background: #fdf6f2;
+    color: #e8623a;
+}
+
+.faq-chevron {
+    font-size: 10px;
+    flex-shrink: 0;
+    color: #e8623a;
+}
+
+.faq-answer {
+    padding: 14px 18px;
+    font-size: 14px;
+    color: #444;
+    line-height: 1.75;
+    margin: 0;
+    border-top: 1px solid #eeeeee;
+    background: #fff;
+}
+
+/* CTA Box */
+.city-cta-box {
+    background: linear-gradient(135deg, #1a1560 0%, #1a56db 100%);
+    border-radius: 14px;
+    padding: 44px 36px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.city-cta-heading {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 10px;
+}
+
+.city-cta-text {
+    color: #c8d8ff;
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 0 0 28px;
+}
+
+.city-cta-btn {
+    display: inline-block;
+    background: #e8623a;
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 700;
+    padding: 16px 44px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 22px rgba(232, 98, 58, 0.5);
+    transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.city-cta-btn:hover {
+    background: #cf4e28;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 32px rgba(232, 98, 58, 0.6);
+}
+
+.city-website {
+    color: #a0b4e0;
+    font-size: 13px;
+    margin: 18px 0 0;
+}
+
+.city-link {
+    color: #ffffff;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.city-link:hover {
+    color: #fce8e0;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .city-highlights {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 620px) {
+    .city-images {
+        grid-template-columns: 1fr;
+    }
+
+    .city-services-list {
+        grid-template-columns: 1fr;
+    }
+
+    .city-highlights {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .city-title {
+        font-size: 22px;
+    }
+
+    .city-cta-box {
+        padding: 28px 20px;
+    }
+
+    .city-content {
+        padding: 24px 18px 60px;
+    }
+}

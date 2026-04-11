@@ -1,0 +1,129 @@
+/* SuburbsSection.css — Suburbs Grid Page */
+
+.suburbs-section {
+    background-color: #fdf6f2;
+    padding: 60px 60px 80px;
+    font-family: "Nunito", "Poppins", sans-serif;
+}
+
+.suburbs-header {
+    margin-bottom: 48px;
+}
+
+.header-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    color: #e8623a;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.diamond-icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+.header-title {
+    font-size: 52px;
+    font-weight: 800;
+    color: #1a1560;
+    line-height: 1.15;
+    margin: 0;
+    max-width: 700px;
+}
+
+.suburbs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 28px;
+    column-gap: 0;
+}
+
+.suburb-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    transition: transform 0.25s ease;
+}
+
+.suburb-item:hover {
+    transform: translateX(6px);
+}
+
+.suburb-item:hover .icon-wrapper {
+    background-color: #e8623a;
+    box-shadow: 0 6px 18px rgba(232, 98, 58, 0.35);
+    transform: scale(1.12);
+}
+
+.suburb-item:hover .pin-icon path {
+    fill: #ffffff;
+}
+
+.suburb-item:hover .suburb-name {
+    color: #e8623a;
+    font-weight: 700;
+}
+
+.icon-wrapper {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #fce8e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.pin-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.pin-icon path {
+    transition: fill 0.25s ease;
+}
+
+.suburb-name {
+    font-size: 16px;
+    font-weight: 500;
+    color: #555555;
+    letter-spacing: 0.01em;
+    transition: color 0.25s ease, font-weight 0.1s ease;
+}
+
+@media (max-width: 900px) {
+    .suburbs-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .header-title {
+        font-size: 38px;
+    }
+
+    .suburbs-section {
+        padding: 40px 30px 60px;
+    }
+}
+
+@media (max-width: 620px) {
+    .suburbs-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .header-title {
+        font-size: 28px;
+    }
+
+    .suburbs-section {
+        padding: 30px 20px 50px;
+    }
+}

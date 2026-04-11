@@ -12,6 +12,7 @@ import Products from "../Components/Home_Section/Products/Products"
 import Blog from "../Components/Home_Section/Blog/Blog"
 import TechDrButtons from '../Components/Home_Section/TechDrButtons/TechDrButtons'
 import GoogleRating from '../Components/GoogleReviews'
+import SuburbsSection from '../Components/SuburbsSection/SuburbsSection'
 
 const Home = () => {
     return (
@@ -22,7 +23,7 @@ const Home = () => {
             {/* <CTABanner /> */}
             <AboutUs />
             <WhyChooseUs />
-            <GoogleRating/>
+            <GoogleRating />
             {/* <Services /> */}
             <ContactForm />
             <Testimonials />
@@ -30,6 +31,7 @@ const Home = () => {
             <HowWeHelp />
             <FAQ />
             <Products />
+            <SuburbsSection />
         </>
     )
 }
