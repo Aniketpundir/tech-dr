@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { suburbs } from "../CityData/CityData";
+import { regions } from "../CityData/CityData";
 import "./SuburbsSection.css";
 
 const LocationIcon = () => (
@@ -23,10 +23,9 @@ const DiamondIcon = () => (
 const SuburbsSection = () => {
     const navigate = useNavigate();
 
-    const handleCityClick = (city) => {
-        // URL-safe city name — spaces ko hyphens mein convert karo
-        const slug = city.toLowerCase().replace(/\s+/g, "-");
-        navigate(`/suburbs-section/city/${slug}`)
+    const handleRegionClick = (region) => {
+        const slug = region.toLowerCase().replace(/\s+/g, "-");
+        navigate(`/suburbs-section/city/${slug}`);
     };
 
     return (
@@ -34,7 +33,7 @@ const SuburbsSection = () => {
             <div className="suburbs-header">
                 <div className="header-label">
                     <DiamondIcon />
-                    <span>SOME OF THE SUBURBS WE SERVICE ARE</span>
+                    <span>SERVICE REGIONS ACROSS SYDNEY</span>
                     <DiamondIcon />
                 </div>
                 <h2 className="header-title">
@@ -45,14 +44,14 @@ const SuburbsSection = () => {
             </div>
 
             <div className="suburbs-grid">
-                {suburbs.map((suburb, index) => (
+                {regions.map((region, index) => (
                     <div
                         className="suburb-item"
                         key={index}
-                        onClick={() => handleCityClick(suburb)}
+                        onClick={() => handleRegionClick(region)}
                     >
                         <LocationIcon />
-                        <span className="suburb-name">{suburb}</span>
+                        <span className="suburb-name">{region}</span>
                     </div>
                 ))}
             </div>

@@ -15,7 +15,7 @@ const TechDrButtons = () => {
 
     return (
         <div className="btn-wrapper">
-            <a className="btn-link">
+            <Link className="btn-link">
                 <Link
                     to='/services'
                     className={`btn btn-quote ${quoteHover ? "btn-quote--hover" : ""}`}
@@ -26,9 +26,9 @@ const TechDrButtons = () => {
                     <span className="btn-icon"></span>
                     Our Services
                 </Link>
-            </a>
+            </Link>
 
-            <a href="tel:1300072073" className="btn-link">
+            <Link href="tel:1300072073" className="btn-link">
                 <button
                     className={`btn btn-call ${callHover ? "btn-call--hover" : ""}`}
                     onMouseEnter={() => setCallHover(true)}
@@ -37,7 +37,7 @@ const TechDrButtons = () => {
                     <span className="btn-icon"></span>
                     CALL US NOW
                 </button>
-            </a>
+            </Link>
         </div>
     );
 };
