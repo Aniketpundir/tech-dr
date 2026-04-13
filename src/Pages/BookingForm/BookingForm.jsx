@@ -154,7 +154,7 @@ export default function BookingForm() {
 
             if (res.ok) {
                 let data = {};
-                try { data = await res.json(); } catch (_) { }
+                try { data = await res.json(); } catch (e) { console.log(e) }
                 setToast({
                     type: "success",
                     message: data.message || "✅ Booking submitted successfully! We will contact you soon.",
@@ -175,7 +175,9 @@ export default function BookingForm() {
                 try {
                     const errData = await res.json();
                     errMsg = errData.message || errData.error || errMsg;
-                } catch (_) { }
+                } catch (e) {
+                    console.log(e);
+                }
                 setToast({ type: "error", message: `Submission failed: ${errMsg}` });
             }
         } catch (err) {
