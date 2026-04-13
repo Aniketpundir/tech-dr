@@ -15,6 +15,7 @@ import starlink from "../../../assets/starlink.jpeg";
 import bussinessSystem from "../../../assets/bussiness-phone-system.jpeg";
 import Testimonials from "../Testimonials/Testimonials"
 import GoogleRating from '../../GoogleReviews';
+import mspImage from '../../../assets/msp.jpeg';
 
 const allServices = [
     {
@@ -81,7 +82,12 @@ const allServices = [
         title: `Starlink Set Up`,
         desc: 'Experience high-speed satellite internet anywhere. We offer professional, secure installation and optimization of Starlink dishes and routers for uninterrupted connectivity.',
         img: starlink,
-    }
+    },
+    {
+        title: <>Managed Services <br /> Provider (MSP)</>,
+        desc: 'Empower your business with our all-in-one proactive IT management. We provide 24/7 helpdesk support, robust cybersecurity, automated disaster recovery, seamless Microsoft 365 & Google Workspace integration, and modern VoIP communications.',
+        img: mspImage,
+    },
 ];
 
 const Star = () => (
