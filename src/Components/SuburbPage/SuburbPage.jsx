@@ -96,7 +96,7 @@ const SuburbPage = () => {
 
                 {/* Breadcrumb */}
                 <nav className="sp-breadcrumb">
-                    <button className="sp-crumb-btn" onClick={() => navigate("/regions")}>
+                    <button className="sp-crumb-btn" onClick={() => navigate("/")}>
                         All Regions
                     </button>
                     <span className="sp-crumb-sep">›</span>
