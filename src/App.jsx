@@ -8,6 +8,7 @@ import Contact from './Pages/Contact';
 import Services from './Components/Home_Section/Services/Services';
 import SuburbsSection from './Components/SuburbsSection/SuburbsSection';
 import CityPage from './Components/CityData/CityPage';
+import SuburbPage from './Components/SuburbPage/SuburbPage';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -18,6 +19,7 @@ const router = createBrowserRouter(
             <Route path='/services' element={<Services />} />
             <Route path='/suburbs-section' element={<SuburbsSection />} />
             <Route path="/suburbs-section/city/:slug" element={<CityPage />} />
+            <Route path='/suburbs-section/city/:slug/suburbs/:suburbSlug' element={<SuburbPage />} />
         </Route>
     )
 )
