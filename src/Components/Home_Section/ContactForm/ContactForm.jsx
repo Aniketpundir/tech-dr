@@ -62,7 +62,7 @@ const ContactForm = () => {
         setErrorMsg('');
 
         try {
-            const ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+            const ENDPOINT = 'http://localhost:4000/api/contact';
 
             const response = await fetch(ENDPOINT, {
                 method: 'POST',

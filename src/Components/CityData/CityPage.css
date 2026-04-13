@@ -20,8 +20,8 @@
 }
 
 .city-topbar {
-    height: 8px;
-    background: linear-gradient(90deg, #1a56db 0%, #1e8aff 100%);
+    height: 4px;
+    background: #e8520a;
     width: 100%;
 }
 
@@ -186,8 +186,8 @@
 }
 
 .highlight-card {
-    background: #f8f9ff;
-    border: 1px solid #e8ecff;
+    background: #fff3ee;
+    border: 2px solid #e8520a;
     border-radius: 10px;
     padding: 18px 14px;
     text-align: center;
@@ -275,7 +275,7 @@
 
 /* CTA Box */
 .city-cta-box {
-    background: linear-gradient(135deg, #1a1560 0%, #1a56db 100%);
+    background: #fff3ee;
     border-radius: 14px;
     padding: 44px 36px;
     text-align: center;
@@ -285,12 +285,12 @@
 .city-cta-heading {
     font-size: 22px;
     font-weight: 700;
-    color: #ffffff;
+    color: #a05a30;
     margin: 0 0 10px;
 }
 
 .city-cta-text {
-    color: #c8d8ff;
+    color: #a05a30;
     font-size: 15px;
     line-height: 1.7;
     margin: 0 0 28px;
@@ -316,13 +316,13 @@
 }
 
 .city-website {
-    color: #a0b4e0;
+    color: #a05a30;
     font-size: 13px;
     margin: 18px 0 0;
 }
 
 .city-link {
-    color: #ffffff;
+    color: #a05a30;
     font-weight: 700;
     text-decoration: underline;
 }

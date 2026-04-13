@@ -66,7 +66,7 @@ const ContactUsForm = () => {
         setErrorMsg('');
 
         try {
-            const ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+            const ENDPOINT = 'https://api.thetechdr.com.au/api/contact';
 
             const response = await fetch(ENDPOINT, {
                 method: 'POST',
