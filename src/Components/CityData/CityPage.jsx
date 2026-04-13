@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { cityData } from "./CityData";
+import { cityData } from "../CityData/CityData";
 import "./CityPage.css";
 
 // slug to region name
@@ -42,7 +42,7 @@ const CityPage = () => {
             <div className="city-page">
                 <div className="city-topbar" />
                 <div className="city-content">
-                    <button className="back-btn" onClick={() => navigate(-1)}>
+                    <button className="back-btn" onClick={() => navigate("/")}>
                         <svg viewBox="0 0 24 24" fill="none" className="back-arrow">
                             <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="#E8623A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
@@ -54,6 +54,11 @@ const CityPage = () => {
         );
     }
 
+    const handleSuburbClick = (suburb) => {
+        const suburbSlug = suburb.toLowerCase().replace(/\s+/g, "-");
+        navigate(`/suburbs-section/city/${slug}/suburbs/${suburbSlug}`)
+    };
+
     return (
         <div className="city-page">
             {/* Blue top bar */}
@@ -62,7 +67,7 @@ const CityPage = () => {
             <div className="city-content">
 
                 {/* Back button */}
-                <button className="back-btn" onClick={() => navigate(-1)}>
+                <button className="back-btn" onClick={() => navigate("/")}>
                     <svg viewBox="0 0 24 24" fill="none" className="back-arrow">
                         <path
                             d="M19 12H5M5 12L12 19M5 12L12 5"
@@ -123,13 +128,30 @@ const CityPage = () => {
                 {/* Suburbs we cover */}
                 <h2 className="city-subtitle">Suburbs We Cover in {region}</h2>
                 <p className="city-para">
-                    Our technicians service all suburbs across the {region} region, including:
+                    Our technicians service all suburbs across the {region} region. Click on any suburb below to see more details:
                 </p>
                 <ul className="city-suburbs-list">
                     {data.suburbs.map((suburb, i) => (
-                        <li key={i}>
+                        <li
+                            key={i}
+                            className="city-suburb-clickable"
+                            onClick={() => handleSuburbClick(suburb)}
+                            role="button"
+                            tabIndex={0}
+                            onKeyDown={(e) => e.key === "Enter" && handleSuburbClick(suburb)}
+                            aria-label={`View IT support in ${suburb}`}
+                        >
                             <span className="svc-dot" />
                             {suburb}
+                            <svg viewBox="0 0 24 24" fill="none" className="suburb-link-arrow">
+                                <path
+                                    d="M5 12h14M13 6l6 6-6 6"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                />
+                            </svg>
                         </li>
                     ))}
                 </ul>
