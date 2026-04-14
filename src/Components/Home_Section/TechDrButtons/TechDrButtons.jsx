@@ -15,9 +15,8 @@ const TechDrButtons = () => {
 
     return (
         <div className="btn-wrapper">
-            <Link className="btn-link">
-                <Link
-                    to='/services'
+            <Link to='/services' className="btn-link">
+                <button
                     className={`btn btn-quote ${quoteHover ? "btn-quote--hover" : ""}`}
                     onMouseEnter={() => setQuoteHover(true)}
                     onMouseLeave={() => setQuoteHover(false)}
@@ -25,19 +24,33 @@ const TechDrButtons = () => {
                 >
                     <span className="btn-icon"></span>
                     Our Services
-                </Link>
-            </Link>
-
-            <Link href="tel:1300072073" className="btn-link">
-                <button
-                    className={`btn btn-call ${callHover ? "btn-call--hover" : ""}`}
-                    onMouseEnter={() => setCallHover(true)}
-                    onMouseLeave={() => setCallHover(false)}
-                >
-                    <span className="btn-icon"></span>
-                    CALL US NOW
                 </button>
             </Link>
+
+            <div className="call-and-booking-section">
+                <Link href="tel:1300072073" className="btn-link">
+                    <button
+                        className={`btn btn-call ${callHover ? "btn-call--hover" : ""}`}
+                        onMouseEnter={() => setCallHover(true)}
+                        onMouseLeave={() => setCallHover(false)}
+                    >
+                        <span className="btn-icon"></span>
+                        CALL US NOW
+                    </button>
+                </Link>
+                <Link to="/book-now" onClick={() => { handleClick() }} className="btn-link">
+                    <button
+                        className={`btn btn-call ${callHover ? "btn-call--hover" : ""}`}
+                        onMouseEnter={() => setCallHover(true)}
+                        onMouseLeave={() => setCallHover(false)}
+                    >
+                        <span className="btn-icon"></span>
+                        BOOK NOW
+                    </button>
+                </Link>
+            </div>
+
+
         </div>
     );
 };

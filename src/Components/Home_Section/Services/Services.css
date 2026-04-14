@@ -7,7 +7,6 @@
     background: linear-gradient(160deg, #ffffff 0%, #f9f9fc 100%);
 }
 
-/* --- Headers & Labels --- */
 .section-label {
     display: flex;
     align-items: center;
@@ -24,10 +23,6 @@
     letter-spacing: 1.5px;
 }
 
-.section-label svg {
-    color: #e8520a;
-}
-
 .services h2 {
     text-align: center;
     font-size: 38px;
@@ -37,7 +32,7 @@
     line-height: 1.2;
 }
 
-/* --- Grid Layout (Default: Desktop/PC) --- */
+/* --- Grid --- */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -46,7 +41,7 @@
     margin: 0 auto;
 }
 
-/* --- Individual Service Cards (Clickable) --- */
+/* --- Card wrapper (no click, just layout) --- */
 .service-card {
     background: #FFF3EE;
     border-radius: 16px;
@@ -56,10 +51,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    cursor: pointer;
     border: 2px solid transparent;
-    text-decoration: none;
-    outline: none;
 }
 
 .service-card:hover {
@@ -68,14 +60,14 @@
     border-color: #e8520a;
 }
 
-.service-card:focus-visible {
-    border-color: #e8520a;
-    box-shadow: 0 0 0 3px rgba(232, 82, 10, 0.3);
-}
-
-.service-card:active {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(232, 82, 10, 0.15);
+/* --- Top clickable area → /services/:slug --- */
+.service-card-top {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    flex: 1;
 }
 
 .service-card h3 {
@@ -94,7 +86,6 @@
     overflow: hidden;
     margin-bottom: 20px;
     background: #f5f5f5;
-    position: relative;
 }
 
 .service-card-img img {
@@ -117,7 +108,7 @@
     flex: 1;
 }
 
-/* --- Learn More Button (replaces Call Us Now) --- */
+/* --- Book Now Button → /book-now --- */
 .btn-learn-more {
     display: inline-flex;
     align-items: center;
@@ -126,16 +117,17 @@
     padding: 12px 32px;
     background: #e8520a;
     color: #ffffff;
+    border: none;
     border-radius: 50px;
     font-size: 15px;
     font-weight: 700;
-    text-align: center;
+    cursor: pointer;
     transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-    pointer-events: none;
-    /* Click handled by card */
+    position: relative;
+    z-index: 10;
 }
 
-.service-card:hover .btn-learn-more {
+.btn-learn-more:hover {
     background: #c74205;
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(232, 82, 10, 0.35);
@@ -146,12 +138,12 @@
     transition: transform 0.2s;
 }
 
-.service-card:hover .btn-arrow {
+.btn-learn-more:hover .btn-arrow {
     transform: translateX(4px);
 }
 
 /* =========================================
-   RESPONSIVE MEDIA QUERIES
+   RESPONSIVE
    ========================================= */
 
 @media (max-width: 1024px) {

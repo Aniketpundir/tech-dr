@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './ServiceDetail.css';
+import TechDrButtons from '../../TechDrButtons/TechDrButtons';
 
 const serviceDetails = {
     'gaming-pc-building-repair': {
@@ -495,6 +497,15 @@ const FaqItem = ({ question, answer }) => {
 const ServiceDetail = () => {
     const { slug } = useParams();
     const navigate = useNavigate();
+    // const [quoteHover, setQuoteHover] = useState(false);
+    const [callHover, setCallHover] = useState(false);
+
+    const handleClick = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
+    };
 
     const service = serviceDetails[slug];
 
@@ -537,8 +548,26 @@ const ServiceDetail = () => {
                 </button>
 
                 {/* Title */}
-                <h1 className="svc-title">{service.title} — TheTechDr</h1>
+                <h1 className="svc-title">{service.title}</h1>
+                <h1 className="svc-title">— TheTechDr</h1>
                 <p className="svc-area-tag">The Tech Dr · Professional IT Services · Australia-Wide</p>
+
+                <div className="btn-wrapper">
+                    <div className="call-and-booking-section">
+                        <Link to="/book-now" onClick={() => { handleClick() }} className="btn-link">
+                            <button
+                                className={`btn btn-call ${callHover ? "btn-call--hover" : ""}`}
+                                onMouseEnter={() => setCallHover(true)}
+                                onMouseLeave={() => setCallHover(false)}
+                            >
+                                <span className="btn-icon"></span>
+                                BOOK NOW
+                            </button>
+                        </Link>
+                    </div>
+
+
+                </div>
 
                 {/* Intro */}
                 <p className="svc-intro">

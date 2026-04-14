@@ -63,6 +63,7 @@
 
 /* ---- Title ---- */
 .svc-title {
+    text-align: center;
     font-size: 28px;
     font-weight: 700;
     color: #e8623a;
@@ -71,6 +72,7 @@
 }
 
 .svc-area-tag {
+    text-align: center;
     font-size: 13px;
     color: #888;
     font-weight: 600;
