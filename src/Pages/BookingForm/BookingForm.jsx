@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import "./BookingForm.css";
+import image from "../../assets/Tech-support-professional.jpeg"
 
 const API_URL = "https://YOUR-API-URL-YAHAN-DAALEN.com/api/bookings";
 const API_KEY = "YOUR-API-KEY-YAHAN-DAALEN";
@@ -7,6 +8,19 @@ const API_METHOD = "POST";
 
 function todayStr() {
     return new Date().toISOString().split("T")[0];
+}
+
+function buildCalDays() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth();
+    const first = new Date(year, month, 1).getDay();
+    const days = new Date(year, month + 1, 0).getDate();
+    const today = now.getDate();
+    const cells = [];
+    for (let i = 0; i < first; i++) cells.push(null);
+    for (let d = 1; d <= days; d++) cells.push(d);
+    return { cells, today };
 }
 
 export default function BookingForm() {
@@ -156,6 +170,8 @@ export default function BookingForm() {
             setSubmitting(false);
         }
     };
+
+    const { cells: calCells, today: calToday } = buildCalDays();
 
     return (
         <div>
@@ -475,10 +491,47 @@ export default function BookingForm() {
 
                 {/* ── Hero Illustration ── */}
                 <div className="hero-illustration">
-                    <img
-                        src="https://images.unsplash.com/photo-1588508065123-287b28e013da?w=900&auto=format&fit=crop&q=80"
-                        alt="Tech support professional helping a client"
-                    />
+                    <div className="hero-svg-wrap">
+                        <div className="hero-person-icon">
+                            <img
+                                src={image}
+                                alt="Tech support professional"
+                            />
+                        </div>
+
+                        <div className="hero-monitor">
+                            <h3>House Appointment</h3>
+                            <div className="cal-grid">
+                                {["S", "M", "T", "W", "T", "F", "S"].map((d, i) => (
+                                    <span key={`h${i}`} style={{ color: "#e8520a", fontSize: "0.65rem" }}>{d}</span>
+                                ))}
+                                {calCells.slice(0, 28).map((d, i) => (
+                                    <span
+                                        key={i}
+                                        className={
+                                            d === calToday ? "cal-today" :
+                                                d === calToday + 1 ? "cal-selected" : ""
+                                        }
+                                    >
+                                        {d || ""}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div style={{
+                            background: "#e8520a", color: "#fff",
+                            borderRadius: 10, padding: "14px 20px",
+                            textAlign: "center", boxShadow: "0 4px 14px rgba(26,111,196,0.3)"
+                        }}>
+                            <div style={{ fontSize: "2.2rem", fontWeight: 800, lineHeight: 1 }}>1</div>
+                            <div style={{
+                                fontSize: "0.7rem", fontWeight: 800, letterSpacing: 1,
+                                textTransform: "uppercase", marginTop: 4
+                            }}>Booking</div>
+                        </div>
+                    </div>
+
                     <div className="hero-caption">
                         Self-booking from <a href="#">the Tech Dr</a> Australia
                     </div>
