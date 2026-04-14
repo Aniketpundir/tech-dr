@@ -22,6 +22,7 @@ import TechDrButtons from '../TechDrButtons/TechDrButtons';
 const allServices = [
     { title: 'Gaming PC Building & Repair', desc: 'Dominate the leaderboard with a custom-built rig. We assemble premium gaming PCs, optimize cooling systems, and repair specialist hardware to maximize your framerates.', img: pc, slug: 'gaming-pc-building-repair' },
     { title: 'Mac & Windows PC Repair', desc: 'From sluggish performance and virus removals to motherboard repairs, our certified technicians provide expert troubleshooting and repairs for all Apple and Windows devices.', img: mac, slug: 'mac-windows-pc-repair' },
+    { title: 'Managed Services Provider (MSP)', desc: 'Empower your business with our all-in-one proactive IT management. We provide 24/7 helpdesk support, robust cybersecurity, automated disaster recovery, seamless Microsoft 365 & Google Workspace integration, and modern VoIP communications.', img: mspImage, slug: 'managed-services-provider-msp' },
     { title: 'Internet & Email Issues', desc: 'Experiencing network dropouts or email syncing errors? We swiftly diagnose and resolve complex connectivity and configuration problems to keep you online and communicating.', img: internet, slug: 'internet-email-issues' },
     { title: 'Hardware Upgrades & Repair', desc: 'Breathe new life into your aging machine. We supply and install high-performance SSDs, RAM, and graphics cards to ensure your device runs at peak efficiency.', img: hardware, slug: 'hardware-upgrades-repair' },
     { title: 'Software & Device Tutorials', desc: 'Struggling with new software or a newly purchased device? We provide patient, hands-on tutorials tailored to your pace, helping you master your tech with confidence.', img: software, slug: 'software-device-tutorials' },
@@ -33,7 +34,6 @@ const allServices = [
     { title: 'Business Phone System Set Up', desc: 'Upgrade your business communications. We provide comprehensive setup and configuration of modern, scalable VoIP phone systems tailored to keep your team connected.', img: bussinessSystem, slug: 'business-phone-system-set-up' },
     { title: 'Protection From Hackers', desc: 'Safeguard your digital life and business data. We implement robust cybersecurity measures, including advanced firewalls, malware protection, and network audits to keep hackers at bay.', img: protectionHacker, slug: 'protection-from-hackers' },
     { title: 'Starlink Set Up', desc: 'Experience high-speed satellite internet anywhere. We offer professional, secure installation and optimization of Starlink dishes and routers for uninterrupted connectivity.', img: starlink, slug: 'starlink-set-up' },
-    { title: 'Managed Services Provider (MSP)', desc: 'Empower your business with our all-in-one proactive IT management. We provide 24/7 helpdesk support, robust cybersecurity, automated disaster recovery, seamless Microsoft 365 & Google Workspace integration, and modern VoIP communications.', img: mspImage, slug: 'managed-services-provider-msp' },
 ];
 
 const Star = () => (
@@ -49,11 +49,16 @@ const Services = () => {
         navigate(`/services/${slug}`);
     };
 
-    const handleBookNow = (e, slug) => {
+    const handleBookNow = (e) => {
         e.preventDefault();
         e.stopPropagation();
         navigate('/book-now');
     };
+    const handleLearnMore = (e, slug) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigate(`/services/${slug}`);
+};
 
     return (
         <>
@@ -64,7 +69,7 @@ const Services = () => {
                 <div className="section-label">
                     <Star /> <span>FAST AND FRIENDLY SERVICES</span> <Star />
                 </div>
-                <h2>The Award Winning<br />Computer Support, PC and<br />Laptop Repair Specialists</h2>
+                <h2 className='heading-for-award'>The Award Winning<br />Computer Support, PC and<br />Laptop Repair Specialists</h2>
 
                 <div className="services-grid">
                     {allServices.map((s, i) => (
@@ -84,6 +89,14 @@ const Services = () => {
                                 </div>
                                 <p>{s.desc}</p>
                             </div>
+
+                            <button
+                                className="btn-learn-more"
+                                type="button"
+                                onClick={(e) => handleLearnMore(e, s.slug)}
+                            >
+                                Learn More About It <span className="btn-arrow">→</span>
+                            </button>
 
                             {/* Book Now → /book-now (completely separate from card-top) */}
                             <button

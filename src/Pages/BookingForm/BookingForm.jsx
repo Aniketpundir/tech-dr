@@ -232,7 +232,7 @@ export default function BookingForm() {
                 <p className="cta-line">
                     Book now and enjoy <strong>hassle-free tech support</strong> at <strong>your convenience</strong>!
                 </p>
-
+                <p className="intro-title" style={{color:"#e8520a"}}>FILL OUT THE BOOKING FORM</p>
                 {/* ── Form ── */}
                 <form className="form-section">
 
