@@ -10,42 +10,44 @@ const Star = () => (
 const faqs = [
     {
         q: 'Do I need an appointment to bring in my computer for repair?',
-        a: "Nope! You can just bring in your computer to our shop, no appointment necessary. We operate on a first come first serve basis, but we do offer Rush Service if you need your computer back right away. We only need appointments for house calls.",
+        a: "Appointments are required for in-office repairs to ensure timely service and availability. However, if you prefer a home visit, an appointment is not mandatory, though scheduling in advance is recommended for convenience and faster assistance.",
     },
 
     {
         q: 'What do I need to bring with me when dropping off my computer?',
-        a: `Nope! You can just bring in your computer to our shop, no appointment necessary. We operate on a first come first serve basis, but we do offer Rush Service if you need your computer back right away. We only need appointments for house calls.`
+        a: `You only need to bring your computer. However, if applicable, we recommend also bringing any relevant accessories (such as the charger or cables) to help us diagnose and resolve the issue more efficiently.`
     },
 
     {
         q: 'How much do you charge to look at my computer and tell me whats wrong with it?',
-        a: `Nope! You can just bring in your computer to our shop, no appointment necessary. We operate on a first come first serve basis, but we do offer Rush Service if you need your computer back right away. We only need appointments for house calls.
-` },
+        a: `The cost of diagnosis depends on the nature and complexity of the issue. We will first assess your computer and then provide you with a clear estimate before proceeding with any repairs.`
+    },
 
     {
         q: 'Do you service Macs?',
-        a: 'Nope! You can just bring in your computer to our shop, no appointment necessary. We operate on a first come first serve basis, but we do offer Rush Service if you need your computer back right away. We only need appointments for house calls.'
+        a: `We provide a wide range of IT solutions tailored for both individuals and businesses. Our expertise includes gaming PC building and repair, Mac and Windows PC repair, internet and email troubleshooting, as well as hardware upgrades and repairs. We also offer software and device tutorials to help you make the most of your technology, along with mobile phone email setup for seamless communication.
+
+        In addition, we specialize in network and wireless setup, CCTV installation and servicing, server setup and management, and reliable data recovery services. Our team also supports business phone system setup, provides trong cybersecurity solutions to protect against hackers, and offers Starlink setup and configuration. As a anaged Services Provider (MSP), we ensure ongoing IT support and maintenance to keep your systems running smoothly and securely.`
     },
 
     {
         q: 'Do you service laptops?',
-        a: `Nope! You can just bring in your computer to our shop, no appointment necessary. We operate on a first come first serve basis, but we do offer Rush Service if you need your computer back right away. We only need appointments for house calls.`
+        a: `Yes, we provide repair and support services for laptops of all major brands and models.`
     },
 
     {
         q: 'How long will it take to get my computer back?',
-        a: `Nope! You can just bring in your computer to our shop, no appointment necessary. We operate on a first come first serve basis, but we do offer Rush Service if you need your computer back right away. We only need appointments for house calls.`
+        a: `The turnaround time depends on the nature and complexity of the issue. In many cases, repairs can be completed within a short timeframe, but we will provide you with an estimated completion time after assessing your computer.`
     },
 
     {
         q: 'If I need my job completed right away, is that possible?',
-        a: `Nope! You can just bring in your computer to our shop, no appointment necessary. We operate on a first come first serve basis, but we do offer Rush Service if you need your computer back right away. We only need appointments for house calls.`
+        a: `Yes, we offer priority or expedited services for urgent requests. Please let us know your requirements in advance, and we will do our best to accommodate a faster turnaround time.`
     },
 
     {
         q: "If I can't be without a computer while mine is being fixed, can you offer me a rental?",
-        a: `Nope! You can just bring in your computer to our shop, no appointment necessary. We operate on a first come first serve basis, but we do offer Rush Service if you need your computer back right away. We only need appointments for house calls.`
+        a: `At this time, we do not offer rental computers. However, we strive to complete repairs as quickly as possible to minimize any inconvenience.`
     },
 ];
 
