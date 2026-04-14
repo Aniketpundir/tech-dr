@@ -2,7 +2,8 @@ import { useState, useEffect, useCallback } from "react";
 import "./BookingForm.css";
 import image from "../../assets/Tech-support-professional.jpeg"
 
-const API_URL = "https://YOUR-API-URL-YAHAN-DAALEN.com/api/bookings";
+const API_URL = "http://localhost:4000/api/bookings";
+//const API_URL = "https://api.thetechdr.com.au/api/bookings";
 const API_KEY = "YOUR-API-KEY-YAHAN-DAALEN";
 const API_METHOD = "POST";
 
