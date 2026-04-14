@@ -224,24 +224,28 @@
     border-radius: 10px;
     padding: 12px 14px;
     font-size: 14px;
-    color: #e8520a;
-    /* background: rgba(255, 255, 255, 0.15); */
+    color: #e8520a !important;
+    background: #fff !important;
     outline: none;
-    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s;
     font-family: inherit;
-    backdrop-filter: blur(4px);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-    color: #e8520a;
+    color: #e8520a !important;
+    opacity: 1 !important;
 }
+
 
 .form-group input:focus,
 .form-group textarea:focus {
     border-color: #fff;
-    background: rgba(255, 255, 255, 0.22);
-    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
+    background: #fff !important;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4);
+    color: #e8520a !important;
 }
 
 .form-group input:disabled,
