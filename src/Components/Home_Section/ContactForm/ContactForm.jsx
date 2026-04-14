@@ -62,7 +62,7 @@ const ContactForm = () => {
         setErrorMsg('');
 
         try {
-            const ENDPOINT = 'http://localhost:4000/api/contact';
+            const ENDPOINT = 'https://api.thetechdr.com.au/api/contact';
 
             const response = await fetch(ENDPOINT, {
                 method: 'POST',
