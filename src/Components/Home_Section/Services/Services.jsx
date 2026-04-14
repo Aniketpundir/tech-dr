@@ -49,11 +49,16 @@ const Services = () => {
         navigate(`/services/${slug}`);
     };
 
-    const handleBookNow = (e, slug) => {
+    const handleBookNow = (e) => {
         e.preventDefault();
         e.stopPropagation();
         navigate('/book-now');
     };
+    const handleLearnMore = (e, slug) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigate(`/services/${slug}`);
+};
 
     return (
         <>
@@ -88,7 +93,7 @@ const Services = () => {
                             <button
                                 className="btn-learn-more"
                                 type="button"
-                                onClick={(e) => handleBookNow(e, s.slug)}
+                                onClick={(e) => handleLearnMore(e, s.slug)}
                             >
                                 Learn More About It <span className="btn-arrow">→</span>
                             </button>
