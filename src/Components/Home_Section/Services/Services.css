@@ -25,11 +25,12 @@
 
 .services h2 {
     text-align: center;
-    font-size: 38px;
-    font-weight: 900;
-    color: #1a1a2e;
     margin: 0 0 50px 0;
+    font-size: 40px;
+    font-weight: 900;
     line-height: 1.2;
+    color: #e8520a;
+    max-width: 480px;
 }
 
 /* --- Grid --- */

@@ -36,11 +36,6 @@ const SuburbsSection = () => {
                     <span>SERVICE REGIONS ACROSS SYDNEY</span>
                     <DiamondIcon />
                 </div>
-                <h2 className="header-title">
-                    The Award Winning<br />
-                    Computer Support, PC and<br />
-                    Laptop Repair Specialists
-                </h2>
             </div>
 
             <div className="suburbs-grid">

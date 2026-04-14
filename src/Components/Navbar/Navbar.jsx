@@ -8,8 +8,9 @@ const navItems = [
     { label: 'Home', path: '/' },
     { label: 'About Us', path: '/about-us' },
     { label: 'Services', path: '/services' },
+    { label: 'Book Now', path: '/book-now' },
     { label: 'Contact Us', path: '/contact-us' },
-    { label: 'Book Now', path: '/book-now' }
+    
 ];
 
 const handleClick = () => {
