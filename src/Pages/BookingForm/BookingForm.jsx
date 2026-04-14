@@ -1,41 +1,16 @@
 import { useState, useEffect, useCallback } from "react";
 import "./BookingForm.css";
 
-// ============================================================
-//  ⬇️  YAHAN APNI API URL AUR KEY DAALEN  ⬇️
-// ============================================================
 const API_URL = "https://YOUR-API-URL-YAHAN-DAALEN.com/api/bookings";
-//  👆 Upar apni API ka poora URL likho
-//  Example: "https://api.thetechdr.com.au/bookings"
-
 const API_KEY = "YOUR-API-KEY-YAHAN-DAALEN";
-//  👆 Upar apni real API Key likho
-//  Agar API Key nahi hai to khali string chhod do: ""
-
 const API_METHOD = "POST";
-//  👆 Ye method hai — POST rehne do jab tak kuch aur bataya na jaye
-// ============================================================
 
 function todayStr() {
     return new Date().toISOString().split("T")[0];
 }
 
-function buildCalDays() {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = now.getMonth();
-    const first = new Date(year, month, 1).getDay();
-    const days = new Date(year, month + 1, 0).getDate();
-    const today = now.getDate();
-    const cells = [];
-    for (let i = 0; i < first; i++) cells.push(null);
-    for (let d = 1; d <= days; d++) cells.push(d);
-    return { cells, today };
-}
-
 export default function BookingForm() {
 
-    // ── Form State ──
     const [form, setForm] = useState({
         name: "",
         email: "",
@@ -56,27 +31,23 @@ export default function BookingForm() {
         subscribe: true,
     });
 
-    // ── UI State ──
     const [submitting, setSubmitting] = useState(false);
     const [toast, setToast] = useState(null);
     const [scrollBtn, setScrollBtn] = useState(false);
     const [errors, setErrors] = useState({});
 
-    // ── Scroll listener ──
     useEffect(() => {
         const onScroll = () => setScrollBtn(window.scrollY > 300);
         window.addEventListener("scroll", onScroll);
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
-    // ── Auto-hide toast ──
     useEffect(() => {
         if (!toast) return;
         const t = setTimeout(() => setToast(null), 6000);
         return () => clearTimeout(t);
     }, [toast]);
 
-    // ── Field Handler ──
     const handleField = (e) => {
         const { name, value, type, checked } = e.target;
         setErrors((prev) => ({ ...prev, [name]: "" }));
@@ -93,7 +64,6 @@ export default function BookingForm() {
         }
     };
 
-    // ── Validation ──
     const validate = () => {
         const errs = {};
         if (!form.name.trim()) errs.name = "Name is required";
@@ -109,7 +79,6 @@ export default function BookingForm() {
         return errs;
     };
 
-    // ── Build Payload ──
     const buildPayload = useCallback(() => ({
         name: form.name.trim(),
         email: form.email.trim(),
@@ -128,7 +97,6 @@ export default function BookingForm() {
         submitted_at: new Date().toISOString(),
     }), [form]);
 
-    // ── Submit ──
     const handleSubmit = async () => {
         const errs = validate();
         if (Object.keys(errs).length > 0) {
@@ -154,12 +122,11 @@ export default function BookingForm() {
 
             if (res.ok) {
                 let data = {};
-                try { data = await res.json(); } catch (e) { console.log(e) }
+                try { data = await res.json(); } catch (e) { console.log(e); }
                 setToast({
                     type: "success",
                     message: data.message || "✅ Booking submitted successfully! We will contact you soon.",
                 });
-                // Reset form
                 setForm({
                     name: "", email: "", phone: "", address: "", postcode: "",
                     description: "", objectives: "",
@@ -175,9 +142,7 @@ export default function BookingForm() {
                 try {
                     const errData = await res.json();
                     errMsg = errData.message || errData.error || errMsg;
-                } catch (e) {
-                    console.log(e);
-                }
+                } catch (e) { console.log(e); }
                 setToast({ type: "error", message: `Submission failed: ${errMsg}` });
             }
         } catch (err) {
@@ -192,17 +157,12 @@ export default function BookingForm() {
         }
     };
 
-    // ── Calendar ──
-    const { cells: calCells, today: calToday } = buildCalDays();
-
     return (
         <div>
             <div className="booking-page">
 
                 {/* ── Branding ── */}
-                <h1 className="booking-page-title">
-                    The <span>Tech Dr</span>
-                </h1>
+                <h1 className="booking-page-title">The <span>Tech Dr</span></h1>
                 <p className="booking-page-subtitle">Expert IT Support &amp; Tech Services</p>
 
                 {/* ── Toast ── */}
@@ -220,9 +180,9 @@ export default function BookingForm() {
                 )}
 
                 {/* ── Intro ── */}
-                <p className="intro-title">Ready to wave goodbye to Expert IT Support & Tech Services headaches?</p>
+                <p className="intro-title">Ready to wave goodbye to Expert IT Support &amp; Tech Services headaches?</p>
                 <p className="intro-body">
-                    You're in the right place. Book a <strong>professional, in-home Expert IT Support & Tech Services</strong> in
+                    You're in the right place. Book a <strong>professional, in-home Expert IT Support &amp; Tech Services</strong> in
                     just a few clicks. No call centres. No waiting weeks. No guesswork. Fill out the form below
                     with your details, a short description of the issue, and your preferred time. Our team will{" "}
                     <strong>confirm your booking quickly</strong> and get you sorted.
@@ -256,251 +216,256 @@ export default function BookingForm() {
                     Book now and enjoy <strong>hassle-free tech support</strong> at <strong>your convenience</strong>!
                 </p>
 
-                {/* ── Name ── */}
-                <div className="field-row">
-                    <label>Name:</label>
-                    <div>
+                {/* ── Form ── */}
+                <form className="form-section">
+
+                    {/* ── Name ── */}
+                    <div className="field-row">
+                        <label>Name:</label>
+                        <div>
+                            <input
+                                className="field-input"
+                                type="text"
+                                name="name"
+                                value={form.name}
+                                onChange={handleField}
+                                placeholder='e.g., Carl "Byte Banter" Barron'
+                            />
+                            {errors.name && <p className="field-error">{errors.name}</p>}
+                        </div>
+                    </div>
+
+                    {/* ── Email ── */}
+                    <div className="field-row">
+                        <label>Email:</label>
+                        <div>
+                            <input
+                                className="field-input"
+                                type="email"
+                                name="email"
+                                value={form.email}
+                                onChange={handleField}
+                                placeholder="e.g., one.ended.stick@gmail.com"
+                            />
+                            {errors.email && <p className="field-error">{errors.email}</p>}
+                        </div>
+                    </div>
+
+                    {/* ── Phone ── */}
+                    <div className="field-row">
+                        <label>Phone:</label>
+                        <div>
+                            <input
+                                className="field-input"
+                                type="tel"
+                                name="phone"
+                                value={form.phone}
+                                onChange={handleField}
+                                placeholder="e.g., 0412345678 / 0212345678 (10 digits, please)"
+                            />
+                            {errors.phone && <p className="field-error">{errors.phone}</p>}
+                        </div>
+                    </div>
+
+                    {/* ── Address ── */}
+                    <div className="field-row">
+                        <label>Address:</label>
+                        <div>
+                            <input
+                                className="field-input"
+                                type="text"
+                                name="address"
+                                value={form.address}
+                                onChange={handleField}
+                                placeholder="e.g., 13 NoPaddle Street, Chip Creek, QLD 4730"
+                            />
+                            {errors.address && <p className="field-error">{errors.address}</p>}
+                        </div>
+                    </div>
+
+                    {/* ── Postcode ── */}
+                    <div className="field-row">
+                        <label>Postcode:</label>
                         <input
-                            className="field-input"
+                            className="field-input postcode"
                             type="text"
-                            name="name"
-                            value={form.name}
+                            name="postcode"
+                            value={form.postcode}
                             onChange={handleField}
-                            placeholder='e.g., Carl "Byte Banter" Barron'
+                            placeholder=""
                         />
-                        {errors.name && <p className="field-error">{errors.name}</p>}
                     </div>
-                </div>
 
-                {/* ── Email ── */}
-                <div className="field-row">
-                    <label>Email:</label>
-                    <div>
-                        <input
-                            className="field-input"
-                            type="email"
-                            name="email"
-                            value={form.email}
-                            onChange={handleField}
-                            placeholder="e.g., one.ended.stick@gmail.com"
-                        />
-                        {errors.email && <p className="field-error">{errors.email}</p>}
+                    <hr className="form-divider" />
+
+                    {/* ── Description ── */}
+                    <div className="field-row top-align">
+                        <label>Description of<br />the Problem:</label>
+                        <div>
+                            <textarea
+                                className="field-textarea"
+                                name="description"
+                                value={form.description}
+                                onChange={handleField}
+                                placeholder="Please list your technology issues in detail, we love to assist people with technology challenges!"
+                            />
+                            {errors.description && <p className="field-error">{errors.description}</p>}
+                        </div>
                     </div>
-                </div>
 
-                {/* ── Phone ── */}
-                <div className="field-row">
-                    <label>Phone:</label>
-                    <div>
-                        <input
-                            className="field-input"
-                            type="tel"
-                            name="phone"
-                            value={form.phone}
-                            onChange={handleField}
-                            placeholder="e.g., 0412345678 / 0212345678 (10 digits, please)"
-                        />
-                        {errors.phone && <p className="field-error">{errors.phone}</p>}
-                    </div>
-                </div>
-
-                {/* ── Address ── */}
-                <div className="field-row">
-                    <label>Address:</label>
-                    <div>
-                        <input
-                            className="field-input"
-                            type="text"
-                            name="address"
-                            value={form.address}
-                            onChange={handleField}
-                            placeholder="e.g., 13 NoPaddle Street, Chip Creek, QLD 4730"
-                        />
-                        {errors.address && <p className="field-error">{errors.address}</p>}
-                    </div>
-                </div>
-
-                {/* ── Postcode ── */}
-                <div className="field-row">
-                    <label>Postcode:</label>
-                    <input
-                        className="field-input postcode"
-                        type="text"
-                        name="postcode"
-                        value={form.postcode}
-                        onChange={handleField}
-                        placeholder=""
-                    />
-                </div>
-
-                <hr className="form-divider" />
-
-                {/* ── Description ── */}
-                <div className="field-row top-align">
-                    <label>Description of<br />the Problem:</label>
-                    <div>
+                    {/* ── Objectives ── */}
+                    <div className="field-row top-align">
+                        <label>Objectives:<br />What are you<br />trying to<br />achieve?</label>
                         <textarea
                             className="field-textarea"
-                            name="description"
-                            value={form.description}
+                            name="objectives"
+                            value={form.objectives}
                             onChange={handleField}
-                            placeholder="Please list your technology issues in detail, we love to assist people with technology challenges!"
+                            placeholder="How can we assist you best?"
                         />
-                        {errors.description && <p className="field-error">{errors.description}</p>}
                     </div>
-                </div>
 
-                {/* ── Objectives ── */}
-                <div className="field-row top-align">
-                    <label>Objectives:<br />What are you<br />trying to<br />achieve?</label>
-                    <textarea
-                        className="field-textarea"
-                        name="objectives"
-                        value={form.objectives}
-                        onChange={handleField}
-                        placeholder="How can we assist you best?"
-                    />
-                </div>
+                    <hr className="form-divider" />
 
-                <hr className="form-divider" />
-
-                {/* ── Service Type ── */}
-                <div className="field-row">
-                    <label>Service Type:</label>
-                    <div className="radio-group">
-                        {[
-                            { value: "onsite", label: "On-site Visit" },
-                            { value: "remote", label: "Remote Support" },
-                            { value: "laptop", label: "Laptop Repair" },
-                        ].map((opt) => (
-                            <label key={opt.value}>
-                                <input
-                                    type="radio"
-                                    name="serviceType"
-                                    value={opt.value}
-                                    checked={form.serviceType === opt.value}
-                                    onChange={handleField}
-                                />
-                                {opt.label}
-                            </label>
-                        ))}
-                    </div>
-                </div>
-
-                {/* ── Site Type ── */}
-                <div className="field-row">
-                    <label>Site Type:</label>
-                    <div className="radio-group">
-                        {[
-                            { value: "home", label: "Home" },
-                            { value: "home-business", label: "Home Business" },
-                            { value: "wfh", label: "Work from Home" },
-                            { value: "business", label: "Business" },
-                            { value: "retail", label: "Retail" },
-                            { value: "other", label: "Other" },
-                        ].map((opt) => (
-                            <label key={opt.value}>
-                                <input
-                                    type="radio"
-                                    name="siteType"
-                                    value={opt.value}
-                                    checked={form.siteType === opt.value}
-                                    onChange={handleField}
-                                />
-                                {opt.label}
-                            </label>
-                        ))}
-                    </div>
-                </div>
-
-                <hr className="form-divider" />
-
-                {/* ── Preferred Date ── */}
-                <div className="field-row">
-                    <label>Preferred Date:</label>
-                    <input
-                        className="field-input date-input"
-                        type="date"
-                        name="preferredDate"
-                        value={form.preferredDate}
-                        onChange={handleField}
-                        min={todayStr()}
-                    />
-                </div>
-
-                {/* ── Time Slots ── */}
-                <div className="field-row top-align">
-                    <label>Preferred<br />Time(s) Slots:</label>
-                    <div>
-                        <div className="timeslots-grid">
-                            <div className="timeslot-col">
-                                <h4>Morning</h4>
-                                <label className="timeslot-item">
-                                    <input type="checkbox" name="morning"
-                                        checked={form.timeSlots.morning} onChange={handleField} />
-                                    8:00am – 11:30am
+                    {/* ── Service Type ── */}
+                    <div className="field-row">
+                        <label>Service Type:</label>
+                        <div className="radio-group">
+                            {[
+                                { value: "onsite", label: "On-site Visit" },
+                                { value: "remote", label: "Remote Support" },
+                                { value: "laptop", label: "Laptop Repair" },
+                            ].map((opt) => (
+                                <label key={opt.value}>
+                                    <input
+                                        type="radio"
+                                        name="serviceType"
+                                        value={opt.value}
+                                        checked={form.serviceType === opt.value}
+                                        onChange={handleField}
+                                    />
+                                    {opt.label}
                                 </label>
-                            </div>
-                            <div className="timeslot-col">
-                                <h4>Midday</h4>
-                                <label className="timeslot-item">
-                                    <input type="checkbox" name="midday"
-                                        checked={form.timeSlots.midday} onChange={handleField} />
-                                    12:00pm – 2:30pm
-                                </label>
-                            </div>
-                            <div className="timeslot-col">
-                                <h4>Afternoon</h4>
-                                <label className="timeslot-item">
-                                    <input type="checkbox" name="afternoon"
-                                        checked={form.timeSlots.afternoon} onChange={handleField} />
-                                    3:00pm – 5:30pm
-                                </label>
-                            </div>
-                            <div className="timeslot-col">
-                                <h4>Evening</h4>
-                                <label className="timeslot-item">
-                                    <input type="checkbox" name="evening"
-                                        checked={form.timeSlots.evening} onChange={handleField} />
-                                    6:00pm – 9:00pm
-                                </label>
-                            </div>
+                            ))}
                         </div>
-                        {errors.timeSlots && <p className="field-error">{errors.timeSlots}</p>}
                     </div>
-                </div>
 
-                <hr className="form-divider" />
+                    {/* ── Site Type ── */}
+                    <div className="field-row">
+                        <label>Site Type:</label>
+                        <div className="radio-group">
+                            {[
+                                { value: "home", label: "Home" },
+                                { value: "home-business", label: "Home Business" },
+                                { value: "wfh", label: "Work from Home" },
+                                { value: "business", label: "Business" },
+                                { value: "retail", label: "Retail" },
+                                { value: "other", label: "Other" },
+                            ].map((opt) => (
+                                <label key={opt.value}>
+                                    <input
+                                        type="radio"
+                                        name="siteType"
+                                        value={opt.value}
+                                        checked={form.siteType === opt.value}
+                                        onChange={handleField}
+                                    />
+                                    {opt.label}
+                                </label>
+                            ))}
+                        </div>
+                    </div>
 
-                {/* ── Subscribe ── */}
-                <div className="subscribe-section">
-                    <label className="field-label">Subscribe:</label>
-                    <label className="subscribe-check">
+                    <hr className="form-divider" />
+
+                    {/* ── Preferred Date ── */}
+                    <div className="field-row">
+                        <label>Preferred Date:</label>
                         <input
-                            type="checkbox"
-                            name="subscribe"
-                            checked={form.subscribe}
+                            className="field-input date-input"
+                            type="date"
+                            name="preferredDate"
+                            value={form.preferredDate}
                             onChange={handleField}
+                            min={todayStr()}
                         />
-                        Sign me up for the weekly newsletter
-                    </label>
-                    <p className="privacy-note">
-                        *We will never share your information with anyone{" "}
-                        <a href="#">( Visit our Privacy Policy here )</a>.
-                    </p>
-                </div>
+                    </div>
 
-                {/* ── Submit Button ── */}
-                <button
-                    className="submit-btn"
-                    onClick={handleSubmit}
-                    disabled={submitting}
-                >
-                    {submitting
-                        ? <><span className="spinner" /> Submitting…</>
-                        : "Submit"
-                    }
-                </button>
+                    {/* ── Time Slots ── */}
+                    <div className="field-row top-align">
+                        <label>Preferred<br />Time(s) Slots:</label>
+                        <div>
+                            <div className="timeslots-grid">
+                                <div className="timeslot-col">
+                                    <h4>Morning</h4>
+                                    <label className="timeslot-item">
+                                        <input type="checkbox" name="morning"
+                                            checked={form.timeSlots.morning} onChange={handleField} />
+                                        8:00am – 11:30am
+                                    </label>
+                                </div>
+                                <div className="timeslot-col">
+                                    <h4>Midday</h4>
+                                    <label className="timeslot-item">
+                                        <input type="checkbox" name="midday"
+                                            checked={form.timeSlots.midday} onChange={handleField} />
+                                        12:00pm – 2:30pm
+                                    </label>
+                                </div>
+                                <div className="timeslot-col">
+                                    <h4>Afternoon</h4>
+                                    <label className="timeslot-item">
+                                        <input type="checkbox" name="afternoon"
+                                            checked={form.timeSlots.afternoon} onChange={handleField} />
+                                        3:00pm – 5:30pm
+                                    </label>
+                                </div>
+                                <div className="timeslot-col">
+                                    <h4>Evening</h4>
+                                    <label className="timeslot-item">
+                                        <input type="checkbox" name="evening"
+                                            checked={form.timeSlots.evening} onChange={handleField} />
+                                        6:00pm – 9:00pm
+                                    </label>
+                                </div>
+                            </div>
+                            {errors.timeSlots && <p className="field-error">{errors.timeSlots}</p>}
+                        </div>
+                    </div>
+
+                    <hr className="form-divider" />
+
+                    {/* ── Subscribe ── */}
+                    <div className="subscribe-section">
+                        <label className="field-label">Subscribe:</label>
+                        <label className="subscribe-check">
+                            <input
+                                type="checkbox"
+                                name="subscribe"
+                                checked={form.subscribe}
+                                onChange={handleField}
+                            />
+                            Sign me up for the weekly newsletter
+                        </label>
+                        <p className="privacy-note">
+                            *We will never share your information with anyone{" "}
+                            <a href="#">( Visit our Privacy Policy here )</a>.
+                        </p>
+                    </div>
+
+                    {/* ── Submit Button ── */}
+                    <button
+                        className="submit-btn"
+                        onClick={handleSubmit}
+                        disabled={submitting}
+                    >
+                        {submitting
+                            ? <><span className="spinner" /> Submitting…</>
+                            : "Submit"
+                        }
+                    </button>
+
+                </form>
 
                 {/* ── Urgent Bar ── */}
                 <p className="urgent-bar">
@@ -510,42 +475,10 @@ export default function BookingForm() {
 
                 {/* ── Hero Illustration ── */}
                 <div className="hero-illustration">
-                    <div className="hero-svg-wrap">
-                        <div className="hero-person-icon">🧑‍💻</div>
-
-                        <div className="hero-monitor">
-                            <h3>House Appointment</h3>
-                            <div className="cal-grid">
-                                {["S", "M", "T", "W", "T", "F", "S"].map((d, i) => (
-                                    <span key={`h${i}`} style={{ color: "#e8520a", fontSize: "0.65rem" }}>{d}</span>
-                                ))}
-                                {calCells.slice(0, 28).map((d, i) => (
-                                    <span
-                                        key={i}
-                                        className={
-                                            d === calToday ? "cal-today" :
-                                                d === calToday + 1 ? "cal-selected" : ""
-                                        }
-                                    >
-                                        {d || ""}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div style={{
-                            background: "#e8520a", color: "#fff",
-                            borderRadius: 10, padding: "14px 20px",
-                            textAlign: "center", boxShadow: "0 4px 14px rgba(26,111,196,0.3)"
-                        }}>
-                            <div style={{ fontSize: "2.2rem", fontWeight: 800, lineHeight: 1 }}>1</div>
-                            <div style={{
-                                fontSize: "0.7rem", fontWeight: 800, letterSpacing: 1,
-                                textTransform: "uppercase", marginTop: 4
-                            }}>Booking</div>
-                        </div>
-                    </div>
-
+                    <img
+                        src="https://images.unsplash.com/photo-1588508065123-287b28e013da?w=900&auto=format&fit=crop&q=80"
+                        alt="Tech support professional helping a client"
+                    />
                     <div className="hero-caption">
                         Self-booking from <a href="#">the Tech Dr</a> Australia
                     </div>

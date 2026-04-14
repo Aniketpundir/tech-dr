@@ -103,7 +103,7 @@
 /* ── Divider ── */
 .form-divider {
     border: none;
-    border-top: 1px solid #ebebeb;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
     margin: 28px 0;
 }
 
@@ -119,7 +119,7 @@
 .field-row>label {
     font-size: 0.97rem;
     font-weight: 700;
-    color: #e8520a;
+    color: #fff;
     padding-top: 10px;
     line-height: 1.5;
 }
@@ -133,22 +133,22 @@
 .field-textarea {
     width: 100%;
     padding: 10px 13px;
-    border: 1px solid #ccc;
+    border: none;
     border-radius: 6px;
     font-family: 'Nunito', 'Segoe UI', sans-serif;
     font-size: 0.93rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #333;
+    color: #e8520a;
     background: #fff;
     outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition: box-shadow 0.2s;
+    box-sizing: border-box;
 }
 
 .field-input:focus,
 .field-textarea:focus {
-    border-color: #1a6fc4;
-    box-shadow: 0 0 0 3px rgba(26, 111, 196, 0.1);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
 }
 
 .field-input::placeholder,
@@ -156,7 +156,8 @@
     font-family: 'Source Code Pro', 'Courier New', Courier, monospace;
     font-size: 0.82rem;
     font-weight: 400;
-    color: #aaa;
+    color: #e8520a;
+    opacity: 1;
 }
 
 .field-textarea {
@@ -177,7 +178,7 @@
 .field-error {
     font-size: 0.82rem;
     font-weight: 700;
-    color: #e8520a;
+    color: #ffe0d0;
     margin-top: 4px;
 }
 
@@ -195,12 +196,12 @@
     gap: 7px;
     font-size: 0.95rem;
     font-weight: 600;
-    color: #333;
+    color: #fff;
     cursor: pointer;
 }
 
 .radio-group input[type="radio"] {
-    accent-color: #e8520a;
+    accent-color: #fff;
     width: 16px;
     height: 16px;
     cursor: pointer;
@@ -217,7 +218,7 @@
 .timeslot-col h4 {
     font-size: 0.88rem;
     font-weight: 800;
-    color: #222;
+    color: #fff;
     margin-bottom: 9px;
 }
 
@@ -227,13 +228,13 @@
     gap: 7px;
     font-size: 0.87rem;
     font-weight: 600;
-    color: #333;
+    color: #fff;
     cursor: pointer;
     line-height: 1.3;
 }
 
 .timeslot-item input[type="checkbox"] {
-    accent-color: #e8520a;
+    accent-color: #fff;
     width: 16px;
     height: 16px;
     flex-shrink: 0;
@@ -248,7 +249,7 @@
 .subscribe-section>label.field-label {
     font-size: 0.97rem;
     font-weight: 700;
-    color: #e8520a;
+    color: #fff;
     display: block;
     margin-bottom: 9px;
 }
@@ -260,11 +261,11 @@
     cursor: pointer;
     font-size: 0.95rem;
     font-weight: 600;
-    color: #333;
+    color: #fff;
 }
 
 .subscribe-check input[type="checkbox"] {
-    accent-color: #e8520a;
+    accent-color: #fff;
     width: 16px;
     height: 16px;
     cursor: pointer;
@@ -273,13 +274,13 @@
 .privacy-note {
     font-size: 0.84rem;
     font-weight: 400;
-    color: #666;
+    color: rgba(255, 255, 255, 0.75);
     margin-top: 6px;
     margin-left: 26px;
 }
 
 .privacy-note a {
-    color: #e8520a;
+    color: #ffe0d0;
     font-weight: 700;
     text-decoration: none;
 }
@@ -288,13 +289,20 @@
     text-decoration: underline;
 }
 
+/* ── Form Section ── */
+.form-section {
+    background: linear-gradient(145deg, #ff7d3a, #e8520a);
+    padding: 20px;
+    border-radius: 20px;
+}
+
 /* ── Submit Button ── */
 .submit-btn {
     display: inline-flex;
     align-items: center;
     gap: 9px;
-    background: #e8520a;
-    color: #fff;
+    background: #fff;
+    color: #e8520a;
     border: none;
     padding: 13px 34px;
     border-radius: 8px;
@@ -304,14 +312,14 @@
     letter-spacing: 0.3px;
     cursor: pointer;
     transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-    box-shadow: 0 4px 14px rgba(26, 111, 196, 0.25);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
     margin-top: 8px;
 }
 
 .submit-btn:hover:not(:disabled) {
-    background: #155da0;
+    background: #fff3ec;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(26, 111, 196, 0.35);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 .submit-btn:disabled {
@@ -391,80 +399,14 @@
     border-radius: 12px;
     overflow: hidden;
     border: 1px solid #dde8f5;
-    background: #fde8e0;
 }
 
-.hero-svg-wrap {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-    padding: 36px 30px;
-    flex-wrap: wrap;
-}
-
-.hero-person-icon {
-    font-size: 7rem;
-    filter: drop-shadow(0 6px 16px rgba(26, 111, 196, 0.18));
-    animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-8px);
-    }
-}
-
-.hero-monitor {
-    background: #fff;
-    border-radius: 12px;
-    padding: 16px 20px;
-    box-shadow: 0 6px 24px rgba(26, 111, 196, 0.18);
-    min-width: 190px;
-}
-
-.hero-monitor h3 {
-    font-size: 0.75rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #e8520a;
-    text-align: center;
-    margin-bottom: 12px;
-    border-bottom: 1px solid #e0ecf8;
-    padding-bottom: 8px;
-}
-
-.cal-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 3px;
-    text-align: center;
-    font-size: 0.7rem;
-    font-weight: 700;
-    color: #666;
-}
-
-.cal-grid span {
-    padding: 2px 0;
-}
-
-.cal-grid .cal-today {
-    background: #e8520a;
-    color: #fff;
-    border-radius: 4px;
-}
-
-.cal-grid .cal-selected {
-    background: #1a6fc4;
-    color: #fff;
-    border-radius: 4px;
+.hero-illustration img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px 12px 0 0;
 }
 
 .hero-caption {
@@ -487,8 +429,8 @@
 .spinner {
     width: 17px;
     height: 17px;
-    border: 2.5px solid rgba(255, 255, 255, 0.4);
-    border-top-color: #fff;
+    border: 2.5px solid rgba(232, 82, 10, 0.3);
+    border-top-color: #e8520a;
     border-radius: 50%;
     animation: spin 0.7s linear infinite;
     display: inline-block;
@@ -498,6 +440,30 @@
     to {
         transform: rotate(360deg);
     }
+}
+
+/* ── Scroll To Top ── */
+.scroll-to-top {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #e8520a;
+    color: #fff;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(232, 82, 10, 0.4);
+    transition: background 0.2s, transform 0.15s;
+    z-index: 999;
+}
+
+.scroll-to-top:hover {
+    background: #c94208;
+    transform: translateY(-2px);
 }
 
 /* ── Responsive ── */
@@ -518,10 +484,5 @@
 
     .booking-page-title {
         font-size: 1.4rem;
-    }
-
-    .hero-svg-wrap {
-        flex-direction: column;
-        gap: 20px;
     }
 }
