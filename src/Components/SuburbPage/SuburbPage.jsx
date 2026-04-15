@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { cityData, suburbImages } from "../CityData/CityData";
+import { cityData } from "../CityData/CityData";
 import "./SuburbPage.css";
+import msp from "../../assets/msp.jpeg"
 
 // Find which region a suburb belongs to
 const findRegionForSuburb = (suburbSlug) => {
@@ -77,9 +78,6 @@ const SuburbPage = () => {
     const { region, suburb, data } = result;
     const regionSlug = region.toLowerCase().replace(/\s+/g, "-");
 
-    // ── Suburb-specific images — fallback to parent region if not in map ──
-    const imgs = suburbImages[suburb] || { image1: data.image1, image2: data.image2 };
-
     // Nearby suburbs (excluding current, max 6)
     const nearbySuburbs = data.suburbs.filter((s) => s !== suburb).slice(0, 6);
 
@@ -148,8 +146,7 @@ const SuburbPage = () => {
 
                 {/* ── Suburb-specific images ── */}
                 <div className="sp-images">
-                    <img src={imgs.image1} alt={`${suburb} Sydney`} className="sp-img" />
-                    <img src={imgs.image2} alt={`${suburb} area`} className="sp-img" />
+                    <img src={msp} alt={`${suburb} Sydney`} className="sp-img" />
                 </div>
 
                 <p className="sp-para">
