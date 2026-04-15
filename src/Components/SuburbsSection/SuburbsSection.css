@@ -116,10 +116,13 @@
 }
 
 .suburb-arrow {
-    font-size: 16px;
-    color: #cccccc;
+    font-size: 20px;
+    color: #e8520a;
     transition: color 0.25s ease, transform 0.25s ease;
     display: inline-block;
+    padding: 6px;
+    border: 3px solid #e8520a;
+    border-radius: 92%;
 }
 
 /* ── BOOK NOW BUTTON ── */
