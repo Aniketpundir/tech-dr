@@ -465,16 +465,19 @@ export default function BookingForm() {
                     </div>
 
                     {/* ── Submit Button ── */}
-                    <button
-                        className="submit-btn"
-                        onClick={handleSubmit}
-                        disabled={submitting}
-                    >
-                        {submitting
-                            ? <><span className="spinner" /> Submitting…</>
-                            : "Submit"
-                        }
-                    </button>
+                    <div className="submit-button">
+                        <button
+                            className="submit-btn"
+                            onClick={handleSubmit}
+                            disabled={submitting}
+                        >
+                            {submitting
+                                ? <><span className="spinner" /> Submitting…</>
+                                : "Submit"
+                            }
+                        </button>
+                    </div>
+
 
                 </form>
 

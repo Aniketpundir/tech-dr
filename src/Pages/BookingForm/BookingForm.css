@@ -510,6 +510,12 @@
     text-decoration: none;
 }
 
+.submit-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* ── Responsive hero ── */
 @media (max-width: 600px) {
     .hero-svg-wrap {
