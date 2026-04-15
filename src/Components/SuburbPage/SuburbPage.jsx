@@ -37,7 +37,7 @@ const FaqItem = ({ question, answer }) => {
 };
 
 const SuburbPage = () => {
-    const { suburbSlug } = useParams();
+    const { suburbSlug, slug } = useParams();
     const navigate = useNavigate();
 
     const result = findRegionForSuburb(suburbSlug);
@@ -218,7 +218,7 @@ const SuburbPage = () => {
                         <button
                             key={i}
                             className="sp-nearby-btn"
-                            onClick={() => navigate(`/suburbs/${s.toLowerCase().replace(/\s+/g, "-")}`)}
+                            onClick={() => navigate(`/suburbs-section/city/${slug}/suburbs/${suburbSlug}`)}
                         >
                             <span className="sp-nearby-dot" />
                             {s}

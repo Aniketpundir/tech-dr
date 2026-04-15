@@ -59,6 +59,7 @@
 
 /* Title */
 .city-title {
+    text-align: center;
     font-size: 28px;
     font-weight: 700;
     color: #e8623a;
@@ -135,6 +136,7 @@
 }
 
 .city-subtitle {
+    text-align: center;
     font-size: 21px;
     font-weight: 700;
     color: #1a1560;
@@ -200,6 +202,7 @@
 /* Services list */
 .city-services-list {
     list-style: none;
+    color: #fff;
     padding: 0;
     margin: 0 0 8px;
     display: grid;
@@ -209,9 +212,9 @@
 
 .city-services-list li {
     font-size: 14px;
-    color: #333;
-    background: #fdf6f2;
-    border-left: 4px solid #e8623a;
+    color: #fff;
+    background: linear-gradient(145deg, #ff7d3a, #e8520a);
+    border-left: 4px solid #fdf6f2;
     padding: 10px 14px;
     border-radius: 0 6px 6px 0;
     display: flex;
@@ -220,8 +223,12 @@
     transition: background 0.2s ease, transform 0.2s ease;
 }
 
+.city-services-list .svc-dot {
+    color: #fff !important;
+}
+
 .city-services-list li:hover {
-    background: #fce8e0;
+    background: linear-gradient(145deg, #ff7d3a, #e8520a);
     transform: translateX(4px);
 }
 

@@ -81,7 +81,8 @@ const CityPage = () => {
                 </button>
 
                 {/* Title */}
-                <h1 className="city-title">Expert IT Support & Tech Services in {region} — TheTechDr</h1>
+                <h1 className="city-title">Expert IT Support & Tech Services in {region} </h1>
+                <h1 className="city-title">TheTechDr</h1>
 
                 {/* Area tag */}
                 <p className="city-area-tag">{data.area}</p>
@@ -170,7 +171,7 @@ const CityPage = () => {
                 <ul className="city-services-list">
                     {data.services.map((svc, i) => (
                         <li key={i}>
-                            <span className="svc-dot" />
+                            {/* <span className="svc-dot" /> */}
                             {svc}
                         </li>
                     ))}

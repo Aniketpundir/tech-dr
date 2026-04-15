@@ -171,8 +171,8 @@ export const suburbImages = {
 
 export const cityData = {
     "Sydney City": {
-        image1: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
-        image2: "https://images.unsplash.com/photo-1524293568345-75d62c3664f7?w=800&q=80",
+        image1: "https://images.unsplash.com/photo-1624138784614-87fd1b6528f8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c3lkbmV5JTIwY2l0eXxlbnwwfHwwfHx8MA%3D%3D",
+        image2: "https://images.unsplash.com/photo-1598948485421-33a1655d3c18?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHN5ZG5leXxlbnwwfHwwfHx8MA%3D%3D",
         area: "Sydney CBD & Inner City",
         description: "the vibrant heart of Australia, where iconic landmarks meet a thriving business district and hundreds of thousands of residents and commuters rely on seamless technology every day",
         character: "From skyscraper offices on George Street to creative studios in Surry Hills and boutique stores in The Rocks, Sydney City demands IT support that moves as fast as the city itself. Our technicians know every suburb, every building type, and every tech challenge unique to inner-city environments.",
