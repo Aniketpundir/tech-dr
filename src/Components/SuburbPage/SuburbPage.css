@@ -96,6 +96,7 @@
 
 /* Title */
 .sp-title {
+    text-align: center;
     font-size: 28px;
     font-weight: 700;
     color: #e8623a;

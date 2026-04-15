@@ -12,19 +12,14 @@
     text-align: center;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     margin-bottom: 20px;
     color: rgba(255, 255, 255, 0.85);
-    /* ← white */
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
 }
 
 .header-label span {
     color: #ffffff;
-    /* ← white */
     font-size: 30px;
     font-weight: 700;
     letter-spacing: 1.5px;
@@ -37,63 +32,67 @@
     flex-shrink: 0;
 }
 
-.header-title {
-    font-size: 52px;
-    font-weight: 800;
-    color: #ffffff;
-    /* ← white */
-    line-height: 1.15;
-    margin: 0;
-    max-width: 700px;
-    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.15);
+.suburbs-grid-wrapper {
+    width: 100%;
 }
 
 .suburbs-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    row-gap: 28px;
-    column-gap: 0;
+    gap: 20px;
 }
 
+/* ── WHITE CARD ── */
 .suburb-item {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: 14px;
+    background: #ffffff;
+    border: 1.5px solid rgba(255, 255, 255, 0.6);
+    border-radius: 14px;
+    padding: 18px 18px 16px;
     cursor: pointer;
-    transition: transform 0.25s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
 .suburb-item:hover {
-    transform: translateX(6px);
-}
-
-.suburb-item:hover .icon-wrapper {
-    background-color: rgba(255, 255, 255, 0.35);
-    transform: scale(1.12);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 .suburb-item:hover .suburb-arrow {
-    color: #ffffff;
+    color: #e8520a;
     transform: translateX(4px);
 }
 
 .suburb-item:hover .suburb-name {
-    color: #ffffff;
+    color: #e8520a;
     font-weight: 700;
 }
 
+/* ── TOP ROW: icon + name + arrow ── */
+.suburb-card-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
 .icon-wrapper {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.2);
-    /* ← semi-transparent white */
-    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background-color: #fff3ee;
+    border: 1.5px solid #ffd4bc;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    transition: background-color 0.25s ease, transform 0.25s ease;
+    transition: background-color 0.25s ease;
+}
+
+.suburb-item:hover .icon-wrapper {
+    background-color: #ffe6d8;
 }
 
 .pin-icon {
@@ -104,43 +103,57 @@
 .suburb-info {
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: space-between;
+    flex: 1;
 }
 
 .suburb-name {
-    font-size: 16px;
-    font-weight: 500;
-    color: #ffffff;
-    /* ← white */
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a1a1a;
     letter-spacing: 0.01em;
     transition: color 0.25s ease, font-weight 0.1s ease;
 }
 
 .suburb-arrow {
     font-size: 16px;
-    color: rgba(255, 255, 255, 0.6);
-    /* ← soft white arrow */
+    color: #cccccc;
     transition: color 0.25s ease, transform 0.25s ease;
     display: inline-block;
 }
 
-/* Media queries same rehenge */
+/* ── BOOK NOW BUTTON ── */
+.book-now-btn {
+    width: 100%;
+    padding: 9px 0;
+    background: linear-gradient(135deg, #ff7d3a, #e8520a);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.15s ease;
+}
 
+.book-now-btn:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+}
+
+.book-now-btn:active {
+    transform: scale(0.98);
+}
+
+/* ── RESPONSIVE ── */
 @media (max-width: 900px) {
     .suburbs-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .header-title {
-        font-size: 38px;
-    }
-
     .suburbs-section {
         padding: 40px 30px 60px;
-    }
-
-    .suburbs-grid-wrapper {
-        padding: 28px;
     }
 }
 
@@ -149,16 +162,7 @@
         grid-template-columns: 1fr;
     }
 
-    .header-title {
-        font-size: 28px;
-    }
-
     .suburbs-section {
         padding: 30px 20px 50px;
-    }
-
-    .suburbs-grid-wrapper {
-        padding: 20px;
-        border-radius: 14px;
     }
 }

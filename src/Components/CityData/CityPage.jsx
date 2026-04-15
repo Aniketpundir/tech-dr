@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { cityData } from "../CityData/CityData";
 import "./CityPage.css";
 
@@ -31,11 +31,19 @@ const CityPage = () => {
     const navigate = useNavigate();
     const region = slugToRegion(slug);
     const data = cityData[region];
+    const [callHover, setCallHover] = useState(false);
 
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
         document.title = `IT Support & Tech Services in ${region} | TheTechDr`;
     }, [region]);
+
+    const handleClick = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
+    };
 
     if (!data) {
         return (
@@ -131,6 +139,24 @@ const CityPage = () => {
                 <p className="city-para">
                     Our technicians service all suburbs across the {region} region. Click on any suburb below to see more details:
                 </p>
+
+                <div className="btn-wrapper">
+                    <div className="call-and-booking-section">
+                        <Link to="/book-now" onClick={() => { handleClick() }} className="btn-link">
+                            <button
+                                className={`btn btn-call ${callHover ? "btn-call--hover" : ""}`}
+                                onMouseEnter={() => setCallHover(true)}
+                                onMouseLeave={() => setCallHover(false)}
+                            >
+                                <span className="btn-icon"></span>
+                                BOOK NOW
+                            </button>
+                        </Link>
+                    </div>
+
+
+                </div>
+
                 <ul className="city-suburbs-list">
                     {data.suburbs.map((suburb, i) => (
                         <li

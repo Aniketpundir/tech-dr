@@ -117,7 +117,10 @@ const SuburbPage = () => {
 
                 {/* Title */}
                 <h1 className="sp-title">
-                    Expert IT Support &amp; Tech Services in {suburb} — TheTechDr
+                    Expert IT Support &amp; Tech Services in {suburb}
+                </h1>
+                <h1 className="sp-title">
+                    TheTechDr
                 </h1>
 
                 <p className="sp-region-tag">Part of {data.area}</p>
