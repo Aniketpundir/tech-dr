@@ -132,6 +132,19 @@ const CityPage = () => {
                     left waiting long with a broken device.
                 </p>
 
+                <div className="call-and-booking-section button-section">
+                    <Link to="/book-now" onClick={() => { handleClick() }} className="btn-link">
+                        <button
+                            className={`btn btn-call ${callHover ? "btn-call--hover" : ""}`}
+                            onMouseEnter={() => setCallHover(true)}
+                            onMouseLeave={() => setCallHover(false)}
+                        >
+                            <span className="btn-icon"></span>
+                            BOOK NOW
+                        </button>
+                    </Link>
+                </div>
+
                 <div className="city-divider" />
 
                 {/* Suburbs we cover */}
@@ -141,20 +154,6 @@ const CityPage = () => {
                 </p>
 
                 <div className="btn-wrapper">
-                    <div className="call-and-booking-section">
-                        <Link to="/book-now" onClick={() => { handleClick() }} className="btn-link">
-                            <button
-                                className={`btn btn-call ${callHover ? "btn-call--hover" : ""}`}
-                                onMouseEnter={() => setCallHover(true)}
-                                onMouseLeave={() => setCallHover(false)}
-                            >
-                                <span className="btn-icon"></span>
-                                BOOK NOW
-                            </button>
-                        </Link>
-                    </div>
-
-
                 </div>
 
                 <ul className="city-suburbs-list">
