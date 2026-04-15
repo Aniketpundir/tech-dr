@@ -152,11 +152,6 @@ const Services = () => {
         e.stopPropagation();
         navigate('/book-now');
     };
-    const handleLearnMore = (e, slug) => {
-        e.preventDefault();
-        e.stopPropagation();
-        navigate(`/services/${slug}`);
-    };
 
     return (
         <>

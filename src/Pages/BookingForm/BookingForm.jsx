@@ -49,14 +49,7 @@ export default function BookingForm() {
 
     const [submitting, setSubmitting] = useState(false);
     const [toast, setToast] = useState(null);
-    const [scrollBtn, setScrollBtn] = useState(false);
     const [errors, setErrors] = useState({});
-
-    useEffect(() => {
-        const onScroll = () => setScrollBtn(window.scrollY > 300);
-        window.addEventListener("scroll", onScroll);
-        return () => window.removeEventListener("scroll", onScroll);
-    }, []);
 
     useEffect(() => {
         if (!toast) return;
