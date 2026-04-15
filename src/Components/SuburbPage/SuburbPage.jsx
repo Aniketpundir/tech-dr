@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { cityData, suburbImages } from "../CityData/CityData";
 import "./SuburbPage.css";
 
@@ -39,8 +39,16 @@ const FaqItem = ({ question, answer }) => {
 const SuburbPage = () => {
     const { suburbSlug, slug } = useParams();
     const navigate = useNavigate();
+    const [callHover, setCallHover] = useState(false);
 
     const result = findRegionForSuburb(suburbSlug);
+
+    const handleClick = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
+    };
 
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -158,6 +166,19 @@ const SuburbPage = () => {
                 </p>
 
                 <div className="sp-divider" />
+
+                <div className="call-and-booking-section button-section">
+                    <Link to="/book-now" onClick={() => { handleClick() }} className="btn-link">
+                        <button
+                            className={`btn btn-call ${callHover ? "btn-call--hover" : ""}`}
+                            onMouseEnter={() => setCallHover(true)}
+                            onMouseLeave={() => setCallHover(false)}
+                        >
+                            <span className="btn-icon"></span>
+                            BOOK NOW
+                        </button>
+                    </Link>
+                </div>
 
                 {/* Services */}
                 <h2 className="sp-subtitle">Our IT &amp; Technology Services in {suburb}</h2>

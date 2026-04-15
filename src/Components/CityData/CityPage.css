@@ -106,7 +106,7 @@
 /* Images */
 .city-images {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 6px;
     border-radius: 10px;
     overflow: hidden;
@@ -115,6 +115,7 @@
 }
 
 .city-img {
+
     width: 100%;
     height: 215px;
     object-fit: cover;

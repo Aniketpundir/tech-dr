@@ -112,7 +112,6 @@ const CityPage = () => {
                 {/* Images */}
                 <div className="city-images">
                     <img src={data.image1} alt={`${region} Sydney`} className="city-img" />
-                    <img src={data.image2} alt={`${region} area`} className="city-img" />
                 </div>
 
                 {/* Body */}

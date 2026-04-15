@@ -1,3 +1,13 @@
+import lowerNorthShore from "../../assets/lower-north-shore.jpeg"
+import SydneyCity from "../../assets/SydneyCity.jpeg"
+import UpperNorthShore from "../../assets/UpperNorthShore.jpeg"
+import Parramatta from "../../assets/Parramatta.jpeg"
+import InnerWest from "../../assets/InnerWest.jpeg"
+import NorthernBeaches from "../../assets/NorthernBeaches.jpeg"
+import HillsDistrict from "../../assets/HillsDistrict.jpeg"
+import EasternSuburbs from "../../assets/EasternSuburbs.jpeg"
+import NorthernSuburbs from "../../assets/NorthernSuburbs.jpeg"
+import WesternSydney from "../../assets/WesternSydney.jpeg"
 
 export const regions = [
     "Sydney City",
@@ -9,6 +19,7 @@ export const regions = [
     "Hills District",
     "Eastern Suburbs",
     "Northern Suburbs",
+    "Western Sydney",
 ];
 
 // ─── Per-suburb images ───────────────────────────────────────────────────────
@@ -166,12 +177,29 @@ export const suburbImages = {
     "Marsfield": { image1: "https://images.unsplash.com/photo-1448630360428-65456885c650?w=800&q=80", image2: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80" },
     "Macquarie Park": { image1: "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=800&q=80", image2: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80" },
     "Shepherd's Bay": { image1: "https://images.unsplash.com/photo-1476158085676-e67f57ed9ed7?w=800&q=80", image2: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80" },
+
+    // Western Sydney
+    "Blacktown": { image1: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80", image2: "https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=800&q=80" },
+    "Seven Hills": { image1: "https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=800&q=80", image2: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80" },
+    "Pendle Hill": { image1: "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=800&q=80", image2: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80" },
+    "Wentworthville": { image1: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80", image2: "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=800&q=80" },
+    "Pemulwuy": { image1: "https://images.unsplash.com/photo-1448630360428-65456885c650?w=800&q=80", image2: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=800&q=80" },
+    "Girraween": { image1: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=800&q=80", image2: "https://images.unsplash.com/photo-1448630360428-65456885c650?w=800&q=80" },
+    "Penrith": { image1: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80", image2: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80" },
+    "St Marys": { image1: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80", image2: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80" },
+    "Mount Druitt": { image1: "https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=800&q=80", image2: "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=800&q=80" },
+    "Rooty Hill": { image1: "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=800&q=80", image2: "https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=800&q=80" },
+    "Liverpool": { image1: "https://images.unsplash.com/photo-1448630360428-65456885c650?w=800&q=80", image2: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80" },
+    "Cabramatta": { image1: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80", image2: "https://images.unsplash.com/photo-1448630360428-65456885c650?w=800&q=80" },
+    "Wetherill Park": { image1: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=800&q=80", image2: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80" },
+    "Smithfield": { image1: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80", image2: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=800&q=80" },
+    "Prospect": { image1: "https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=800&q=80", image2: "https://images.unsplash.com/photo-1448630360428-65456885c650?w=800&q=80" },
+
 };
 
 export const cityData = {
     "Sydney City": {
-        image1: "https://images.unsplash.com/photo-1476988186444-a7189cf07b3f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3VycnklMjBoaWxsc3xlbnwwfHwwfHx8MA%3D%3D",
-        image2: "https://images.unsplash.com/photo-1598007829291-7f533c554316?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c3VycnklMjBoaWxsc3xlbnwwfHwwfHx8MA%3D%3D",
+        image1: SydneyCity,
         area: "Sydney CBD & Inner City",
         description: "the vibrant heart of Australia, where iconic landmarks meet a thriving business district and hundreds of thousands of residents and commuters rely on seamless technology every day",
         character: "From skyscraper offices on George Street to creative studios in Surry Hills and boutique stores in The Rocks, Sydney City demands IT support that moves as fast as the city itself. Our technicians know every suburb, every building type, and every tech challenge unique to inner-city environments.",
@@ -197,8 +225,7 @@ export const cityData = {
     },
 
     "Lower North Shore": {
-        image1: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
-        image2: "https://images.unsplash.com/photo-1448630360428-65456885c650?w=800&q=80",
+        image1: lowerNorthShore,
         area: "Lower North Shore",
         description: "one of Sydney's most prestigious and picturesque regions, where harbourside homes and thriving village centres define a lifestyle that expects nothing less than the best",
         character: "The Lower North Shore is home to professionals, executives, and families who demand quality in everything — including their IT support. From home office setups in Mosman to corporate networks in North Sydney's towers, our technicians deliver premium, reliable service every time.",
@@ -224,8 +251,7 @@ export const cityData = {
     },
 
     "Upper North Shore": {
-        image1: "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=800&q=80",
-        image2: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80",
+        image1: UpperNorthShore,
         area: "Upper North Shore",
         description: "Sydney's leafy Upper North Shore, renowned for prestigious schools, peaceful streets, and a community that values quality in everything — including technology",
         character: "From Chatswood's bustling commercial strip through Killara, Gordon, and Turramurra, the Upper North Shore blends residential tranquility with real tech demands. Whether it's a home network upgrade, business server setup, or laptop repair, we service this entire corridor comprehensively.",
@@ -251,8 +277,7 @@ export const cityData = {
     },
 
     "Parramatta": {
-        image1: "https://plus.unsplash.com/premium_photo-1733267006424-f3e13e2dfe76?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fFBhcnJhbWF0dGF8ZW58MHx8MHx8fDA%3D",
-        image2: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80",
+        image1: Parramatta,
         area: "Greater Parramatta",
         description: "Western Sydney's booming commercial and cultural hub, one of Australia's fastest-growing urban centres with a thriving mix of businesses, government agencies, and diverse communities",
         character: "Parramatta is exploding with new businesses, government offices, health precincts, and a growing residential population — all of which rely heavily on technology infrastructure. TheTechDr is proud to be Parramatta's most trusted IT partner.",
@@ -278,8 +303,7 @@ export const cityData = {
     },
 
     "Inner West": {
-        image1: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=800&q=80",
-        image2: "https://images.unsplash.com/photo-1514214246283-d427a95c5d2f?w=800&q=80",
+        image1: InnerWest,
         area: "Inner West Sydney",
         description: "Sydney's vibrant Inner West, a melting pot of culture, creativity, and community spirit where heritage terrace homes sit alongside trendy cafés, studios, and growing tech startups",
         character: "The Inner West is home to a unique mix of creatives, freelancers, young families, and small business owners who all share one thing: a reliance on technology that just works. From Balmain's waterfront cottages to Ashfield's multicultural high street, our team is always nearby.",
@@ -305,8 +329,7 @@ export const cityData = {
     },
 
     "Northern Beaches": {
-        image1: "https://images.unsplash.com/photo-1476158085676-e67f57ed9ed7?w=800&q=80",
-        image2: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
+        image1: NorthernBeaches,
         area: "Northern Beaches",
         description: "Sydney's stunning Northern Beaches, where a relaxed coastal lifestyle meets modern living — and where residents and businesses alike need tech that keeps up with their pace",
         character: "From the surf shops of Manly to the quiet streets of Avalon, the Northern Beaches community values reliability and quality. Our technicians love this region and provide the same high standard of IT support you'd expect anywhere in Sydney — with a smile.",
@@ -332,8 +355,7 @@ export const cityData = {
     },
 
     "Hills District": {
-        image1: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80",
-        image2: "https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=800&q=80",
+        image1: HillsDistrict,
         area: "The Hills District",
         description: "Sydney's Hills District, a rapidly growing family-friendly region known for its master-planned communities, excellent schools, and strong demand for reliable, professional IT support",
         character: "The Hills District is one of Sydney's fastest-growing regions, with thousands of new homes, businesses, and schools opening every year. Our Hills District team is perfectly positioned to support this booming community with fast, expert IT services.",
@@ -359,8 +381,7 @@ export const cityData = {
     },
 
     "Eastern Suburbs": {
-        image1: "https://images.unsplash.com/photo-1476158085676-e67f57ed9ed7?w=800&q=80",
-        image2: "https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=800&q=80",
+        image1: EasternSuburbs,
         area: "Eastern Suburbs",
         description: "Sydney's iconic Eastern Suburbs, where world-famous beaches, elegant streets, and a vibrant café culture attract some of the city's most tech-savvy residents and businesses",
         character: "The Eastern Suburbs' mix of creative professionals, boutique businesses, and affluent families all rely on technology that just works. From Bondi's beachfront apartments to Paddington's terrace studios and Double Bay's corporate offices, we cover every corner.",
@@ -386,8 +407,7 @@ export const cityData = {
     },
 
     "Northern Suburbs": {
-        image1: "https://images.unsplash.com/photo-1448630360428-65456885c650?w=800&q=80",
-        image2: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80",
+        image1: NorthernSuburbs,
         area: "Northern Suburbs",
         description: "Sydney's Northern Suburbs, a diverse and well-connected region stretching from Ryde and Meadowbank through to Epping and beyond, home to families, students, and growing businesses",
         character: "The Northern Suburbs sit at a unique crossroads of established residential communities and new development, creating high demand for IT services across both homes and businesses. Our team knows this region inside out.",
@@ -409,6 +429,33 @@ export const cityData = {
         faq: [
             { q: "Do you service Ryde and Epping?", a: "Yes! Ryde, Epping, and the surrounding Northern Suburbs are areas we visit every week. Same-day service is available — call 1300 072 073 to book your appointment." },
             { q: "Can you help set up Wi-Fi in my Northern Suburbs apartment?", a: "Absolutely. Wi-Fi setup and NBN configuration in apartments is one of our most frequent jobs across the Northern Suburbs. We make sure you get fast, reliable coverage throughout your home." },
+        ],
+
+    },
+
+    "Western Sydney": {
+        image1: WesternSydney,
+        area: "Western Sydney",
+        description: "one of Australia's most dynamic and diverse regions, a powerhouse of growth, culture, and commerce that is home to over two million people and thousands of thriving businesses",
+        character: "Western Sydney is Australia's third-largest economy and its fastest-growing region — from the buzzing commercial hubs of Blacktown and Liverpool to the industrial corridors of Wetherill Park and the expanding residential estates of Penrith. TheTechDr is proud to be the trusted IT partner for homes and businesses right across Western Sydney.",
+        localTip: "Our Western Sydney technicians are locally based throughout the region, meaning faster response times and technicians who truly understand the unique tech challenges faced by homes and businesses here.",
+        suburbs: [
+            "Blacktown", "Seven Hills", "Pendle Hill", "Wentworthville",
+            "Pemulwuy", "Girraween", "Penrith", "St Marys",
+            "Mount Druitt", "Rooty Hill", "Liverpool", "Cabramatta",
+            "Wetherill Park", "Smithfield", "Prospect",
+        ],
+        services: [
+            "Gaming PC Building & Repair", "Mac & Windows PC Repair",
+            "Internet & Email Issues", "Hardware Upgrades & Repair",
+            "Software & Device Tutorials", "Network & Wireless Set Up",
+            "CCTV Setup & Servicing", "Data Recovery",
+            "Server Setup", "Business Phone System Set Up",
+            "Protection From Hackers", "Starlink Set Up",
+        ],
+        faq: [
+            { q: "Do you service Blacktown and Penrith?", a: "Yes! Blacktown and Penrith are two of our most active Western Sydney locations. We offer same-day and next-day service right across Western Sydney — call 1300 072 073 to book." },
+            { q: "Can you help set up IT for my Western Sydney business?", a: "Absolutely. From small retail shops to large warehouses and offices, we provide full IT support across Western Sydney including network setup, server installation, CCTV, and ongoing tech support." },
         ],
     },
 };
