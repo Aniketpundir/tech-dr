@@ -132,6 +132,8 @@ const CityPage = () => {
                     left waiting long with a broken device.
                 </p>
 
+                <div className="city-divider" />
+
                 <div className="call-and-booking-section button-section">
                     <Link to="/book-now" onClick={() => { handleClick() }} className="btn-link">
                         <button
@@ -144,8 +146,6 @@ const CityPage = () => {
                         </button>
                     </Link>
                 </div>
-
-                <div className="city-divider" />
 
                 {/* Suburbs we cover */}
                 <h2 className="city-subtitle">Suburbs We Cover in {region}</h2>
