@@ -58,22 +58,22 @@ const SuburbPage = () => {
         }
     }, [suburbSlug, result]);
 
-    if (!result) {
-        return (
-            <div className="sp-page">
-                <div className="sp-topbar" />
-                <div className="sp-content">
-                    <button className="sp-back-btn" onClick={() => navigate(-1)}>
-                        <svg viewBox="0 0 24 24" fill="none" className="sp-back-arrow">
-                            <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="#E8623A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                        Back
-                    </button>
-                    <p>Suburb not found.</p>
-                </div>
-            </div>
-        );
-    }
+    // if (!result) {
+    //     return (
+    //         <div className="sp-page">
+    //             <div className="sp-topbar" />
+    //             <div className="sp-content">
+    //                 <button className="sp-back-btn" onClick={() => navigate(-1)}>
+    //                     <svg viewBox="0 0 24 24" fill="none" className="sp-back-arrow">
+    //                         <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="#E8623A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+    //                     </svg>
+    //                     Back
+    //                 </button>
+    //                 <p>Suburb not found.</p>
+    //             </div>
+    //         </div>
+    //     );
+    // }
 
     const { region, suburb, data } = result;
     const regionSlug = region.toLowerCase().replace(/\s+/g, "-");
@@ -114,12 +114,12 @@ const SuburbPage = () => {
                 </nav>
 
                 {/* Back button */}
-                <button className="sp-back-btn" onClick={() => navigate(`/suburbs-section/city/${regionSlug}`)}>
+                {/* <button className="sp-back-btn" onClick={() => navigate(`/suburbs-section/city/${regionSlug}`)}>
                     <svg viewBox="0 0 24 24" fill="none" className="sp-back-arrow">
                         <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="#E8623A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                     Back to {region}
-                </button>
+                </button> */}
 
                 {/* Title */}
                 <h1 className="sp-title">

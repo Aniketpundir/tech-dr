@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import "./BookingForm.css";
 import image from "../../assets/Tech-support-professional.jpeg"
+import SuburbsSection from "../../Components/SuburbsSection/SuburbsSection";
 
 const API_URL = "http://localhost:4000/api/bookings";
 //const API_URL = "https://api.thetechdr.com.au/api/bookings";
@@ -232,7 +233,7 @@ export default function BookingForm() {
                 <p className="cta-line">
                     Book now and enjoy <strong>hassle-free tech support</strong> at <strong>your convenience</strong>!
                 </p>
-                <p className="intro-title" style={{color:"#e8520a"}}>FILL OUT THE BOOKING FORM</p>
+                <p className="intro-title" style={{ color: "#e8520a" }}>FILL OUT THE BOOKING FORM</p>
                 {/* ── Form ── */}
                 <form className="form-section">
 
@@ -538,18 +539,10 @@ export default function BookingForm() {
                     </div>
                 </div>
 
+                <SuburbsSection />
+
             </div>
 
-            {/* ── Scroll To Top ── */}
-            {scrollBtn && (
-                <button
-                    className="scroll-to-top"
-                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                    aria-label="Scroll to top"
-                >
-                    ↑
-                </button>
-            )}
         </div>
     );
 }

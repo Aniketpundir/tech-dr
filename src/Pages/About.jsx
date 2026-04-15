@@ -5,6 +5,7 @@ import WhyChooseUs from '../Components/About_Section/WhyChooseUs/WhyChooseUs'
 import HowWeHelp from '../Components/About_Section/HowWeHelp/AbHowWeHelp'
 import GoogleRating from '../Components/GoogleReviews'
 import TechDrButtons from "../Components/Home_Section/TechDrButtons/TechDrButtons"
+import SuburbsSection from "../Components/SuburbsSection/SuburbsSection"
 
 const About = () => {
     return (
@@ -16,6 +17,7 @@ const About = () => {
                 <AboutUs />
                 <WhyChooseUs />
                 <HowWeHelp />
+                <SuburbsSection />
             </div>
         </>
     )

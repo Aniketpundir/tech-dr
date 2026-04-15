@@ -45,22 +45,22 @@ const CityPage = () => {
         })
     };
 
-    if (!data) {
-        return (
-            <div className="city-page">
-                <div className="city-topbar" />
-                <div className="city-content">
-                    <button className="back-btn" onClick={() => navigate("/")}>
-                        <svg viewBox="0 0 24 24" fill="none" className="back-arrow">
-                            <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="#E8623A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                        Back to All Regions
-                    </button>
-                    <p>Region not found.</p>
-                </div>
-            </div>
-        );
-    }
+    // if (!data) {
+    //     return (
+    //         <div className="city-page">
+    //             <div className="city-topbar" />
+    //             <div className="city-content">
+    //                 <button className="back-btn" onClick={() => navigate("/")}>
+    //                     <svg viewBox="0 0 24 24" fill="none" className="back-arrow">
+    //                         <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="#E8623A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+    //                     </svg>
+    //                     Back to All Regions
+    //                 </button>
+    //                 <p>Region not found.</p>
+    //             </div>
+    //         </div>
+    //     );
+    // }
 
     const handleSuburbClick = (suburb) => {
         const suburbSlug = suburb.toLowerCase().replace(/\s+/g, "-");
@@ -75,7 +75,7 @@ const CityPage = () => {
             <div className="city-content">
 
                 {/* Back button */}
-                <button className="back-btn" onClick={() => navigate("/")}>
+                {/* <button className="back-btn" onClick={() => navigate("/")}>
                     <svg viewBox="0 0 24 24" fill="none" className="back-arrow">
                         <path
                             d="M19 12H5M5 12L12 19M5 12L12 5"
@@ -86,7 +86,7 @@ const CityPage = () => {
                         />
                     </svg>
                     Back to All Regions
-                </button>
+                </button> */}
 
                 {/* Title */}
                 <h1 className="city-title">Expert IT Support & Tech Services in {region} </h1>
