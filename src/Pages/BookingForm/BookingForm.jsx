@@ -107,12 +107,12 @@ export default function BookingForm() {
         submitted_at: new Date().toISOString(),
     }), [form]);
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
+        e.preventdefault();
         const errs = validate();
         if (Object.keys(errs).length > 0) {
             setErrors(errs);
             setToast({ type: "error", message: "Please fix the highlighted fields before submitting." });
-            window.scrollTo({ top: 0, behavior: "smooth" });
             return;
         }
 
@@ -250,7 +250,7 @@ export default function BookingForm() {
                 </p>
                 <p className="intro-title" style={{ color: "#e8520a" }}>FILL OUT THE BOOKING FORM</p>
                 {/* ── Form ── */}
-                <form className="form-section">
+                <form className="form-section" onSubmit={handleSubmit}>
 
                     {/* ── Name ── */}
                     <div className="field-row">
@@ -490,7 +490,6 @@ export default function BookingForm() {
                     <div className="submit-button">
                         <button
                             className="submit-btn"
-                            onClick={handleSubmit}
                             disabled={submitting}
                         >
                             {submitting
