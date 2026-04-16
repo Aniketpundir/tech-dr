@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import './Services.css';
 import cctv from "../../../assets/cctv-new.jpg.jpeg";
@@ -28,91 +29,78 @@ const allServices = [
         img: pc,
         slug: 'gaming-pc-building-repair'
     },
-
     {
         title: 'Mac & Windows PC Repair',
         desc: 'From sluggish performance and virus removals to motherboard repairs, our certified technicians provide expert troubleshooting and repairs for all Apple and Windows devices.',
         img: mac,
         slug: 'mac-windows-pc-repair'
     },
-
     {
         title: 'Managed Services Provider (MSP)',
         desc: 'Empower your business with our all-in-one proactive IT management. We provide 24/7 helpdesk support, robust cybersecurity, automated disaster recovery, seamless Microsoft 365 & Google Workspace integration, and modern VoIP communications.',
         img: mspImage,
         slug: 'managed-services-provider-msp'
     },
-
     {
         title: 'Internet & Email Issues',
         desc: 'Experiencing network dropouts or email syncing errors? We swiftly diagnose and resolve complex connectivity and configuration problems to keep you online and communicating.',
         img: internet,
         slug: 'internet-email-issues'
     },
-
     {
         title: 'Hardware Upgrades & Repair',
         desc: 'Breathe new life into your aging machine. We supply and install high-performance SSDs, RAM, and graphics cards to ensure your device runs at peak efficiency.',
         img: hardware,
         slug: 'hardware-upgrades-repair'
     },
-
     {
         title: 'Software & Device Tutorials',
         desc: 'Struggling with new software or a newly purchased device? We provide patient, hands-on tutorials tailored to your pace, helping you master your tech with confidence.',
         img: software,
         slug: 'software-device-tutorials'
     },
-
     {
         title: 'Network & Wireless Set Up',
         desc: 'Eliminate dead zones and slow speeds. We design, configure, and secure reliable wired and wireless networks optimized for both modern homes and demanding small businesses.',
         img: networksetup,
         slug: 'network-wireless-set-up'
     },
-
     {
         title: 'Mobile Phone Email Set Up',
         desc: 'Stay connected on the go. We offer hassle-free, secure email account configuration across all major iOS and Android smartphones and tablets.',
         img: mobile,
         slug: 'mobile-phone-email-set-up'
     },
-
     {
         title: 'CCTV Setup & Servicing',
         desc: 'Protect what matters most. We specialize in the professional installation, configuration, and ongoing maintenance of high-definition CCTV security systems.',
         img: cctv,
         slug: 'cctv-setup-servicing'
     },
-
     {
         title: 'Servers Setup',
         desc: 'Empower your business infrastructure. We provide tailored server installations, secure data management, and continuous network administration for small to medium enterprises.',
         img: servers,
         slug: 'servers-setup'
     },
-
     {
         title: 'Data Recovery',
         desc: 'Accidentally deleted files or facing a failing hard drive? We offer secure, professional data recovery solutions to retrieve your invaluable documents, photos, and business data quickly.',
         img: data,
         slug: 'data-recovery'
     },
-
     {
         title: 'Business Phone System Set Up',
         desc: 'Upgrade your business communications. We provide comprehensive setup and configuration of modern, scalable VoIP phone systems tailored to keep your team connected.',
         img: bussinessSystem,
         slug: 'business-phone-system-set-up'
     },
-
     {
         title: 'Protection From Hackers',
         desc: 'Safeguard your digital life and business data. We implement robust cybersecurity measures, including advanced firewalls, malware protection, and network audits to keep hackers at bay.',
         img: protectionHacker,
         slug: 'protection-from-hackers'
     },
-
     {
         title: 'Starlink Set Up',
         desc: 'Experience high-speed satellite internet anywhere. We offer professional, secure installation and optimization of Starlink dishes and routers for uninterrupted connectivity.',
@@ -140,6 +128,21 @@ const handleClick = () => {
     })
 };
 
+// ItemList schema for all services
+const serviceListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "IT Services by TheTechDr Sydney",
+    "url": "https://www.thetechdr.com.au/services",
+    "itemListElement": allServices.map((s, i) => ({
+        "@type": "ListItem",
+        "position": i + 1,
+        "name": s.title,
+        "url": `https://www.thetechdr.com.au/services/${s.slug}`,
+        "description": s.desc
+    }))
+};
+
 const Services = () => {
     const navigate = useNavigate();
 
@@ -155,6 +158,31 @@ const Services = () => {
 
     return (
         <>
+            <Helmet>
+                <title>IT Services Sydney | Computer Repairs, CCTV, Starlink & More | TheTechDr</title>
+                <meta name="description" content="TheTechDr offers expert IT services across Sydney — Gaming PC builds, Mac & PC repairs, CCTV installation, Starlink setup, data recovery, networking & more. Same-day service available." />
+                <meta name="keywords" content="IT services Sydney, computer repairs Sydney, Gaming PC Sydney, CCTV installation Sydney, Starlink setup Sydney, data recovery Sydney, MSP Sydney, TheTechDr" />
+                <link rel="canonical" href="https://www.thetechdr.com.au/services" />
+                <meta name="robots" content="index, follow" />
+
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://www.thetechdr.com.au/services" />
+                <meta property="og:title" content="IT Services Sydney | TheTechDr" />
+                <meta property="og:description" content="Expert IT services across Sydney. Gaming PC builds, CCTV, Starlink, data recovery & more. Same-day service available." />
+                <meta property="og:image" content="https://www.thetechdr.com.au/og-image.jpg" />
+                <meta property="og:locale" content="en_AU" />
+                <meta property="og:site_name" content="TheTechDr" />
+
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="IT Services Sydney | TheTechDr" />
+                <meta name="twitter:description" content="Expert IT services across Sydney. Same-day service available. Call 1300 072 073." />
+                <meta name="twitter:image" content="https://www.thetechdr.com.au/og-image.jpg" />
+
+                <script type="application/ld+json">
+                    {JSON.stringify(serviceListSchema)}
+                </script>
+            </Helmet>
+
             <br />
             <GoogleRating />
             <TechDrButtons />

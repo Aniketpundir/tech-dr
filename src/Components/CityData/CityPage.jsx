@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { cityData } from "../CityData/CityData";
 import "./CityPage.css";
 
@@ -35,61 +36,164 @@ const CityPage = () => {
 
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
-        document.title = `IT Support & Tech Services in ${region} | TheTechDr`;
     }, [region]);
 
     const handleClick = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        })
+        window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
-    // if (!data) {
-    //     return (
-    //         <div className="city-page">
-    //             <div className="city-topbar" />
-    //             <div className="city-content">
-    //                 <button className="back-btn" onClick={() => navigate("/")}>
-    //                     <svg viewBox="0 0 24 24" fill="none" className="back-arrow">
-    //                         <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="#E8623A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-    //                     </svg>
-    //                     Back to All Regions
-    //                 </button>
-    //                 <p>Region not found.</p>
-    //             </div>
-    //         </div>
-    //     );
-    // }
+    if (!data) {
+        return (
+            <div className="city-page">
+                <div className="city-topbar" />
+                <div className="city-content">
+                    <p>Region not found.</p>
+                </div>
+            </div>
+        );
+    }
 
     const handleSuburbClick = (suburb) => {
         const suburbSlug = suburb.toLowerCase().replace(/\s+/g, "-");
-        navigate(`/suburbs-section/city/${slug}/suburbs/${suburbSlug}`)
+        navigate(`/suburbs-section/city/${slug}/suburbs/${suburbSlug}`);
+    };
+
+    // --- SEO Variables ---
+    const pageTitle = `IT Support & Computer Repairs ${region} Sydney | TheTechDr`;
+    const metaDescription = `Expert IT support & computer repairs across ${region}, Sydney. TheTechDr offers same-day service for PC repairs, CCTV, Starlink, networking & more. Call 1300 072 073.`;
+    const canonicalUrl = `https://www.thetechdr.com.au/suburbs-section/city/${slug}`;
+    const ogImage = "https://www.thetechdr.com.au/og-image.jpg";
+
+    // --- LocalBusiness Schema ---
+    const schemaData = {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "TheTechDr",
+        "url": "https://www.thetechdr.com.au",
+        "logo": "https://www.thetechdr.com.au/logo.png",
+        "image": ogImage,
+        "description": `TheTechDr provides professional IT support and computer repairs across ${region}, Sydney. Services include PC & Mac repairs, Gaming PC builds, CCTV, Starlink, networking, data recovery, and business IT solutions.`,
+        "telephone": "+611300072073",
+        "priceRange": "$$",
+        "areaServed": {
+            "@type": "AdministrativeArea",
+            "name": region
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": region,
+            "addressRegion": "NSW",
+            "addressCountry": "AU"
+        },
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "08:00",
+                "closes": "18:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Saturday"],
+                "opens": "09:00",
+                "closes": "17:00"
+            }
+        ],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": `IT Services in ${region}`,
+            "itemListElement": data.services.map((svc) => ({
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": svc
+                }
+            }))
+        }
+    };
+
+    // --- FAQ Schema ---
+    const faqSchema = data.faq && data.faq.length > 0 ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": data.faq.map((item) => ({
+            "@type": "Question",
+            "name": item.q,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": item.a
+            }
+        }))
+    } : null;
+
+    // --- BreadcrumbList Schema ---
+    const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.thetechdr.com.au"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Suburbs",
+                "item": "https://www.thetechdr.com.au/suburbs-section"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": region,
+                "item": canonicalUrl
+            }
+        ]
     };
 
     return (
         <div className="city-page">
+            <Helmet>
+                <title>{pageTitle}</title>
+                <meta name="description" content={metaDescription} />
+                <meta name="keywords" content={`IT support ${region}, computer repairs ${region} Sydney, laptop repair ${region}, tech support ${region}, TheTechDr ${region}, CCTV ${region}, Starlink ${region}`} />
+                <link rel="canonical" href={canonicalUrl} />
+                <meta name="robots" content="index, follow" />
+
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content={canonicalUrl} />
+                <meta property="og:title" content={pageTitle} />
+                <meta property="og:description" content={metaDescription} />
+                <meta property="og:image" content={ogImage} />
+                <meta property="og:locale" content="en_AU" />
+                <meta property="og:site_name" content="TheTechDr" />
+
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={pageTitle} />
+                <meta name="twitter:description" content={metaDescription} />
+                <meta name="twitter:image" content={ogImage} />
+
+                <script type="application/ld+json">
+                    {JSON.stringify(schemaData)}
+                </script>
+                {faqSchema && (
+                    <script type="application/ld+json">
+                        {JSON.stringify(faqSchema)}
+                    </script>
+                )}
+                <script type="application/ld+json">
+                    {JSON.stringify(breadcrumbSchema)}
+                </script>
+            </Helmet>
+
             {/* Blue top bar */}
             <div className="city-topbar" />
 
             <div className="city-content">
 
-                {/* Back button */}
-                {/* <button className="back-btn" onClick={() => navigate("/")}>
-                    <svg viewBox="0 0 24 24" fill="none" className="back-arrow">
-                        <path
-                            d="M19 12H5M5 12L12 19M5 12L12 5"
-                            stroke="#E8623A"
-                            strokeWidth="2.5"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        />
-                    </svg>
-                    Back to All Regions
-                </button> */}
-
                 {/* Title */}
-                <h1 className="city-title">Expert IT Support & Tech Services in {region} </h1>
+                <h1 className="city-title">Expert IT Support & Tech Services in {region}</h1>
                 <h1 className="city-title">TheTechDr</h1>
 
                 {/* Area tag */}
@@ -111,7 +215,11 @@ const CityPage = () => {
 
                 {/* Images */}
                 <div className="city-images">
-                    <img src={data.image1} alt={`${region} Sydney`} className="city-img" />
+                    <img
+                        src={data.image1}
+                        alt={`IT support and computer repairs in ${region}, Sydney`}
+                        className="city-img"
+                    />
                 </div>
 
                 {/* Body */}
@@ -134,7 +242,7 @@ const CityPage = () => {
                 <div className="city-divider" />
 
                 <div className="call-and-booking-section button-section">
-                    <Link to="/book-now" onClick={() => { handleClick() }} className="btn-link">
+                    <Link to="/book-now" onClick={handleClick} className="btn-link">
                         <button
                             className={`btn btn-call ${callHover ? "btn-call--hover" : ""}`}
                             onMouseEnter={() => setCallHover(true)}
@@ -151,9 +259,6 @@ const CityPage = () => {
                 <p className="city-para">
                     Our technicians service all suburbs across the {region} region. Click on any suburb below to see more details:
                 </p>
-
-                <div className="btn-wrapper">
-                </div>
 
                 <ul className="city-suburbs-list">
                     {data.suburbs.map((suburb, i) => (
@@ -194,10 +299,7 @@ const CityPage = () => {
                 </p>
                 <ul className="city-services-list">
                     {data.services.map((svc, i) => (
-                        <li key={i}>
-                            {/* <span className="svc-dot" /> */}
-                            {svc}
-                        </li>
+                        <li key={i}>{svc}</li>
                     ))}
                 </ul>
 

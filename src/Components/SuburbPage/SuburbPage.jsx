@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { cityData } from "../CityData/CityData";
 import "./SuburbPage.css";
-import msp from "../../assets/msp.jpeg"
+import msp from "../../assets/msp.jpeg";
 
 // Find which region a suburb belongs to
 const findRegionForSuburb = (suburbSlug) => {
@@ -45,35 +46,23 @@ const SuburbPage = () => {
     const result = findRegionForSuburb(suburbSlug);
 
     const handleClick = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        })
+        window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
-        if (result) {
-            document.title = `IT Support in ${result.suburb} | TheTechDr`;
-        }
-    }, [suburbSlug, result]);
+    }, [suburbSlug]);
 
-    // if (!result) {
-    //     return (
-    //         <div className="sp-page">
-    //             <div className="sp-topbar" />
-    //             <div className="sp-content">
-    //                 <button className="sp-back-btn" onClick={() => navigate(-1)}>
-    //                     <svg viewBox="0 0 24 24" fill="none" className="sp-back-arrow">
-    //                         <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="#E8623A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-    //                     </svg>
-    //                     Back
-    //                 </button>
-    //                 <p>Suburb not found.</p>
-    //             </div>
-    //         </div>
-    //     );
-    // }
+    if (!result) {
+        return (
+            <div className="sp-page">
+                <div className="sp-topbar" />
+                <div className="sp-content">
+                    <p>Suburb not found.</p>
+                </div>
+            </div>
+        );
+    }
 
     const { region, suburb, data } = result;
     const regionSlug = region.toLowerCase().replace(/\s+/g, "-");
@@ -94,14 +83,155 @@ const SuburbPage = () => {
         ...(data.faq || []),
     ];
 
+    // --- SEO Variables ---
+    const pageTitle = `Computer Repairs ${suburb} | IT Support & Tech Services | TheTechDr`;
+    const metaDescription = `Fast, reliable computer repairs in ${suburb}. TheTechDr offers same-day IT support, laptop repairs, CCTV setup, Starlink, networking & more. Call 1300 072 073.`;
+    const canonicalUrl = `https://www.thetechdr.com.au/suburbs-section/city/${regionSlug}/suburbs/${suburbSlug}`;
+    const ogImage = "https://www.thetechdr.com.au/og-image.jpg"; // Place og-image.jpg in /public
+
+    // --- JSON-LD Schema ---
+    const schemaData = {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "TheTechDr",
+        "url": "https://www.thetechdr.com.au",
+        "logo": "https://www.thetechdr.com.au/logo.png",
+        "image": ogImage,
+        "description": `TheTechDr provides professional IT support and computer repairs in ${suburb}, ${region}, Sydney. Services include PC & Mac repairs, Gaming PC builds, CCTV, Starlink, networking, data recovery, and more.`,
+        "telephone": "+611300072073",
+        "priceRange": "$$",
+        "areaServed": {
+            "@type": "City",
+            "name": suburb
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": suburb,
+            "addressRegion": "NSW",
+            "addressCountry": "AU"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "addressCountry": "AU"
+        },
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "08:00",
+                "closes": "18:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Saturday"],
+                "opens": "09:00",
+                "closes": "17:00"
+            }
+        ],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": `IT Services in ${suburb}`,
+            "itemListElement": data.services.map((svc) => ({
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": svc
+                }
+            }))
+        }
+    };
+
+    // --- FAQ Schema ---
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": suburbFaqs.map((item) => ({
+            "@type": "Question",
+            "name": item.q,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": item.a
+            }
+        }))
+    };
+
+    // --- BreadcrumbList Schema ---
+    const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.thetechdr.com.au"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Suburbs",
+                "item": "https://www.thetechdr.com.au/suburbs-section"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": region,
+                "item": `https://www.thetechdr.com.au/suburbs-section/city/${regionSlug}`
+            },
+            {
+                "@type": "ListItem",
+                "position": 4,
+                "name": suburb,
+                "item": canonicalUrl
+            }
+        ]
+    };
+
     return (
         <div className="sp-page">
+
+            {/* ── SEO HEAD ── */}
+            <Helmet>
+                {/* Primary Meta Tags */}
+                <title>{pageTitle}</title>
+                <meta name="description" content={metaDescription} />
+                <meta name="keywords" content={`computer repairs ${suburb}, IT support ${suburb}, laptop repair ${suburb}, tech support ${suburb}, TheTechDr ${suburb}, CCTV ${suburb}, Starlink setup ${suburb}`} />
+                <link rel="canonical" href={canonicalUrl} />
+                <meta name="robots" content="index, follow" />
+
+                {/* Open Graph / Facebook */}
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content={canonicalUrl} />
+                <meta property="og:title" content={pageTitle} />
+                <meta property="og:description" content={metaDescription} />
+                <meta property="og:image" content={ogImage} />
+                <meta property="og:locale" content="en_AU" />
+                <meta property="og:site_name" content="TheTechDr" />
+
+                {/* Twitter Card */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={pageTitle} />
+                <meta name="twitter:description" content={metaDescription} />
+                <meta name="twitter:image" content={ogImage} />
+
+                {/* JSON-LD Schemas */}
+                <script type="application/ld+json">
+                    {JSON.stringify(schemaData)}
+                </script>
+                <script type="application/ld+json">
+                    {JSON.stringify(faqSchema)}
+                </script>
+                <script type="application/ld+json">
+                    {JSON.stringify(breadcrumbSchema)}
+                </script>
+            </Helmet>
+
             <div className="sp-topbar" />
 
             <div className="sp-content">
 
                 {/* Breadcrumb */}
-                <nav className="sp-breadcrumb">
+                <nav className="sp-breadcrumb" aria-label="breadcrumb">
                     <button className="sp-crumb-btn" onClick={() => navigate("/")}>
                         All Regions
                     </button>
@@ -112,14 +242,6 @@ const SuburbPage = () => {
                     <span className="sp-crumb-sep">›</span>
                     <span className="sp-crumb-active">{suburb}</span>
                 </nav>
-
-                {/* Back button */}
-                {/* <button className="sp-back-btn" onClick={() => navigate(`/suburbs-section/city/${regionSlug}`)}>
-                    <svg viewBox="0 0 24 24" fill="none" className="sp-back-arrow">
-                        <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="#E8623A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    Back to {region}
-                </button> */}
 
                 {/* Title */}
                 <h1 className="sp-title">
@@ -146,7 +268,7 @@ const SuburbPage = () => {
 
                 {/* ── Suburb-specific images ── */}
                 <div className="sp-images">
-                    <img src={msp} alt={`${suburb} Sydney`} className="sp-img" />
+                    <img src={msp} alt={`Computer repairs and IT support in ${suburb}, Sydney`} className="sp-img" />
                 </div>
 
                 <p className="sp-para">
@@ -165,7 +287,7 @@ const SuburbPage = () => {
                 <div className="sp-divider" />
 
                 <div className="call-and-booking-section button-section">
-                    <Link to="/book-now" onClick={() => { handleClick() }} className="btn-link">
+                    <Link to="/book-now" onClick={handleClick} className="btn-link">
                         <button
                             className={`btn btn-call ${callHover ? "btn-call--hover" : ""}`}
                             onMouseEnter={() => setCallHover(true)}
@@ -235,19 +357,22 @@ const SuburbPage = () => {
                     Along with {suburb}, our technicians regularly service these nearby {region} suburbs:
                 </p>
                 <div className="sp-nearby-grid">
-                    {nearbySuburbs.map((s, i) => (
-                        <button
-                            key={i}
-                            className="sp-nearby-btn"
-                            onClick={() => navigate(`/suburbs-section/city/${slug}/suburbs/${suburbSlug}`)}
-                        >
-                            <span className="sp-nearby-dot" />
-                            {s}
-                            <svg viewBox="0 0 24 24" fill="none" className="sp-nearby-arrow">
-                                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </button>
-                    ))}
+                    {nearbySuburbs.map((s, i) => {
+                        const nearbySlug = s.toLowerCase().replace(/\s+/g, "-");
+                        return (
+                            <button
+                                key={i}
+                                className="sp-nearby-btn"
+                                onClick={() => navigate(`/suburbs-section/city/${regionSlug}/suburbs/${nearbySlug}`)}
+                            >
+                                <span className="sp-nearby-dot" />
+                                {s}
+                                <svg viewBox="0 0 24 24" fill="none" className="sp-nearby-arrow">
+                                    <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                            </button>
+                        );
+                    })}
                 </div>
 
                 <div className="sp-divider" />

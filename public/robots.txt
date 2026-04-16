@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.thetechdr.com.au/sitemap.xml
+
+# Block unnecessary paths from crawling
+Disallow: /book-now
+Disallow: /api/
