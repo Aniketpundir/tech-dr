@@ -1,6 +1,6 @@
 .gr-marquee-outer {
   overflow: hidden;
-  background: #fff5ee;
+  /* background: #fff5ee; */
   padding: 24px 0;
   font-family: 'Segoe UI', sans-serif;
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
@@ -34,7 +34,7 @@
   align-items: center;
   gap: 10px;
   background: #ffffff;
-  border: 1.5px solid #e2d8d3;
+  /* border: 1.5px solid #e2d8d3; */
   border-radius: 14px;
   padding: 12px 18px;
   flex-shrink: 0;
