@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './WhyChooseUs.css';
-import WhyImg from '../../../assets/why-choose.webp';
+import Award2018 from '../../../assets/Award1.png';
+import Award2019 from '../../../assets/Award2.png';
+import Award2020 from '../../../assets/Award3.png';
+import Award2021 from '../../../assets/Award4.png';
 
 const Star = () => (
     <svg width="14" height="14" viewBox="0 0 14 14">
@@ -38,6 +41,13 @@ const useCountUp = (target, duration = 1500) => {
 
     return { count, ref };
 };
+
+const awards = [
+    { src: Award2021, alt: 'ServiceSeeking Top 10 Award 2021', year: '2021' },
+    { src: Award2020, alt: 'ServiceSeeking Top 10 Award 2020', year: '2020' },
+    { src: Award2019, alt: 'ServiceSeeking Top 10 Award 2019', year: '2019' },
+    { src: Award2018, alt: 'ServiceSeeking Top 10 Award 2018', year: '2018' },
+];
 
 const cards = [
     {
@@ -110,6 +120,22 @@ const WhyChooseUs = () => (
                     </div>
                 ))}
             </div>
+
+            <div className="why-awards">
+                <div className="why-awards__badge">
+                    <Star />
+                    <span className="why-awards__badge-text">AWARDS</span>
+                    <Star />
+                </div>
+                <div className="why-awards__grid">
+                    {awards.map((award) => (
+                        <div className="why-awards__item" key={award.year}>
+                            <img src={award.src} alt={award.alt} />
+                        </div>
+                    ))}
+                </div>
+            </div>
+
             <div className="wcu-stats">
                 {stats.map((s, i) => (
                     <StatBubble key={i} {...s} />
