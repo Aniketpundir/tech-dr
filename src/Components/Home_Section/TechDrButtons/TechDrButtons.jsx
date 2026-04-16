@@ -28,7 +28,7 @@ const TechDrButtons = () => {
             </Link>
 
             <div className="call-and-booking-section">
-                <Link href="tel:1300072073" className="btn-link">
+                <a href="tel:1300072073" className="btn-link">
                     <button
                         className={`btn btn-call ${callHover ? "btn-call--hover" : ""}`}
                         onMouseEnter={() => setCallHover(true)}
@@ -37,7 +37,7 @@ const TechDrButtons = () => {
                         <span className="btn-icon"></span>
                         CALL US NOW
                     </button>
-                </Link>
+                </a>
                 <Link to="/book-now" onClick={() => { handleClick() }} className="btn-link">
                     <button
                         className={`btn btn-call ${callHover ? "btn-call--hover" : ""}`}
