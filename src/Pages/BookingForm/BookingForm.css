@@ -297,7 +297,7 @@
     border-radius: 20px;
 }
 
-/* ── Submit Button ── */
+/* ── Submit Button — base ── */
 .submit-btn {
     display: inline-flex;
     align-items: center;
@@ -312,9 +312,11 @@
     font-weight: 800;
     letter-spacing: 0.3px;
     cursor: pointer;
-    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s, color 0.2s;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
     margin-top: 8px;
+    min-width: 160px;
+    justify-content: center;
 }
 
 .submit-btn:hover:not(:disabled) {
@@ -324,8 +326,39 @@
 }
 
 .submit-btn:disabled {
-    opacity: 0.65;
+    opacity: 0.75;
     cursor: not-allowed;
+    transform: none;
+}
+
+/* Submitting state — muted white */
+.submit-btn--submitting {
+    background: #fff;
+    color: #e8520a;
+    opacity: 0.85;
+}
+
+/* Success state — green */
+.submit-btn--success {
+    background: #27ae60;
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(39, 174, 96, 0.35);
+}
+
+.submit-btn--success:hover:not(:disabled) {
+    background: #219a52;
+}
+
+/* Error state — red */
+.submit-btn--error {
+    background: #e74c3c;
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(231, 76, 60, 0.35);
+}
+
+.submit-btn--error:hover:not(:disabled) {
+    background: #c0392b;
+    transform: translateY(-2px);
 }
 
 /* ── Urgent Bar ── */

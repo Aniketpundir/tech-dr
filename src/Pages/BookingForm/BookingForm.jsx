@@ -9,6 +9,9 @@ const API_URL = "https://api.thetechdr.com.au/api/bookings";
 const API_KEY = "YOUR-API-KEY-YAHAN-DAALEN";
 const API_METHOD = "POST";
 
+// ── Submit status enum ──────────────────────────────────────────
+// "idle" | "submitting" | "success" | "error"
+
 function todayStr() {
     return new Date().toISOString().split("T")[0];
 }
@@ -26,32 +29,36 @@ function buildCalDays() {
     return { cells, today };
 }
 
+const INITIAL_FORM = {
+    name: "",
+    email: "",
+    phone: "",
+    address: "",
+    postcode: "",
+    description: "",
+    objectives: "",
+    serviceType: "onsite",
+    siteType: "home",
+    preferredDate: todayStr(),
+    // ── Multiple time slots supported via checkboxes ──
+    timeSlots: {
+        morning: true,
+        midday: false,
+        afternoon: false,
+        evening: false,
+    },
+    subscribe: true,
+};
+
 export default function BookingForm() {
 
-    const [form, setForm] = useState({
-        name: "",
-        email: "",
-        phone: "",
-        address: "",
-        postcode: "",
-        description: "",
-        objectives: "",
-        serviceType: "onsite",
-        siteType: "home",
-        preferredDate: todayStr(),
-        timeSlots: {
-            morning: true,
-            midday: false,
-            afternoon: false,
-            evening: false,
-        },
-        subscribe: true,
-    });
-
-    const [submitting, setSubmitting] = useState(false);
+    const [form, setForm] = useState(INITIAL_FORM);
+    // submitStatus: "idle" | "submitting" | "success" | "error"
+    const [submitStatus, setSubmitStatus] = useState("idle");
     const [toast, setToast] = useState(null);
     const [errors, setErrors] = useState({});
 
+    // Auto-dismiss toast after 6 s
     useEffect(() => {
         if (!toast) return;
         const t = setTimeout(() => setToast(null), 6000);
@@ -63,6 +70,7 @@ export default function BookingForm() {
         setErrors((prev) => ({ ...prev, [name]: "" }));
 
         if (Object.prototype.hasOwnProperty.call(form.timeSlots, name)) {
+            // Toggle individual time-slot checkbox
             setForm((prev) => ({
                 ...prev,
                 timeSlots: { ...prev.timeSlots, [name]: checked },
@@ -84,6 +92,7 @@ export default function BookingForm() {
             errs.phone = "Enter a 10-digit phone number";
         if (!form.address.trim()) errs.address = "Address is required";
         if (!form.description.trim()) errs.description = "Please describe your problem";
+        // At least one time slot must be selected
         if (!Object.values(form.timeSlots).some(Boolean))
             errs.timeSlots = "Please select at least one time slot";
         return errs;
@@ -100,6 +109,7 @@ export default function BookingForm() {
         service_type: form.serviceType,
         site_type: form.siteType,
         preferred_date: form.preferredDate,
+        // ── Sends an array of all selected slots, e.g. ["morning","evening"] ──
         time_slots: Object.entries(form.timeSlots)
             .filter(([, v]) => v)
             .map(([k]) => k),
@@ -108,7 +118,8 @@ export default function BookingForm() {
     }), [form]);
 
     const handleSubmit = async (e) => {
-        e.preventdefault();
+        e.preventDefault(); // ✅ FIXED: was e.preventdefault() — caused page refresh
+
         const errs = validate();
         if (Object.keys(errs).length > 0) {
             setErrors(errs);
@@ -116,7 +127,7 @@ export default function BookingForm() {
             return;
         }
 
-        setSubmitting(true);
+        setSubmitStatus("submitting");
         const payload = buildPayload();
 
         try {
@@ -133,19 +144,14 @@ export default function BookingForm() {
             if (res.ok) {
                 let data = {};
                 try { data = await res.json(); } catch (e) { console.log(e); }
+                setSubmitStatus("success");
                 setToast({
                     type: "success",
                     message: data.message || "✅ Booking submitted successfully! We will contact you soon.",
                 });
-                setForm({
-                    name: "", email: "", phone: "", address: "", postcode: "",
-                    description: "", objectives: "",
-                    serviceType: "onsite", siteType: "home",
-                    preferredDate: todayStr(),
-                    timeSlots: { morning: true, midday: false, afternoon: false, evening: false },
-                    subscribe: true,
-                });
+                setForm(INITIAL_FORM);
                 setErrors({});
+                // ── Stay on page, just scroll to top to show success toast ──
                 window.scrollTo({ top: 0, behavior: "smooth" });
             } else {
                 let errMsg = `Server error (${res.status})`;
@@ -153,21 +159,33 @@ export default function BookingForm() {
                     const errData = await res.json();
                     errMsg = errData.message || errData.error || errMsg;
                 } catch (e) { console.log(e); }
+                setSubmitStatus("error");
                 setToast({ type: "error", message: `Submission failed: ${errMsg}` });
             }
         } catch (err) {
+            setSubmitStatus("error");
             setToast({
                 type: "error",
                 message: err.name === "TimeoutError"
                     ? "Request timed out. Please try again."
                     : `Network error: ${err.message}`,
             });
-        } finally {
-            setSubmitting(false);
         }
+        // ── Reset to idle after a short delay so button recovers ──
+        setTimeout(() => setSubmitStatus((s) => s !== "submitting" ? "idle" : s), 4000);
     };
 
     const { cells: calCells, today: calToday } = buildCalDays();
+
+    // ── Button label + disabled state driven by submitStatus ──
+    const btnLabel = {
+        idle: "Submit",
+        submitting: <><span className="spinner" /> Submitting…</>,
+        success: "✅ Submitted!",
+        error: "⚠ Failed — Try Again",
+    }[submitStatus];
+
+    const btnDisabled = submitStatus === "submitting";
 
     return (
         <div>
@@ -249,8 +267,9 @@ export default function BookingForm() {
                     Book now and enjoy <strong>hassle-free tech support</strong> at <strong>your convenience</strong>!
                 </p>
                 <p className="intro-title" style={{ color: "#e8520a" }}>FILL OUT THE BOOKING FORM</p>
+
                 {/* ── Form ── */}
-                <form className="form-section" onSubmit={handleSubmit}>
+                <form className="form-section" onSubmit={handleSubmit} noValidate>
 
                     {/* ── Name ── */}
                     <div className="field-row">
@@ -424,7 +443,7 @@ export default function BookingForm() {
                         />
                     </div>
 
-                    {/* ── Time Slots ── */}
+                    {/* ── Time Slots — multiple checkboxes, all sent as array ── */}
                     <div className="field-row top-align">
                         <label>Preferred<br />Time(s) Slots:</label>
                         <div>
@@ -486,16 +505,14 @@ export default function BookingForm() {
                         </p>
                     </div>
 
-                    {/* ── Submit Button ── */}
+                    {/* ── Submit Button — reflects submitStatus ── */}
                     <div className="submit-button">
                         <button
-                            className="submit-btn"
-                            disabled={submitting}
+                            type="submit"
+                            className={`submit-btn submit-btn--${submitStatus}`}
+                            disabled={btnDisabled}
                         >
-                            {submitting
-                                ? <><span className="spinner" /> Submitting…</>
-                                : "Submit"
-                            }
+                            {btnLabel}
                         </button>
                     </div>
 
