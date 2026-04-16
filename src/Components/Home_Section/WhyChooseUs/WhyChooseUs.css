@@ -440,21 +440,24 @@
     }
 
     .why-stats {
+        border-radius: 10px !important;
+        flex-direction: column;
         gap: 10px;
         margin-top: 20px;
     }
 
     .stat-bubble {
-        width: 120px;
-        height: 120px;
+        border-radius: 50px;
+        width: 350px;
+        height: 140px;
     }
 
     .stat-bubble .stat-num {
-        font-size: 24px;
+        font-size: 36px;
     }
 
     .stat-bubble .stat-label {
-        font-size: 11px;
+        font-size: 16px;
         padding: 0 8px;
     }
 }

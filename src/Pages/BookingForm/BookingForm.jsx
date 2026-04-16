@@ -537,18 +537,6 @@ export default function BookingForm() {
                                 ))}
                             </div>
                         </div>
-
-                        <div style={{
-                            background: "#e8520a", color: "#fff",
-                            borderRadius: 10, padding: "14px 20px",
-                            textAlign: "center", boxShadow: "0 4px 14px rgba(26,111,196,0.3)"
-                        }}>
-                            <div style={{ fontSize: "2.2rem", fontWeight: 800, lineHeight: 1 }}>1</div>
-                            <div style={{
-                                fontSize: "0.7rem", fontWeight: 800, letterSpacing: 1,
-                                textTransform: "uppercase", marginTop: 4
-                            }}>Booking</div>
-                        </div>
                     </div>
 
                     <div className="hero-caption">

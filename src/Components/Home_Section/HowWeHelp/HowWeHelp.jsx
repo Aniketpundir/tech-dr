@@ -9,7 +9,7 @@ const Star = () => (
 
 const features = [
     {
-        title: '100% Fix Guarantee',
+        title: 'Update 100%:',
         icon: (
             <svg width="28" height="28" fill="none" stroke="#e8520a" strokeWidth="2" viewBox="0 0 24 24">
                 <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" />
@@ -17,7 +17,7 @@ const features = [
                 <line x1="12" y1="22.08" x2="12" y2="12" />
             </svg>
         ),
-        desc: "We don't leave until the job is done. If we can't fix it, you don't pay — that's our promise to every customer.",
+        desc: "We do not leave until the job is completed. If the problem cannot be resolved on-site, we take the device to our warehouse for repair and return it in the shortest possible time.",
     },
     {
         title: 'Highly Skilled Technicians',
@@ -37,7 +37,7 @@ const features = [
                 <polyline points="12 6 12 12 16 14" />
             </svg>
         ),
-        desc: "Need it fixed urgently? We offer same-day appointments at no extra charge, so you're never left waiting.",
+        desc: "Need it fixed urgently? We offer fast, reliable same-day appointments to get your issue resolved as quickly as possible, so you're never left waiting or dealing with unnecessary delays.",
     },
     {
         title: 'Explained in Plain English',
