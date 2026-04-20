@@ -1,7 +1,7 @@
 import React from "react";
 import "./GoogleRating.css";
-import barkLogo from "../assets/barklogo.png"
-
+import barkLogo from "../assets/barklogo.png";
+import ypLogo from '../assets/yellow_p.png'
 /* ── Stars ── */
 const FIVE_STARS = [1, 2, 3, 4, 5];
 const StarIcon = () => (
@@ -69,10 +69,19 @@ const WordOfMouthLogo = () => (
 
 /* ── Yellow Pages logo ── */
 const YellowPagesLogo = () => (
-  <svg viewBox="0 0 38 38" width="38" height="38" style={{ borderRadius: 8 }}>
-    <rect width="38" height="38" rx="8" fill="#FFD700"/>
-    <text x="19" y="26" textAnchor="middle" fontSize="20" fontWeight="bold" fill="#1a1a1a">YP</text>
-  </svg>
+ <img
+    src={ypLogo}
+    alt="Bark"
+    style={{ width: 38, height: 38, borderRadius: 8, objectFit: "contain" }}
+    onError={(e) => {
+      e.target.style.display = "none";
+      e.target.parentNode.innerHTML = `
+        <svg viewBox="0 0 38 38" width="38" height="38" style="border-radius:8px;display:block">
+          <rect width="38" height="38" rx="8" fill="#00B67A"/>
+          <text x="19" y="26" text-anchor="middle" font-size="18" font-weight="800" font-family="Arial,sans-serif" fill="white">B</text>
+        </svg>`;
+    }}
+  />
 );
 
 /* ── Pill badge ── */
