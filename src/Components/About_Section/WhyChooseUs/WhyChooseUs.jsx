@@ -74,7 +74,7 @@ const cards = [
 
 const stats = [
     { value: 15, suffix: '+', label: 'Years Of Experience', cls: '' },
-    { value: 55, suffix: '+', label: 'Devices Repaired', cls: 'wcu-stat-bubble--orange' },
+    { value: 15000, suffix: '+', label: 'Devices Repaired', cls: 'wcu-stat-bubble--orange' },
     { value: 100, suffix: '%', label: 'Satisfied customers', cls: '' },
 ];
 
