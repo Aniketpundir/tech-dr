@@ -4,7 +4,6 @@
     overflow: hidden;
 }
 
-/* ── Marquee heading ── */
 .test-marquee-outer {
     text-align: center;
     overflow: hidden;
@@ -43,7 +42,6 @@
     }
 }
 
-/* ── Body layout ── */
 .testimonials-body {
     display: flex;
     gap: 60px;
@@ -51,7 +49,6 @@
     padding: 70px 48px;
 }
 
-/* ── Left header ── */
 .testimonials-header {
     flex-shrink: 0;
     width: 240px;
@@ -89,7 +86,6 @@
     margin-top: 20px;
 }
 
-/* ── Nav arrows ── */
 .test-nav {
     display: flex;
     gap: 10px;
@@ -122,7 +118,6 @@
     cursor: not-allowed;
 }
 
-/* ── Dots ── */
 .test-dots {
     display: flex;
     gap: 7px;
@@ -145,7 +140,6 @@
     border-color: #e8520a;
 }
 
-/* ── Cards container ── */
 .testimonials-cards {
     flex: 1;
     overflow: hidden;
@@ -177,7 +171,6 @@
     flex-shrink: 0;
 }
 
-/* Slide animations */
 @keyframes slideInNext {
     from {
         transform: translateX(60px);
@@ -242,7 +235,6 @@
     animation: slideOutPrev 0.35s ease both;
 }
 
-/* ── Individual card ── */
 .test-card {
     background: #fff;
     border: 1.5px solid #f0d8cc;
@@ -290,14 +282,12 @@
     margin: 0 0 22px;
 }
 
-/* ── Author ── */
 .test-author {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-/* ── Avatar with image support ── */
 .test-avatar {
     width: 48px;
     height: 48px;
@@ -323,7 +313,6 @@
     display: block;
 }
 
-/* Fallback initials when image fails */
 .test-avatar.avatar-fallback::after {
     content: attr(data-fallback);
     position: absolute;
@@ -350,11 +339,32 @@
     font-size: 12px;
 }
 
-/* ══════════════════════════════════
-   RESPONSIVE
-   ══════════════════════════════════ */
+.avatar-letter {
+    font-size: 18px;
+    font-weight: 700;
+    color: #e8520a;
+    line-height: 1;
+    user-select: none;
+}
 
-/* Tablet */
+.view-more-btn {
+    background: none;
+    border: none;
+    color: #e8520a;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 16px;
+    display: block;
+    letter-spacing: 0.3px;
+    transition: opacity 0.2s;
+}
+
+.view-more-btn:hover {
+    opacity: 0.7;
+}
+
 @media (max-width: 1024px) {
     .testimonials-body {
         padding: 50px 30px;
@@ -374,7 +384,6 @@
     }
 }
 
-/* Mobile */
 @media (max-width: 768px) {
     .testimonials-body {
         flex-direction: column;
@@ -400,7 +409,6 @@
     }
 }
 
-/* Small mobile */
 @media (max-width: 480px) {
     .testimonials-body {
         padding: 28px 14px;
