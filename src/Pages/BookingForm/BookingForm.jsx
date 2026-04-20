@@ -1,10 +1,9 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import "./BookingForm.css";
 import image from "../../assets/Tech-support-professional.jpeg"
 import SuburbsSection from "../../Components/SuburbsSection/SuburbsSection";
 
-// const API_URL = "http://localhost:4000/api/bookings";
 const API_URL = "https://api.thetechdr.com.au/api/bookings";
 const API_KEY = "YOUR-API-KEY-YAHAN-DAALEN";
 const API_METHOD = "POST";
@@ -25,6 +24,160 @@ function buildCalDays() {
     for (let d = 1; d <= days; d++) cells.push(d);
     return { cells, today };
 }
+
+// ── CAPTCHA helpers ────────────────────────────────────────────────────────────
+const CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';
+
+const generateCaptchaText = (len = 6) =>
+    Array.from({ length: len }, () => CHARS[Math.floor(Math.random() * CHARS.length)]).join('');
+
+const drawCaptcha = (canvas, text) => {
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width;
+    const H = canvas.height;
+
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = '#fff3ec';
+    ctx.fillRect(0, 0, W, H);
+
+    // Noise lines
+    for (let i = 0; i < 6; i++) {
+        ctx.beginPath();
+        ctx.moveTo(Math.random() * W, Math.random() * H);
+        ctx.lineTo(Math.random() * W, Math.random() * H);
+        ctx.strokeStyle = `rgba(232,82,10,${0.12 + Math.random() * 0.18})`;
+        ctx.lineWidth = 1 + Math.random();
+        ctx.stroke();
+    }
+
+    // Noise dots
+    for (let i = 0; i < 40; i++) {
+        ctx.beginPath();
+        ctx.arc(Math.random() * W, Math.random() * H, Math.random() * 2, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(232,82,10,${0.15 + Math.random() * 0.25})`;
+        ctx.fill();
+    }
+
+    // Characters
+    const charW = W / (text.length + 1);
+    text.split('').forEach((ch, i) => {
+        ctx.save();
+        const x = charW * (i + 0.8) + charW * 0.1;
+        const y = H / 2 + 6;
+        const angle = (Math.random() - 0.5) * 0.45;
+        const size = 22 + Math.floor(Math.random() * 6);
+        const fonts = ['Arial', 'Georgia', 'Courier New', 'Verdana', 'Tahoma'];
+        ctx.translate(x, y);
+        ctx.rotate(angle);
+        ctx.font = `bold ${size}px ${fonts[i % fonts.length]}`;
+        ctx.fillStyle = '#e8520a';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.shadowColor = 'rgba(0,0,0,0.15)';
+        ctx.shadowBlur = 3;
+        ctx.fillText(ch, 0, 0);
+        ctx.restore();
+    });
+};
+
+// ── CAPTCHA Component ──────────────────────────────────────────────────────────
+const ImageCaptcha = ({ onVerify, disabled }) => {
+    const canvasRef = useRef(null);
+    const [captchaText, setCaptchaText] = useState('');
+    const [userInput, setUserInput] = useState('');
+    const [error, setError] = useState('');
+    const [verified, setVerified] = useState(false);
+
+    const refresh = useCallback(() => {
+        const text = generateCaptchaText();
+        setCaptchaText(text);
+        setUserInput('');
+        setError('');
+        setVerified(false);
+        onVerify(false);
+        setTimeout(() => drawCaptcha(canvasRef.current, text), 0);
+    }, [onVerify]);
+
+    useEffect(() => { refresh(); }, []);
+
+    const handleVerify = () => {
+        if (userInput.trim().toLowerCase() === captchaText.toLowerCase()) {
+            setVerified(true);
+            setError('');
+            onVerify(true);
+        } else {
+            setError('Wrong text. Please try again.');
+            refresh();
+        }
+    };
+
+    return (
+        <div className="booking-captcha-wrap">
+            <p className="booking-captcha-label">Security Check</p>
+            <div className="booking-captcha-row">
+                <canvas
+                    ref={canvasRef}
+                    width={180}
+                    height={52}
+                    className="booking-captcha-canvas"
+                />
+                <button
+                    type="button"
+                    className="booking-captcha-refresh"
+                    onClick={refresh}
+                    disabled={disabled || verified}
+                    title="Refresh CAPTCHA"
+                    aria-label="Refresh CAPTCHA"
+                >
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" strokeWidth="2.5"
+                        strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="1 4 1 10 7 10" />
+                        <polyline points="23 20 23 14 17 14" />
+                        <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15" />
+                    </svg>
+                </button>
+            </div>
+
+            {!verified ? (
+                <div className="booking-captcha-input-row">
+                    <input
+                        type="text"
+                        className="field-input booking-captcha-text-input"
+                        placeholder="Type the characters above"
+                        value={userInput}
+                        onChange={(e) => { setUserInput(e.target.value); setError(''); }}
+                        onKeyDown={(e) => e.key === 'Enter' && handleVerify()}
+                        disabled={disabled}
+                        maxLength={8}
+                        autoComplete="off"
+                        spellCheck={false}
+                    />
+                    <button
+                        type="button"
+                        className="booking-captcha-verify-btn"
+                        onClick={handleVerify}
+                        disabled={disabled || !userInput.trim()}
+                    >
+                        Verify
+                    </button>
+                </div>
+            ) : (
+                <div className="booking-captcha-success-row">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="#27ae60" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    <span>Verified successfully</span>
+                </div>
+            )}
+
+            {error && <p className="booking-captcha-error">{error}</p>}
+        </div>
+    );
+};
+// ──────────────────────────────────────────────────────────────────────────────
 
 export default function BookingForm() {
 
@@ -51,6 +204,7 @@ export default function BookingForm() {
     const [submitting, setSubmitting] = useState(false);
     const [toast, setToast] = useState(null);
     const [errors, setErrors] = useState({});
+    const [captchaPassed, setCaptchaPassed] = useState(false);
 
     useEffect(() => {
         if (!toast) return;
@@ -86,6 +240,7 @@ export default function BookingForm() {
         if (!form.description.trim()) errs.description = "Please describe your problem";
         if (!Object.values(form.timeSlots).some(Boolean))
             errs.timeSlots = "Please select at least one time slot";
+        if (!captchaPassed) errs.captcha = "Please complete the security check";
         return errs;
     };
 
@@ -146,6 +301,7 @@ export default function BookingForm() {
                     subscribe: true,
                 });
                 setErrors({});
+                setCaptchaPassed(false);
                 window.scrollTo({ top: 0, behavior: "smooth" });
             } else {
                 let errMsg = `Server error (${res.status})`;
@@ -177,7 +333,6 @@ export default function BookingForm() {
                 <meta name="keywords" content="book IT support Sydney, book computer repair Sydney, same-day IT booking, TheTechDr booking" />
                 <link rel="canonical" href="https://www.thetechdr.com.au/book-now" />
                 <meta name="robots" content="index, follow" />
-
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="https://www.thetechdr.com.au/book-now" />
                 <meta property="og:title" content="Book IT Support Sydney | TheTechDr" />
@@ -185,7 +340,6 @@ export default function BookingForm() {
                 <meta property="og:image" content="https://www.thetechdr.com.au/og-image.jpg" />
                 <meta property="og:locale" content="en_AU" />
                 <meta property="og:site_name" content="TheTechDr" />
-
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Book IT Support Sydney | TheTechDr" />
                 <meta name="twitter:description" content="Book same-day IT support across Sydney. Call 1300 072 073." />
@@ -194,11 +348,9 @@ export default function BookingForm() {
 
             <div className="booking-page">
 
-                {/* ── Branding ── */}
                 <h1 className="booking-page-title">The <span>Tech Dr</span></h1>
                 <p className="booking-page-subtitle">Expert IT Support &amp; Tech Services</p>
 
-                {/* ── Toast ── */}
                 {toast && (
                     <div className={`toast ${toast.type}`}>
                         <span>{toast.message}</span>
@@ -212,7 +364,6 @@ export default function BookingForm() {
                     </div>
                 )}
 
-                {/* ── Intro ── */}
                 <p className="intro-title">Ready to wave goodbye to Expert IT Support &amp; Tech Services headaches?</p>
                 <p className="intro-body">
                     You're in the right place. Book a <strong>professional, in-home Expert IT Support &amp; Tech Services</strong> in
@@ -249,118 +400,76 @@ export default function BookingForm() {
                     Book now and enjoy <strong>hassle-free tech support</strong> at <strong>your convenience</strong>!
                 </p>
                 <p className="intro-title" style={{ color: "#e8520a" }}>FILL OUT THE BOOKING FORM</p>
-                {/* ── Form ── */}
+
                 <form className="form-section">
 
-                    {/* ── Name ── */}
                     <div className="field-row">
                         <label>Name:</label>
                         <div>
-                            <input
-                                className="field-input"
-                                type="text"
-                                name="name"
-                                value={form.name}
-                                onChange={handleField}
-                                placeholder='e.g., Carl "Byte Banter" Barron'
-                            />
+                            <input className="field-input" type="text" name="name"
+                                value={form.name} onChange={handleField}
+                                placeholder='e.g., Carl "Byte Banter" Barron' />
                             {errors.name && <p className="field-error">{errors.name}</p>}
                         </div>
                     </div>
 
-                    {/* ── Email ── */}
                     <div className="field-row">
                         <label>Email:</label>
                         <div>
-                            <input
-                                className="field-input"
-                                type="email"
-                                name="email"
-                                value={form.email}
-                                onChange={handleField}
-                                placeholder="e.g., one.ended.stick@gmail.com"
-                            />
+                            <input className="field-input" type="email" name="email"
+                                value={form.email} onChange={handleField}
+                                placeholder="e.g., one.ended.stick@gmail.com" />
                             {errors.email && <p className="field-error">{errors.email}</p>}
                         </div>
                     </div>
 
-                    {/* ── Phone ── */}
                     <div className="field-row">
                         <label>Phone:</label>
                         <div>
-                            <input
-                                className="field-input"
-                                type="tel"
-                                name="phone"
-                                value={form.phone}
-                                onChange={handleField}
-                                placeholder="e.g., 0412345678 / 0212345678 (10 digits, please)"
-                            />
+                            <input className="field-input" type="tel" name="phone"
+                                value={form.phone} onChange={handleField}
+                                placeholder="e.g., 0412345678 / 0212345678 (10 digits, please)" />
                             {errors.phone && <p className="field-error">{errors.phone}</p>}
                         </div>
                     </div>
 
-                    {/* ── Address ── */}
                     <div className="field-row">
                         <label>Address:</label>
                         <div>
-                            <input
-                                className="field-input"
-                                type="text"
-                                name="address"
-                                value={form.address}
-                                onChange={handleField}
-                                placeholder="e.g., 13 NoPaddle Street, Chip Creek, QLD 4730"
-                            />
+                            <input className="field-input" type="text" name="address"
+                                value={form.address} onChange={handleField}
+                                placeholder="e.g., 13 NoPaddle Street, Chip Creek, QLD 4730" />
                             {errors.address && <p className="field-error">{errors.address}</p>}
                         </div>
                     </div>
 
-                    {/* ── Postcode ── */}
                     <div className="field-row">
                         <label>Postcode:</label>
-                        <input
-                            className="field-input postcode"
-                            type="text"
-                            name="postcode"
-                            value={form.postcode}
-                            onChange={handleField}
-                            placeholder=""
-                        />
+                        <input className="field-input postcode" type="text" name="postcode"
+                            value={form.postcode} onChange={handleField} placeholder="" />
                     </div>
 
                     <hr className="form-divider" />
 
-                    {/* ── Description ── */}
                     <div className="field-row top-align">
                         <label>Description of<br />the Problem:</label>
                         <div>
-                            <textarea
-                                className="field-textarea"
-                                name="description"
-                                value={form.description}
-                                onChange={handleField}
-                                placeholder="Please list your technology issues in detail, we love to assist people with technology challenges!"
-                            />
+                            <textarea className="field-textarea" name="description"
+                                value={form.description} onChange={handleField}
+                                placeholder="Please list your technology issues in detail, we love to assist people with technology challenges!" />
                             {errors.description && <p className="field-error">{errors.description}</p>}
                         </div>
                     </div>
 
-                    {/* ── Objectives ── */}
                     <div className="field-row top-align">
                         <label>Objectives:<br />What are you<br />trying to<br />achieve?</label>
-                        <textarea
-                            className="field-textarea"
-                            name="objectives"
-                            value={form.objectives}
-                            onChange={handleField}
-                            placeholder="How can we assist you best?"
-                        />
+                        <textarea className="field-textarea" name="objectives"
+                            value={form.objectives} onChange={handleField}
+                            placeholder="How can we assist you best?" />
                     </div>
 
                     <hr className="form-divider" />
 
-                    {/* ── Service Type ── */}
                     <div className="field-row">
                         <label>Service Type:</label>
                         <div className="radio-group">
@@ -370,20 +479,14 @@ export default function BookingForm() {
                                 { value: "laptop", label: "Laptop Repair" },
                             ].map((opt) => (
                                 <label key={opt.value}>
-                                    <input
-                                        type="radio"
-                                        name="serviceType"
-                                        value={opt.value}
-                                        checked={form.serviceType === opt.value}
-                                        onChange={handleField}
-                                    />
+                                    <input type="radio" name="serviceType" value={opt.value}
+                                        checked={form.serviceType === opt.value} onChange={handleField} />
                                     {opt.label}
                                 </label>
                             ))}
                         </div>
                     </div>
 
-                    {/* ── Site Type ── */}
                     <div className="field-row">
                         <label>Site Type:</label>
                         <div className="radio-group">
@@ -396,13 +499,8 @@ export default function BookingForm() {
                                 { value: "other", label: "Other" },
                             ].map((opt) => (
                                 <label key={opt.value}>
-                                    <input
-                                        type="radio"
-                                        name="siteType"
-                                        value={opt.value}
-                                        checked={form.siteType === opt.value}
-                                        onChange={handleField}
-                                    />
+                                    <input type="radio" name="siteType" value={opt.value}
+                                        checked={form.siteType === opt.value} onChange={handleField} />
                                     {opt.label}
                                 </label>
                             ))}
@@ -411,20 +509,12 @@ export default function BookingForm() {
 
                     <hr className="form-divider" />
 
-                    {/* ── Preferred Date ── */}
                     <div className="field-row">
                         <label>Preferred Date:</label>
-                        <input
-                            className="field-input date-input"
-                            type="date"
-                            name="preferredDate"
-                            value={form.preferredDate}
-                            onChange={handleField}
-                            min={todayStr()}
-                        />
+                        <input className="field-input date-input" type="date" name="preferredDate"
+                            value={form.preferredDate} onChange={handleField} min={todayStr()} />
                     </div>
 
-                    {/* ── Time Slots ── */}
                     <div className="field-row top-align">
                         <label>Preferred<br />Time(s) Slots:</label>
                         <div>
@@ -468,16 +558,11 @@ export default function BookingForm() {
 
                     <hr className="form-divider" />
 
-                    {/* ── Subscribe ── */}
                     <div className="subscribe-section">
                         <label className="field-label">Subscribe:</label>
                         <label className="subscribe-check">
-                            <input
-                                type="checkbox"
-                                name="subscribe"
-                                checked={form.subscribe}
-                                onChange={handleField}
-                            />
+                            <input type="checkbox" name="subscribe"
+                                checked={form.subscribe} onChange={handleField} />
                             Sign me up for the weekly newsletter
                         </label>
                         <p className="privacy-note">
@@ -486,12 +571,24 @@ export default function BookingForm() {
                         </p>
                     </div>
 
-                    {/* ── Submit Button ── */}
+                    <hr className="form-divider" />
+
+                    {/* ── IMAGE CAPTCHA ── */}
+                    <div className="field-row top-align">
+                        <label>Security<br />Check:</label>
+                        <div>
+                            <ImageCaptcha onVerify={setCaptchaPassed} disabled={submitting} />
+                            {errors.captcha && <p className="field-error">{errors.captcha}</p>}
+                        </div>
+                    </div>
+                    {/* ───────────────── */}
+
                     <div className="submit-button">
                         <button
                             className="submit-btn"
+                            type="button"
                             onClick={handleSubmit}
-                            disabled={submitting}
+                            disabled={submitting || !captchaPassed}
                         >
                             {submitting
                                 ? <><span className="spinner" /> Submitting…</>
@@ -500,24 +597,22 @@ export default function BookingForm() {
                         </button>
                     </div>
 
+                    {!captchaPassed && (
+                        <p className="booking-captcha-hint">Please complete the security check to enable submit.</p>
+                    )}
+
                 </form>
 
-                {/* ── Urgent Bar ── */}
                 <p className="urgent-bar">
                     For <strong>urgent enquiries</strong>, please get in touch with us on{" "}
                     <a href="tel:1300723628">1300 723 628</a>.
                 </p>
 
-                {/* ── Hero Illustration ── */}
                 <div className="hero-illustration">
                     <div className="hero-svg-wrap">
                         <div className="hero-person-icon">
-                            <img
-                                src={image}
-                                alt="Tech support professional"
-                            />
+                            <img src={image} alt="Tech support professional" />
                         </div>
-
                         <div className="hero-monitor">
                             <h3>House Appointment</h3>
                             <div className="cal-grid">
@@ -525,20 +620,16 @@ export default function BookingForm() {
                                     <span key={`h${i}`} style={{ color: "#e8520a", fontSize: "0.65rem" }}>{d}</span>
                                 ))}
                                 {calCells.slice(0, 28).map((d, i) => (
-                                    <span
-                                        key={i}
-                                        className={
-                                            d === calToday ? "cal-today" :
-                                                d === calToday + 1 ? "cal-selected" : ""
-                                        }
-                                    >
+                                    <span key={i} className={
+                                        d === calToday ? "cal-today" :
+                                            d === calToday + 1 ? "cal-selected" : ""
+                                    }>
                                         {d || ""}
                                     </span>
                                 ))}
                             </div>
                         </div>
                     </div>
-
                     <div className="hero-caption">
                         Self-booking from <a href="#">the Tech Dr</a> Australia
                     </div>
@@ -547,7 +638,6 @@ export default function BookingForm() {
                 <SuburbsSection />
 
             </div>
-
         </div>
     );
 }
