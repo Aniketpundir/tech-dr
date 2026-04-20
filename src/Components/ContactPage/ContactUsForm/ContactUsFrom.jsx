@@ -10,7 +10,7 @@ const Star = () => (
 );
 
 // ── CAPTCHA helpers ────────────────────────────────────────────────────────────
-const CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz1234567890';
+const CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz1234567890!@$%^&*()';
 
 const generateCaptchaText = (len = 6) =>
     Array.from({ length: len }, () => CHARS[Math.floor(Math.random() * CHARS.length)]).join('');
