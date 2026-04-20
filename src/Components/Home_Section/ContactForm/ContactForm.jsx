@@ -351,7 +351,7 @@ const ContactForm = () => {
 
                     <ImageCaptcha onVerify={setCaptchaPassed} disabled={isLoading} />
 
-                    <button className="btn-send" type="submit" disabled={isLoading}>
+                    <button className="btn-send" type="submit" disabled={isLoading || !captchaPassed}>
                         {isLoading
                             ? <><span className="btn-spinner" /> Sending...</>
                             : 'SEND MESSAGE'
