@@ -149,7 +149,7 @@
     display: flex;
     gap: 20px;
     width: max-content;
-    animation: cards-marquee 28s linear infinite;
+    animation: cards-marquee 100s linear infinite;
 }
 
 .cards-marquee-track:hover {
