@@ -482,7 +482,7 @@ export default function BookingForm() {
 
                     {/* DESCRIPTION */}
                     <div className="field-row top-align" ref={fieldRefs.description}>
-                        <label>Description of<br />the Problem:</label>
+                        <label>Description of the Problem:</label>
                         <div>
                             <textarea
                                 className={`field-textarea${errors.description ? " field-input--error" : ""}`}
@@ -495,7 +495,7 @@ export default function BookingForm() {
 
                     {/* OBJECTIVES */}
                     <div className="field-row top-align">
-                        <label>Objectives:<br />What are you<br />trying to<br />achieve?</label>
+                        <label>Objectives:<br />What are you trying to achieve?</label>
                         <textarea className="field-textarea" name="objectives"
                             value={form.objectives} onChange={handleField}
                             placeholder="How can we assist you best?" />
@@ -553,7 +553,7 @@ export default function BookingForm() {
 
                     {/* TIME SLOTS */}
                     <div className="field-row top-align" ref={fieldRefs.timeSlots}>
-                        <label>Preferred<br />Time(s) Slots:</label>
+                        <label>Preferred Time(s) Slots:</label>
                         <div>
                             <div className={`timeslots-grid${errors.timeSlots ? " timeslots-grid--error" : ""}`}>
                                 <div className="timeslot-col">
