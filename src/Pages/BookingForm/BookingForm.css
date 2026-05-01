@@ -158,7 +158,7 @@
 .field-error {
     font-size: 0.82rem;
     font-weight: 700;
-    color: #ffe0d0;
+    color: #fff;
     margin-top: 4px;
 }
 
@@ -185,14 +185,14 @@
 }
 
 /* ── FIX: accent-color #fff replaced with #e8520a ── */
-/* .radio-group input[type="radio"] {
+.radio-group input[type="radio"] {
     accent-color: #e8520a;
     width: 20px;
     height: 20px;
     min-width: 20px;
     cursor: pointer;
     flex-shrink: 0;
-} */
+}
 
 .timeslots-grid {
     display: grid;
@@ -225,14 +225,14 @@
 }
 
 /* ── FIX: accent-color #fff replaced with #e8520a ── */
-/* .timeslot-item input[type="checkbox"] {
+.timeslot-item input[type="checkbox"] {
     accent-color: #e8520a;
     width: 20px;
     height: 20px;
     min-width: 20px;
     flex-shrink: 0;
     cursor: pointer;
-} */
+}
 
 .subscribe-section { margin-bottom: 22px; }
 
@@ -260,14 +260,14 @@
 }
 
 /* ── FIX: accent-color #fff replaced with #e8520a ── */
-/* .subscribe-check input[type="checkbox"] {
+.subscribe-check input[type="checkbox"] {
     accent-color: #e8520a;
     width: 20px;
     height: 20px;
     min-width: 20px;
     cursor: pointer;
     flex-shrink: 0;
-} */
+}
 
 .privacy-note {
     font-size: 0.84rem;

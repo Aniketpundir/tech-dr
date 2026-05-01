@@ -41,7 +41,6 @@ const drawCaptcha = (canvas, text) => {
     ctx.fillStyle = '#fff3ec';
     ctx.fillRect(0, 0, W, H);
 
-    // Noise lines
     for (let i = 0; i < 6; i++) {
         ctx.beginPath();
         ctx.moveTo(Math.random() * W, Math.random() * H);
@@ -51,7 +50,6 @@ const drawCaptcha = (canvas, text) => {
         ctx.stroke();
     }
 
-    // Noise dots
     for (let i = 0; i < 40; i++) {
         ctx.beginPath();
         ctx.arc(Math.random() * W, Math.random() * H, Math.random() * 2, 0, Math.PI * 2);
@@ -59,7 +57,6 @@ const drawCaptcha = (canvas, text) => {
         ctx.fill();
     }
 
-    // Characters
     const charW = W / (text.length + 1);
     text.split('').forEach((ch, i) => {
         ctx.save();
@@ -181,6 +178,17 @@ const ImageCaptcha = ({ onVerify, disabled }) => {
 
 export default function BookingForm() {
 
+    // ── Refs for each field (scroll to error) ──
+    const fieldRefs = {
+        name: useRef(null),
+        email: useRef(null),
+        phone: useRef(null),
+        address: useRef(null),
+        description: useRef(null),
+        timeSlots: useRef(null),
+        captcha: useRef(null),
+    };
+
     const [form, setForm] = useState({
         name: "",
         email: "",
@@ -193,7 +201,7 @@ export default function BookingForm() {
         siteType: "home",
         preferredDate: todayStr(),
         timeSlots: {
-            morning: true,
+            morning: false,
             midday: false,
             afternoon: false,
             evening: false,
@@ -214,9 +222,11 @@ export default function BookingForm() {
 
     const handleField = (e) => {
         const { name, value, type, checked } = e.target;
+        // Clear error for this field on change
         setErrors((prev) => ({ ...prev, [name]: "" }));
 
         if (Object.prototype.hasOwnProperty.call(form.timeSlots, name)) {
+            setErrors((prev) => ({ ...prev, timeSlots: "" }));
             setForm((prev) => ({
                 ...prev,
                 timeSlots: { ...prev.timeSlots, [name]: checked },
@@ -266,8 +276,14 @@ export default function BookingForm() {
         const errs = validate();
         if (Object.keys(errs).length > 0) {
             setErrors(errs);
-            setToast({ type: "error", message: "Please fix the highlighted fields before submitting." });
-            window.scrollTo({ top: 0, behavior: "smooth" });
+            // Scroll to FIRST error field
+            const order = ["name", "email", "phone", "address", "description", "timeSlots", "captcha"];
+            for (const key of order) {
+                if (errs[key] && fieldRefs[key]?.current) {
+                    fieldRefs[key].current.scrollIntoView({ behavior: "smooth", block: "center" });
+                    break;
+                }
+            }
             return;
         }
 
@@ -297,7 +313,7 @@ export default function BookingForm() {
                     description: "", objectives: "",
                     serviceType: "onsite", siteType: "home",
                     preferredDate: todayStr(),
-                    timeSlots: { morning: true, midday: false, afternoon: false, evening: false },
+                    timeSlots: { morning: false, midday: false, afternoon: false, evening: false },
                     subscribe: true,
                 });
                 setErrors({});
@@ -403,46 +419,59 @@ export default function BookingForm() {
 
                 <form className="form-section">
 
-                    <div className="field-row">
+                    {/* NAME */}
+                    <div className="field-row" ref={fieldRefs.name}>
                         <label>Name:</label>
                         <div>
-                            <input className="field-input" type="text" name="name"
+                            <input
+                                className={`field-input${errors.name ? " field-input--error" : ""}`}
+                                type="text" name="name"
                                 value={form.name} onChange={handleField}
                                 placeholder='e.g., Carl "Byte Banter" Barron' />
                             {errors.name && <p className="field-error">{errors.name}</p>}
                         </div>
                     </div>
 
-                    <div className="field-row">
+                    {/* EMAIL */}
+                    <div className="field-row" ref={fieldRefs.email}>
                         <label>Email:</label>
                         <div>
-                            <input className="field-input" type="email" name="email"
+                            <input
+                                className={`field-input${errors.email ? " field-input--error" : ""}`}
+                                type="email" name="email"
                                 value={form.email} onChange={handleField}
                                 placeholder="e.g., one.ended.stick@gmail.com" />
                             {errors.email && <p className="field-error">{errors.email}</p>}
                         </div>
                     </div>
 
-                    <div className="field-row">
+                    {/* PHONE */}
+                    <div className="field-row" ref={fieldRefs.phone}>
                         <label>Phone:</label>
                         <div>
-                            <input className="field-input" type="tel" name="phone"
+                            <input
+                                className={`field-input${errors.phone ? " field-input--error" : ""}`}
+                                type="tel" name="phone"
                                 value={form.phone} onChange={handleField}
                                 placeholder="e.g., 0412345678 / 0212345678 (10 digits, please)" />
                             {errors.phone && <p className="field-error">{errors.phone}</p>}
                         </div>
                     </div>
 
-                    <div className="field-row">
+                    {/* ADDRESS */}
+                    <div className="field-row" ref={fieldRefs.address}>
                         <label>Address:</label>
                         <div>
-                            <input className="field-input" type="text" name="address"
+                            <input
+                                className={`field-input${errors.address ? " field-input--error" : ""}`}
+                                type="text" name="address"
                                 value={form.address} onChange={handleField}
                                 placeholder="e.g., 13 NoPaddle Street, Chip Creek, QLD 4730" />
                             {errors.address && <p className="field-error">{errors.address}</p>}
                         </div>
                     </div>
 
+                    {/* POSTCODE */}
                     <div className="field-row">
                         <label>Postcode:</label>
                         <input className="field-input postcode" type="text" name="postcode"
@@ -451,16 +480,20 @@ export default function BookingForm() {
 
                     <hr className="form-divider" />
 
-                    <div className="field-row top-align">
+                    {/* DESCRIPTION */}
+                    <div className="field-row top-align" ref={fieldRefs.description}>
                         <label>Description of<br />the Problem:</label>
                         <div>
-                            <textarea className="field-textarea" name="description"
+                            <textarea
+                                className={`field-textarea${errors.description ? " field-input--error" : ""}`}
+                                name="description"
                                 value={form.description} onChange={handleField}
                                 placeholder="Please list your technology issues in detail, we love to assist people with technology challenges!" />
                             {errors.description && <p className="field-error">{errors.description}</p>}
                         </div>
                     </div>
 
+                    {/* OBJECTIVES */}
                     <div className="field-row top-align">
                         <label>Objectives:<br />What are you<br />trying to<br />achieve?</label>
                         <textarea className="field-textarea" name="objectives"
@@ -470,6 +503,7 @@ export default function BookingForm() {
 
                     <hr className="form-divider" />
 
+                    {/* SERVICE TYPE */}
                     <div className="field-row">
                         <label>Service Type:</label>
                         <div className="radio-group">
@@ -487,6 +521,7 @@ export default function BookingForm() {
                         </div>
                     </div>
 
+                    {/* SITE TYPE */}
                     <div className="field-row">
                         <label>Site Type:</label>
                         <div className="radio-group">
@@ -509,16 +544,18 @@ export default function BookingForm() {
 
                     <hr className="form-divider" />
 
+                    {/* PREFERRED DATE */}
                     <div className="field-row">
                         <label>Preferred Date:</label>
                         <input className="field-input date-input" type="date" name="preferredDate"
                             value={form.preferredDate} onChange={handleField} min={todayStr()} />
                     </div>
 
-                    <div className="field-row top-align">
+                    {/* TIME SLOTS */}
+                    <div className="field-row top-align" ref={fieldRefs.timeSlots}>
                         <label>Preferred<br />Time(s) Slots:</label>
                         <div>
-                            <div className="timeslots-grid">
+                            <div className={`timeslots-grid${errors.timeSlots ? " timeslots-grid--error" : ""}`}>
                                 <div className="timeslot-col">
                                     <h4>Morning</h4>
                                     <label className="timeslot-item">
@@ -558,6 +595,7 @@ export default function BookingForm() {
 
                     <hr className="form-divider" />
 
+                    {/* SUBSCRIBE */}
                     <div className="subscribe-section">
                         <label className="field-label">Subscribe:</label>
                         <label className="subscribe-check">
@@ -573,16 +611,16 @@ export default function BookingForm() {
 
                     <hr className="form-divider" />
 
-                    {/* ── IMAGE CAPTCHA ── */}
-                    <div className="field-row top-align">
+                    {/* CAPTCHA */}
+                    <div className="field-row top-align" ref={fieldRefs.captcha}>
                         <label>Security<br />Check:</label>
                         <div>
                             <ImageCaptcha onVerify={setCaptchaPassed} disabled={submitting} />
                             {errors.captcha && <p className="field-error">{errors.captcha}</p>}
                         </div>
                     </div>
-                    {/* ───────────────── */}
 
+                    {/* SUBMIT */}
                     <div className="submit-button">
                         <button
                             className="submit-btn"
