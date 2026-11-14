@@ -11,6 +11,7 @@ import CityPage from './Components/CityData/CityPage';
 import SuburbPage from './Components/SuburbPage/SuburbPage';
 import ServiceDetail from './Components/Home_Section/Services/ServiceDetail/ServiceDetail';
 import BookingForm from './Pages/BookingForm/BookingForm';
+import BlogPage from './Pages/BlogPage';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -21,6 +22,7 @@ const router = createBrowserRouter(
             <Route path='/services' element={<Services />} />
             <Route path='/services/:slug' element={<ServiceDetail />} />
             <Route path='/book-now' element={<BookingForm />} />
+            <Route path='/blog' element={<BlogPage />} />
             <Route path='/suburbs-section' element={<SuburbsSection />} />
             <Route path="/suburbs-section/city/:slug" element={<CityPage />} />
             <Route path='/suburbs-section/city/:slug/suburbs/:suburbSlug' element={<SuburbPage />} />

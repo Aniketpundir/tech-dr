@@ -1,0 +1,39 @@
+#soro-blog .soro-blog-card[hidden] {
+    display: none !important;
+}
+
+.soro-page-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 32px;
+}
+
+.soro-page-controls button {
+    min-width: 42px;
+    min-height: 42px;
+    padding: 8px 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    color: #333;
+    font: inherit;
+    cursor: pointer;
+}
+
+.soro-page-controls button[aria-current="page"] {
+    background: var(--color-brand-primary, #e8520a);
+    border-color: var(--color-brand-primary, #e8520a);
+    color: #fff;
+}
+
+.soro-page-controls button:disabled {
+    opacity: 0.45;
+    cursor: default;
+}
+
+.soro-page-controls button:focus-visible {
+    outline: 2px solid var(--color-brand-primary, #e8520a);
+    outline-offset: 3px;
+}

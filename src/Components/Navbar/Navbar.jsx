@@ -9,6 +9,7 @@ const navItems = [
     { label: 'About Us', path: '/about-us' },
     { label: 'Services', path: '/services' },
     { label: 'Book Now', path: '/book-now' },
+    { label: 'Blog', path: '/blog' },
     { label: 'Contact Us', path: '/contact-us' },
     
 ];
