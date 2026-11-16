@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, Link, Navigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { cityData } from "../CityData/CityData";
 import "./SuburbPage.css";
 import msp from "../../assets/msp.jpeg";
+import NotFound from '../../Pages/NotFound';
+import { suburbPath } from '../../seo/catalog';
 
 // Find which region a suburb belongs to
 const findRegionForSuburb = (suburbSlug) => {
@@ -40,7 +42,6 @@ const FaqItem = ({ question, answer }) => {
 
 const SuburbPage = () => {
     const { suburbSlug, slug } = useParams();
-    const navigate = useNavigate();
     const [callHover, setCallHover] = useState(false);
 
     const result = findRegionForSuburb(suburbSlug);
@@ -54,18 +55,15 @@ const SuburbPage = () => {
     }, [suburbSlug]);
 
     if (!result) {
-        return (
-            <div className="sp-page">
-                <div className="sp-topbar" />
-                <div className="sp-content">
-                    <p>Suburb not found.</p>
-                </div>
-            </div>
-        );
+        return <NotFound />;
     }
 
     const { region, suburb, data } = result;
     const regionSlug = region.toLowerCase().replace(/\s+/g, "-");
+    const canonicalSuburbSlug = suburb.toLowerCase().replace(/\s+/g, "-");
+    if (slug !== regionSlug || suburbSlug !== canonicalSuburbSlug) {
+        return <Navigate to={`/suburbs-section/city/${regionSlug}/suburbs/${canonicalSuburbSlug}`} replace />;
+    }
 
     // Nearby suburbs (excluding current, max 6)
     const nearbySuburbs = data.suburbs.filter((s) => s !== suburb).slice(0, 6);
@@ -232,13 +230,13 @@ const SuburbPage = () => {
 
                 {/* Breadcrumb */}
                 <nav className="sp-breadcrumb" aria-label="breadcrumb">
-                    <button className="sp-crumb-btn" onClick={() => navigate("/")}>
+                    <Link className="sp-crumb-btn" to="/service-areas/" onClick={handleClick}>
                         All Regions
-                    </button>
+                    </Link>
                     <span className="sp-crumb-sep">›</span>
-                    <button className="sp-crumb-btn" onClick={() => navigate(`/suburbs-section/city/${regionSlug}`)}>
+                    <Link className="sp-crumb-btn" to={`/suburbs-section/city/${regionSlug}`} onClick={handleClick}>
                         {region}
-                    </button>
+                    </Link>
                     <span className="sp-crumb-sep">›</span>
                     <span className="sp-crumb-active">{suburb}</span>
                 </nav>
@@ -247,9 +245,9 @@ const SuburbPage = () => {
                 <h1 className="sp-title">
                     Expert IT Support &amp; Tech Services in {suburb}
                 </h1>
-                <h1 className="sp-title">
+                <p className="sp-title">
                     TheTechDr
-                </h1>
+                </p>
 
                 <p className="sp-region-tag">Part of {data.area}</p>
 
@@ -358,19 +356,19 @@ const SuburbPage = () => {
                 </p>
                 <div className="sp-nearby-grid">
                     {nearbySuburbs.map((s, i) => {
-                        const nearbySlug = s.toLowerCase().replace(/\s+/g, "-");
                         return (
-                            <button
+                            <Link
                                 key={i}
                                 className="sp-nearby-btn"
-                                onClick={() => navigate(`/suburbs-section/city/${regionSlug}/suburbs/${nearbySlug}`)}
+                                to={suburbPath(s)}
+                                onClick={handleClick}
                             >
                                 <span className="sp-nearby-dot" />
                                 {s}
                                 <svg viewBox="0 0 24 24" fill="none" className="sp-nearby-arrow">
                                     <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
-                            </button>
+                            </Link>
                         );
                     })}
                 </div>

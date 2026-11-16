@@ -154,7 +154,7 @@
     gap: 10px 20px;
 }
 
-.city-suburbs-list li {
+.city-suburb-clickable {
     font-size: 14px;
     color: #333;
     background: #fdf6f2;
@@ -165,6 +165,7 @@
     align-items: center;
     gap: 8px;
     transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
 }
 
 /* Clickable suburb styles */

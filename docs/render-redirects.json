@@ -1,0 +1,32 @@
+[
+  {
+    "source": "/computer-repair-service",
+    "destination": "/services/mac-windows-pc-repair",
+    "action": "Redirect"
+  },
+  {
+    "source": "/computer-repair-service/",
+    "destination": "/services/mac-windows-pc-repair",
+    "action": "Redirect"
+  },
+  {
+    "source": "/cctv-setup",
+    "destination": "/services/cctv-setup-servicing",
+    "action": "Redirect"
+  },
+  {
+    "source": "/cctv-setup/",
+    "destination": "/services/cctv-setup-servicing",
+    "action": "Redirect"
+  },
+  {
+    "source": "/suburbs-section/city/northern-suburbs/suburbs/carlingford",
+    "destination": "/suburbs-section/city/parramatta/suburbs/carlingford",
+    "action": "Redirect"
+  },
+  {
+    "source": "/suburbs-section/city/northern-suburbs/suburbs/carlingford/",
+    "destination": "/suburbs-section/city/parramatta/suburbs/carlingford",
+    "action": "Redirect"
+  }
+]

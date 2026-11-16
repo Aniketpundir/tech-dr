@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { cityData } from "../CityData/CityData";
 import "./CityPage.css";
+import NotFound from '../../Pages/NotFound';
+import { suburbPath } from '../../seo/catalog';
 
 // slug to region name
 const slugToRegion = (slug) => {
@@ -29,7 +31,6 @@ const FaqItem = ({ question, answer }) => {
 
 const CityPage = () => {
     const { slug } = useParams();
-    const navigate = useNavigate();
     const region = slugToRegion(slug);
     const data = cityData[region];
     const [callHover, setCallHover] = useState(false);
@@ -43,20 +44,8 @@ const CityPage = () => {
     };
 
     if (!data) {
-        return (
-            <div className="city-page">
-                <div className="city-topbar" />
-                <div className="city-content">
-                    <p>Region not found.</p>
-                </div>
-            </div>
-        );
+        return <NotFound />;
     }
-
-    const handleSuburbClick = (suburb) => {
-        const suburbSlug = suburb.toLowerCase().replace(/\s+/g, "-");
-        navigate(`/suburbs-section/city/${slug}/suburbs/${suburbSlug}`);
-    };
 
     // --- SEO Variables ---
     const pageTitle = `IT Support & Computer Repairs ${region} Sydney | TheTechDr`;
@@ -194,7 +183,7 @@ const CityPage = () => {
 
                 {/* Title */}
                 <h1 className="city-title">Expert IT Support & Tech Services in {region}</h1>
-                <h1 className="city-title">TheTechDr</h1>
+                <p className="city-title">TheTechDr</p>
 
                 {/* Area tag */}
                 <p className="city-area-tag">{data.area}</p>
@@ -262,13 +251,11 @@ const CityPage = () => {
 
                 <ul className="city-suburbs-list">
                     {data.suburbs.map((suburb, i) => (
-                        <li
-                            key={i}
+                        <li key={i}>
+                            <Link
                             className="city-suburb-clickable"
-                            onClick={() => handleSuburbClick(suburb)}
-                            role="button"
-                            tabIndex={0}
-                            onKeyDown={(e) => e.key === "Enter" && handleSuburbClick(suburb)}
+                            to={suburbPath(suburb)}
+                            onClick={handleClick}
                             aria-label={`View IT support in ${suburb}`}
                         >
                             <span className="svc-dot" />
@@ -282,6 +269,7 @@ const CityPage = () => {
                                     strokeLinejoin="round"
                                 />
                             </svg>
+                            </Link>
                         </li>
                     ))}
                 </ul>

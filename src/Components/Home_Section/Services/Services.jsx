@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Services.css';
 import cctv from "../../../assets/cctv-new.jpg.jpeg";
 import data from "../../../assets/data.jpg";
@@ -146,10 +146,6 @@ const serviceListSchema = {
 const Services = () => {
     const navigate = useNavigate();
 
-    const handleCardClick = (slug) => {
-        navigate(`/services/${slug}`);
-    };
-
     const handleBookNow = (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -197,19 +193,17 @@ const Services = () => {
                         <div className="service-card" key={i}>
 
                             {/* Top area → /services/:slug */}
-                            <div
+                            <Link
                                 className="service-card-top"
-                                onClick={() => handleCardClick(s.slug)}
-                                role="button"
-                                tabIndex={0}
-                                onKeyDown={(e) => e.key === 'Enter' && handleCardClick(s.slug)}
+                                to={`/services/${s.slug}`}
+                                onClick={handleClick}
                             >
                                 <h3>{s.title}</h3>
                                 <div className="service-card-img">
                                     <img src={s.img} alt={s.title} />
                                 </div>
                                 <p>{s.desc}</p>
-                            </div>
+                            </Link>
 
                             {/* <button
                                 className="btn-learn-more"

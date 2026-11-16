@@ -2,9 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './ServiceDetail.css';
-import TechDrButtons from '../../TechDrButtons/TechDrButtons';
+import { Helmet } from 'react-helmet-async';
+import NotFound from '../../../../Pages/NotFound';
 
-const serviceDetails = {
+export const serviceDetails = {
+    'website-development': {
+        title: 'Website Development',
+        tagline: 'Websites Built Around Your Business',
+        image1: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80',
+        image2: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
+        description: 'TheTechDr develops responsive websites for businesses. We help you present your services, make it easy for customers to contact you, and organise your content around the information visitors need.',
+        description2: 'Talk to us about your audience, existing website and business goals. We can discuss a new website or improvements to your current site, including mobile layouts, performance and clear navigation.',
+        whatWeOffer: ['Responsive website development', 'Service and contact pages', 'Website navigation and content structure', 'Website performance improvements', 'Updates to existing websites'],
+        problemsSolved: ['Layouts that are difficult to use on mobile', 'Confusing navigation', 'Outdated website pages', 'Slow or cumbersome visitor experiences'],
+        gallery: [],
+        faq: [{ q: 'Can you update an existing website?', a: 'Contact TheTechDr with your current website and the changes you need. We will review the scope with you.' }],
+    },
     'gaming-pc-building-repair': {
         title: 'Gaming PC Building & Repair',
         tagline: 'Dominate the Game with Your Perfect Rig',
@@ -511,30 +524,24 @@ const ServiceDetail = () => {
 
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        if (service) {
-            document.title = `${service.title} | The Tech Dr`;
-        }
-    }, [slug, service]);
+    }, [slug]);
 
     if (!service) {
-        return (
-            <div className="svc-page">
-                <div className="svc-topbar" />
-                <div className="svc-content">
-                    <button className="svc-back-btn" onClick={() => navigate('/services')}>
-                        <svg viewBox="0 0 24 24" fill="none" className="svc-back-arrow">
-                            <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="#E8623A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                        Back to All Services
-                    </button>
-                    <p style={{ color: '#666' }}>Service not found. Slug: <strong>{slug}</strong></p>
-                </div>
-            </div>
-        );
+        return <NotFound />;
     }
 
     return (
         <div className="svc-page">
+            <Helmet>
+                <title>{`${service.title} Sydney | TheTechDr`}</title>
+                <meta name="description" content={`${service.tagline}. TheTechDr offers ${service.title.toLowerCase()} in Sydney. Call 1300 072 073 to discuss your needs.`} />
+                <link rel="canonical" href={`https://www.thetechdr.com.au/services/${slug}`} />
+                <meta name="robots" content="index, follow" />
+                <meta property="og:title" content={`${service.title} Sydney | TheTechDr`} />
+                <meta property="og:description" content={service.description} />
+                <meta property="og:url" content={`https://www.thetechdr.com.au/services/${slug}`} />
+                <meta property="og:type" content="website" />
+            </Helmet>
             <div className="svc-topbar" />
 
             <div className="svc-content">
@@ -549,7 +556,7 @@ const ServiceDetail = () => {
 
                 {/* Title */}
                 <h1 className="svc-title">{service.title}</h1>
-                <h1 className="svc-title">— TheTechDr</h1>
+                <p className="svc-title">— TheTechDr</p>
                 <p className="svc-area-tag">The Tech Dr · Professional IT Services · Australia-Wide</p>
 
                 <div className="btn-wrapper">
