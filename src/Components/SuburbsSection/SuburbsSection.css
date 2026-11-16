@@ -73,6 +73,7 @@
 
 /* ── TOP ROW: icon + name + arrow ── */
 .suburb-card-top {
+    text-decoration: none;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -127,6 +128,9 @@
 
 /* ── BOOK NOW BUTTON ── */
 .book-now-btn {
+    display: block;
+    text-align: center;
+    text-decoration: none;
     width: 100%;
     padding: 9px 0;
     background: linear-gradient(135deg, #ff7d3a, #e8520a);
@@ -147,6 +151,12 @@
 
 .book-now-btn:active {
     transform: scale(0.98);
+}
+
+.suburb-card-top:focus-visible,
+.book-now-btn:focus-visible {
+    outline: 3px solid #7c2d00;
+    outline-offset: 4px;
 }
 
 /* ── RESPONSIVE ── */

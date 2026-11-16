@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Footer.css';
 import logo from '../../assets/logo.webp';
 
@@ -52,6 +53,8 @@ const Footer = () => (
         <div className="footer-bottom">
             <p>© {new Date().getFullYear()} The Tech Dr. All rights reserved.</p>
             <div className="footer-bottom-links">
+                <Link to="/service-areas/" onClick={() => window.scrollTo(0, 0)}>Service Areas</Link>
+                <span className="footer-divider">|</span>
                 <a href="#">Privacy Policy</a>
                 <span className="footer-divider">|</span>
                 <a href="#">Terms & Conditions</a>

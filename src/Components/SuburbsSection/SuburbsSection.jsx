@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { regions } from "../CityData/CityData";
 import "./SuburbsSection.css";
 
@@ -21,18 +21,6 @@ const DiamondIcon = () => (
 );
 
 const SuburbsSection = () => {
-    const navigate = useNavigate();
-
-    const handleRegionClick = (region) => {
-        const slug = region.toLowerCase().replace(/\s+/g, "-");
-        navigate(`/suburbs-section/city/${slug}`);
-    };
-
-    const handleBookNow = (e) => {
-        e.stopPropagation();
-        navigate("/book-now");
-    };
-
     const handleClick = () => {
         window.scrollTo({
             top: 0,
@@ -52,25 +40,29 @@ const SuburbsSection = () => {
 
             <div className="suburbs-grid-wrapper">
                 <div className="suburbs-grid">
-                    {regions.map((region, index) => (
+                    {regions.map((region) => (
                         <div
                             className="suburb-item"
-                            key={index}
-                            onClick={() => handleRegionClick(region)}
+                            key={region}
                         >
-                            <div className="suburb-card-top">
+                            <Link
+                                className="suburb-card-top"
+                                to={`/suburbs-section/city/${region.toLowerCase().replace(/\s+/g, "-")}`}
+                                onClick={handleClick}
+                            >
                                 <LocationIcon />
                                 <div className="suburb-info">
                                     <span className="suburb-name">{region}</span>
                                     <span className="suburb-arrow">→</span>
                                 </div>
-                            </div>
-                            <button
+                            </Link>
+                            <Link
                                 className="book-now-btn"
-                                onClick={(e) => { handleBookNow(e, region), handleClick() }}
+                                to="/book-now"
+                                onClick={handleClick}
                             >
                                 Book Now
-                            </button>
+                            </Link>
                         </div>
                     ))}
                 </div>

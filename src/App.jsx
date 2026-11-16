@@ -6,7 +6,7 @@ import Home from './Pages/Home';
 import About from './Pages/About';
 import Contact from './Pages/Contact';
 import Services from './Components/Home_Section/Services/Services';
-import SuburbsSection from './Components/SuburbsSection/SuburbsSection';
+import ServiceAreas from './Pages/ServiceAreas';
 import CityPage from './Components/CityData/CityPage';
 import SuburbPage from './Components/SuburbPage/SuburbPage';
 import ServiceDetail from './Components/Home_Section/Services/ServiceDetail/ServiceDetail';
@@ -23,7 +23,8 @@ const router = createBrowserRouter(
             <Route path='/services/:slug' element={<ServiceDetail />} />
             <Route path='/book-now' element={<BookingForm />} />
             <Route path='/blog' element={<BlogPage />} />
-            <Route path='/suburbs-section' element={<SuburbsSection />} />
+            <Route path='/service-areas' element={<ServiceAreas />} />
+            <Route path='/suburbs-section' element={<ServiceAreas />} />
             <Route path="/suburbs-section/city/:slug" element={<CityPage />} />
             <Route path='/suburbs-section/city/:slug/suburbs/:suburbSlug' element={<SuburbPage />} />
         </Route>
