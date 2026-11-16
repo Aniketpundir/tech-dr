@@ -50,16 +50,16 @@ const CityPage = () => {
     // --- SEO Variables ---
     const pageTitle = `IT Support & Computer Repairs ${region} Sydney | TheTechDr`;
     const metaDescription = `Expert IT support & computer repairs across ${region}, Sydney. TheTechDr offers same-day service for PC repairs, CCTV, Starlink, networking & more. Call 1300 072 073.`;
-    const canonicalUrl = `https://www.thetechdr.com.au/suburbs-section/city/${slug}`;
-    const ogImage = "https://www.thetechdr.com.au/og-image.jpg";
+    const canonicalUrl = `https://thetechdr.com.au/suburbs-section/city/${slug}`;
+    const ogImage = "https://thetechdr.com.au/og-image.jpg";
 
     // --- LocalBusiness Schema ---
     const schemaData = {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": "TheTechDr",
-        "url": "https://www.thetechdr.com.au",
-        "logo": "https://www.thetechdr.com.au/logo.png",
+        "url": "https://thetechdr.com.au",
+        "logo": "https://thetechdr.com.au/logo.png",
         "image": ogImage,
         "description": `TheTechDr provides professional IT support and computer repairs across ${region}, Sydney. Services include PC & Mac repairs, Gaming PC builds, CCTV, Starlink, networking, data recovery, and business IT solutions.`,
         "telephone": "+611300072073",
@@ -124,13 +124,13 @@ const CityPage = () => {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://www.thetechdr.com.au"
+                "item": "https://thetechdr.com.au"
             },
             {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Suburbs",
-                "item": "https://www.thetechdr.com.au/suburbs-section"
+                "item": "https://thetechdr.com.au/suburbs-section"
             },
             {
                 "@type": "ListItem",
@@ -399,7 +399,7 @@ const CityPage = () => {
                     </a>
                     <p className="city-website">
                         Visit us at:{" "}
-                        <a href="https://www.thetechdr.com.au" className="city-link">
+                        <a href="https://thetechdr.com.au" className="city-link">
                             www.TheTechDr.com.au
                         </a>
                     </p>

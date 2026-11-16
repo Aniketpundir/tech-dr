@@ -40,7 +40,7 @@ const BlogPage = () => {
             <Helmet>
                 <title>Blog | TheTechDr</title>
                 <meta name="description" content="Read the latest technology tips, computer care advice and updates from TheTechDr." />
-                <link rel="canonical" href="https://www.thetechdr.com.au/blog" />
+                <link rel="canonical" href="https://thetechdr.com.au/blog" />
             </Helmet>
 
             <header className="blog-page-header">

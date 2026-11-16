@@ -133,12 +133,12 @@ const serviceListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
     "name": "IT Services by TheTechDr Sydney",
-    "url": "https://www.thetechdr.com.au/services",
+    "url": "https://thetechdr.com.au/services",
     "itemListElement": allServices.map((s, i) => ({
         "@type": "ListItem",
         "position": i + 1,
         "name": s.title,
-        "url": `https://www.thetechdr.com.au/services/${s.slug}`,
+        "url": `https://thetechdr.com.au/services/${s.slug}`,
         "description": s.desc
     }))
 };
@@ -158,21 +158,21 @@ const Services = () => {
                 <title>IT Services Sydney | Computer Repairs, CCTV, Starlink & More | TheTechDr</title>
                 <meta name="description" content="TheTechDr offers expert IT services across Sydney — Gaming PC builds, Mac & PC repairs, CCTV installation, Starlink setup, data recovery, networking & more. Same-day service available." />
                 <meta name="keywords" content="IT services Sydney, computer repairs Sydney, Gaming PC Sydney, CCTV installation Sydney, Starlink setup Sydney, data recovery Sydney, MSP Sydney, TheTechDr" />
-                <link rel="canonical" href="https://www.thetechdr.com.au/services" />
+                <link rel="canonical" href="https://thetechdr.com.au/services" />
                 <meta name="robots" content="index, follow" />
 
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://www.thetechdr.com.au/services" />
+                <meta property="og:url" content="https://thetechdr.com.au/services" />
                 <meta property="og:title" content="IT Services Sydney | TheTechDr" />
                 <meta property="og:description" content="Expert IT services across Sydney. Gaming PC builds, CCTV, Starlink, data recovery & more. Same-day service available." />
-                <meta property="og:image" content="https://www.thetechdr.com.au/og-image.jpg" />
+                <meta property="og:image" content="https://thetechdr.com.au/og-image.jpg" />
                 <meta property="og:locale" content="en_AU" />
                 <meta property="og:site_name" content="TheTechDr" />
 
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="IT Services Sydney | TheTechDr" />
                 <meta name="twitter:description" content="Expert IT services across Sydney. Same-day service available. Call 1300 072 073." />
-                <meta name="twitter:image" content="https://www.thetechdr.com.au/og-image.jpg" />
+                <meta name="twitter:image" content="https://thetechdr.com.au/og-image.jpg" />
 
                 <script type="application/ld+json">
                     {JSON.stringify(serviceListSchema)}

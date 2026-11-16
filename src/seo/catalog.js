@@ -1,7 +1,7 @@
 import { cityData } from '../Components/CityData/CityData';
 import { serviceDetails } from '../Components/Home_Section/Services/ServiceDetail/ServiceDetail';
 
-export const siteOrigin = 'https://www.thetechdr.com.au';
+export const siteOrigin = 'https://thetechdr.com.au';
 export const slugify = (value) => value.toLowerCase().replace(/\s+/g, '-');
 export const legacyRedirects = {
     '/computer-repair-service': '/services/mac-windows-pc-repair',

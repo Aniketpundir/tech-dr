@@ -84,16 +84,16 @@ const SuburbPage = () => {
     // --- SEO Variables ---
     const pageTitle = `Computer Repairs ${suburb} | IT Support & Tech Services | TheTechDr`;
     const metaDescription = `Fast, reliable computer repairs in ${suburb}. TheTechDr offers same-day IT support, laptop repairs, CCTV setup, Starlink, networking & more. Call 1300 072 073.`;
-    const canonicalUrl = `https://www.thetechdr.com.au/suburbs-section/city/${regionSlug}/suburbs/${suburbSlug}`;
-    const ogImage = "https://www.thetechdr.com.au/og-image.jpg"; // Place og-image.jpg in /public
+    const canonicalUrl = `https://thetechdr.com.au/suburbs-section/city/${regionSlug}/suburbs/${suburbSlug}`;
+    const ogImage = "https://thetechdr.com.au/og-image.jpg"; // Place og-image.jpg in /public
 
     // --- JSON-LD Schema ---
     const schemaData = {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": "TheTechDr",
-        "url": "https://www.thetechdr.com.au",
-        "logo": "https://www.thetechdr.com.au/logo.png",
+        "url": "https://thetechdr.com.au",
+        "logo": "https://thetechdr.com.au/logo.png",
         "image": ogImage,
         "description": `TheTechDr provides professional IT support and computer repairs in ${suburb}, ${region}, Sydney. Services include PC & Mac repairs, Gaming PC builds, CCTV, Starlink, networking, data recovery, and more.`,
         "telephone": "+611300072073",
@@ -162,19 +162,19 @@ const SuburbPage = () => {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://www.thetechdr.com.au"
+                "item": "https://thetechdr.com.au"
             },
             {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Suburbs",
-                "item": "https://www.thetechdr.com.au/suburbs-section"
+                "item": "https://thetechdr.com.au/suburbs-section"
             },
             {
                 "@type": "ListItem",
                 "position": 3,
                 "name": region,
-                "item": `https://www.thetechdr.com.au/suburbs-section/city/${regionSlug}`
+                "item": `https://thetechdr.com.au/suburbs-section/city/${regionSlug}`
             },
             {
                 "@type": "ListItem",
@@ -404,7 +404,7 @@ const SuburbPage = () => {
                     <a href="tel:1300072073" className="sp-cta-btn">📞 Call 1300 072 073 Now</a>
                     <p className="sp-website">
                         Visit us at:{" "}
-                        <a href="https://www.thetechdr.com.au" className="sp-link">www.TheTechDr.com.au</a>
+                        <a href="https://thetechdr.com.au" className="sp-link">www.TheTechDr.com.au</a>
                     </p>
                 </div>
 

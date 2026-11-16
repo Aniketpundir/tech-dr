@@ -7,7 +7,8 @@ import { matchRoutes } from 'react-router-dom';
 const server = await createServer({ server: { middlewareMode: true }, appType: 'custom' });
 const decodeHtml = (value) => value.replaceAll('&#x27;', "'").replaceAll('&apos;', "'").replaceAll('&amp;', '&');
 try {
-    const { render, indexablePaths, legacyRedirects } = await server.ssrLoadModule('/src/entry-server.jsx');
+    const { render, indexablePaths, legacyRedirects, siteOrigin } = await server.ssrLoadModule('/src/entry-server.jsx');
+    assert.equal(siteOrigin, 'https://thetechdr.com.au', 'Canonical host must match the selected production domain');
     const { appRoutes } = await server.ssrLoadModule('/src/routes.jsx');
     const { serviceDetails } = await server.ssrLoadModule('/src/Components/Home_Section/Services/ServiceDetail/ServiceDetail.jsx');
     const servicesHtml = render('/services');
@@ -48,6 +49,7 @@ try {
     for (const pathname of indexablePaths) {
         const html = await fs.readFile(path.join('dist', pathname, 'index.html'), 'utf8');
         const head = html.split('</head>')[0];
+        assert.ok(!html.includes('https://www.thetechdr.com.au'), `Conflicting www URL on ${pathname}`);
         assert.equal((head.match(/<title\b/g) || []).length, 1, `Title count: ${pathname}`);
         assert.equal((head.match(/rel="canonical"/g) || []).length, 1, `Canonical count: ${pathname}`);
         assert.ok(!html.includes('/src/assets/'), `Source asset leaked: ${pathname}`);
@@ -65,6 +67,9 @@ try {
     const locations = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
     assert.equal(locations.length, indexablePaths.length);
     assert.equal(new Set(locations).size, locations.length);
+    assert.ok(locations.every((url) => url === siteOrigin || url.startsWith(`${siteOrigin}/`)), 'Sitemap contains a conflicting host');
+    const robots = await fs.readFile('dist/robots.txt', 'utf8');
+    assert.ok(robots.includes(`Sitemap: ${siteOrigin}/sitemap.xml`), 'robots.txt points at the wrong sitemap host');
     assert.ok(!sitemap.includes('/book-now'));
     console.log(`PASS: all 25 reported URLs have valid targets; ${indexablePaths.length} built pages checked for metadata, links and assets; service cards, redirects, error pages and sitemap verified.`);
 } finally {

@@ -535,11 +535,11 @@ const ServiceDetail = () => {
             <Helmet>
                 <title>{`${service.title} Sydney | TheTechDr`}</title>
                 <meta name="description" content={`${service.tagline}. TheTechDr offers ${service.title.toLowerCase()} in Sydney. Call 1300 072 073 to discuss your needs.`} />
-                <link rel="canonical" href={`https://www.thetechdr.com.au/services/${slug}`} />
+                <link rel="canonical" href={`https://thetechdr.com.au/services/${slug}`} />
                 <meta name="robots" content="index, follow" />
                 <meta property="og:title" content={`${service.title} Sydney | TheTechDr`} />
                 <meta property="og:description" content={service.description} />
-                <meta property="og:url" content={`https://www.thetechdr.com.au/services/${slug}`} />
+                <meta property="og:url" content={`https://thetechdr.com.au/services/${slug}`} />
                 <meta property="og:type" content="website" />
             </Helmet>
             <div className="svc-topbar" />
@@ -691,7 +691,7 @@ const ServiceDetail = () => {
                     </a>
                     <p className="svc-website">
                         Visit us at:{' '}
-                        <a href="https://www.thetechdr.com.au" className="svc-link">
+                        <a href="https://thetechdr.com.au" className="svc-link">
                             www.TheTechDr.com.au
                         </a>
                     </p>

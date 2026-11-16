@@ -347,19 +347,19 @@ export default function BookingForm() {
                 <title>Book IT Support Sydney | TheTechDr | Same-Day Service</title>
                 <meta name="description" content="Book same-day IT support and computer repairs across Sydney with TheTechDr. Fast, professional service for homes and businesses. Call 1300 072 073." />
                 <meta name="keywords" content="book IT support Sydney, book computer repair Sydney, same-day IT booking, TheTechDr booking" />
-                <link rel="canonical" href="https://www.thetechdr.com.au/book-now" />
+                <link rel="canonical" href="https://thetechdr.com.au/book-now" />
                 <meta name="robots" content="index, follow" />
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://www.thetechdr.com.au/book-now" />
+                <meta property="og:url" content="https://thetechdr.com.au/book-now" />
                 <meta property="og:title" content="Book IT Support Sydney | TheTechDr" />
                 <meta property="og:description" content="Book same-day IT support across Sydney. Fast, professional, no fix no pay." />
-                <meta property="og:image" content="https://www.thetechdr.com.au/og-image.jpg" />
+                <meta property="og:image" content="https://thetechdr.com.au/og-image.jpg" />
                 <meta property="og:locale" content="en_AU" />
                 <meta property="og:site_name" content="TheTechDr" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="Book IT Support Sydney | TheTechDr" />
                 <meta name="twitter:description" content="Book same-day IT support across Sydney. Call 1300 072 073." />
-                <meta name="twitter:image" content="https://www.thetechdr.com.au/og-image.jpg" />
+                <meta name="twitter:image" content="https://thetechdr.com.au/og-image.jpg" />
             </Helmet>
 
             <div className="booking-page">

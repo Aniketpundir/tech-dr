@@ -7,7 +7,7 @@ const ServiceAreas = () => (
         <Helmet>
             <title>Service Areas | IT Support Across Sydney | TheTechDr</title>
             <meta name="description" content="Find TheTechDr IT support and computer repairs in your Sydney region. Browse our service areas and local suburbs, or call 1300 072 073 to book." />
-            <link rel="canonical" href="https://www.thetechdr.com.au/service-areas/" />
+            <link rel="canonical" href="https://thetechdr.com.au/service-areas/" />
             <meta name="robots" content="index, follow" />
         </Helmet>
         <header className="service-areas-intro">

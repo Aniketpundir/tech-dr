@@ -44,10 +44,14 @@ Check the HTML source of a service and suburb page for their own title, content
 and canonical. Confirm the old service URLs return 301 with the correct Location
 after applying the dashboard rules. Run Search Console Live Test on the final
 canonical URLs, then request indexing for important updated pages. Submit/check
-`https://www.thetechdr.com.au/sitemap.xml` in the matching property.
+`https://thetechdr.com.au/sitemap.xml` in the matching property.
 
-The site consistently uses its existing `www` canonical host. Do not switch hosts
-without auditing the hosting/domain redirects and Search Console properties.
+The site uses `https://thetechdr.com.au` as its canonical host, matching the
+Google-selected canonical shown in Search Console for About Us. Canonical tags,
+social URLs, structured data, robots.txt and the sitemap use this same host.
+Retain hosting's existing www-to-non-www redirect. Check the non-www property
+after deployment; the trailing-slash About Us URL can remain an alternate while
+the canonical `/about-us` page is indexed.
 
 Technical fixes make pages accessible and consistent; Google still decides which
 pages to index. Many suburb pages retain similar existing content. Meaningful,

@@ -17,21 +17,21 @@ const About = () => {
                 <title>About TheTechDr | Sydney's Trusted IT Support Specialists</title>
                 <meta name="description" content="Learn about TheTechDr — Sydney's trusted IT support and computer repair specialists. Background-checked technicians, same-day service, no fix no pay guarantee." />
                 <meta name="keywords" content="about TheTechDr, IT support Sydney, computer repair specialists Sydney, trusted IT technicians Sydney" />
-                <link rel="canonical" href="https://www.thetechdr.com.au/about-us" />
+                <link rel="canonical" href="https://thetechdr.com.au/about-us" />
                 <meta name="robots" content="index, follow" />
 
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://www.thetechdr.com.au/about-us" />
+                <meta property="og:url" content="https://thetechdr.com.au/about-us" />
                 <meta property="og:title" content="About TheTechDr | Sydney's Trusted IT Support Specialists" />
                 <meta property="og:description" content="Meet the team behind TheTechDr — Sydney's most trusted IT support and computer repair service. Same-day service, no fix no pay." />
-                <meta property="og:image" content="https://www.thetechdr.com.au/og-image.jpg" />
+                <meta property="og:image" content="https://thetechdr.com.au/og-image.jpg" />
                 <meta property="og:locale" content="en_AU" />
                 <meta property="og:site_name" content="TheTechDr" />
 
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content="About TheTechDr | Sydney IT Support" />
                 <meta name="twitter:description" content="Sydney's trusted IT support and computer repair specialists. Same-day service available." />
-                <meta name="twitter:image" content="https://www.thetechdr.com.au/og-image.jpg" />
+                <meta name="twitter:image" content="https://thetechdr.com.au/og-image.jpg" />
             </Helmet>
 
             <div style={{ backgroundColor: '#fff5ee' }}>
