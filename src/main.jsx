@@ -16,7 +16,13 @@ const app = (
   </MyProvider>
 );
 
-if (rootElement.hasChildNodes()) {
+// React owns the live metadata. Remove the static copies before mounting so a
+// hosting fallback or subsequent navigation cannot leave two canonical tags.
+document.head.querySelectorAll('[data-prerender-head]').forEach((tag) => tag.remove());
+const normalizePath = (value) => value.replace(/\/+$/, '') || '/';
+const prerenderPath = rootElement.getAttribute('data-prerender-path');
+if (rootElement.hasChildNodes() && prerenderPath &&
+    normalizePath(prerenderPath) === normalizePath(window.location.pathname)) {
   hydrateRoot(rootElement, app);
 } else {
   createRoot(rootElement).render(app);

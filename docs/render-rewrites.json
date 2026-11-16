@@ -1,0 +1,17 @@
+[
+  {
+    "source": "/*/",
+    "destination": "/*/index.html",
+    "action": "Rewrite"
+  },
+  {
+    "source": "/:page",
+    "destination": "/:page/index.html",
+    "action": "Rewrite"
+  },
+  {
+    "source": "/:first/*",
+    "destination": "/:first/*/index.html",
+    "action": "Rewrite"
+  }
+]

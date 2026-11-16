@@ -36,8 +36,8 @@ try {
             assert.ok(/<h[12]\b/.test(markup), `Missing page content: ${pathname}`);
         }
         const html = template.replace(/<title>.*?<\/title>/s, '')
-            .replace('</head>', `${metadata.join('\n')}\n</head>`)
-            .replace('<div id="root"></div>', () => `<div id="root">${markup}</div>`);
+            .replace('</head>', `${metadata.map((tag) => tag.replace(/^<(title|meta|link)\b/i, '<$1 data-prerender-head="true"')).join('\n')}\n</head>`)
+            .replace('<div id="root"></div>', () => `<div id="root" data-prerender-path="${escapeXml(pathname)}">${markup}</div>`);
         const file = pathname === '/404' ? path.join(dist, '404.html') : path.join(dist, pathname, 'index.html');
         assert.ok(file.startsWith(`${dist}${path.sep}`));
         await fs.mkdir(path.dirname(file), { recursive: true });

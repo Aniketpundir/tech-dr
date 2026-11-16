@@ -49,6 +49,9 @@ try {
     for (const pathname of indexablePaths) {
         const html = await fs.readFile(path.join('dist', pathname, 'index.html'), 'utf8');
         const head = html.split('</head>')[0];
+        assert.ok(html.includes('data-prerender-path='), `Missing hydration route marker: ${pathname}`);
+        const canonicalTag = head.match(/<link\b[^>]*rel="canonical"[^>]*>/)?.[0];
+        assert.ok(canonicalTag?.includes('data-prerender-head="true"'), `Canonical must be marked for client ownership: ${pathname}`);
         assert.ok(!html.includes('https://www.thetechdr.com.au'), `Conflicting www URL on ${pathname}`);
         assert.equal((head.match(/<title\b/g) || []).length, 1, `Title count: ${pathname}`);
         assert.equal((head.match(/rel="canonical"/g) || []).length, 1, `Canonical count: ${pathname}`);
